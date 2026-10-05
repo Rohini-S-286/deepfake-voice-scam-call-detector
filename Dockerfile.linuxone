@@ -1,0 +1,46 @@
+# ==============================================================================
+# Dockerfile for IBM LinuxONE (s390x) & Multi-Arch Enterprise Deployment
+# Optimized for IBM z16 / LinuxONE Community Cloud / Red Hat OpenShift on s390x
+# ==============================================================================
+
+FROM --platform=$TARGETPLATFORM python:3.11-slim
+
+LABEL maintainer="AegisVoice Enterprise Security Team"
+LABEL platform="IBM LinuxONE / IBM Z (s390x)"
+LABEL description="AegisVoice AI - Real-time Deepfake Voice Scam Interceptor"
+
+# Install system dependencies & audio libraries for s390x
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    libsndfile1 \
+    curl \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+# Copy dependency manifest
+COPY requirements.txt .
+
+# Install Python packages with wheel optimization
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
+
+# Copy application source code
+COPY . .
+
+# Ensure directory permissions for OpenShift arbitrary UID security on LinuxONE
+RUN chmod -R 775 /app && \
+    chown -R 1001:0 /app
+
+USER 1001
+
+# Expose AegisVoice Defense Port
+EXPOSE 8000
+
+# Healthcheck for IBM Z container orchestration
+HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
+    CMD curl -f http://localhost:8000/api/ibm-z/telemetry || exit 1
+
+# Start Uvicorn ASGI Server
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "2"]
