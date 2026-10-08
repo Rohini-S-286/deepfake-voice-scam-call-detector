@@ -3,7 +3,7 @@
     "phone": "+1 555-SCAM-99",
     "raw_digits": "155599",
     "caller_name": "Test Impersonation Fraudster",
-    "report_count": 7,
+    "report_count": 9,
     "risk_level": "CRITICAL",
     "scam_vector": "AI Voice Clone Testing",
     "modus_operandi": "Demanded crypto transfer.",
@@ -13,7 +13,7 @@
     ],
     "last_reported": "Just now",
     "verified_scam": true,
-    "cpacf_signature": "zCPACF-bb892791a468dcc5ab1bd6cbeba36555...e54eea07ccb3af3c"
+    "cpacf_signature": "zCPACF-6c7c90f156e379bb6778363e4478626d...cfb17b785070d994"
   },
   {
     "phone": "+1 (844) 932-8491",
