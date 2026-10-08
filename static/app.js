@@ -1,7 +1,7 @@
 /**
- * AegisVoice AI - Frontend Application Core v3.5 (Luxury Classy Beige Edition)
- * Live Call Tracking, Community Pre-Alerts, IBM LinuxONE Telemetry,
- * Editorial Oscilloscope, Web Speech Recognition, and Forensic Diagnostic UI.
+ * AegisVoice AI - Frontend Application Core v4.0 (Global Hackathon Clean Edition)
+ * Uncluttered, Intuitive First-Time User Experience, Live Telecom Stream Interceptor,
+ * Pre-Alerts, IBM LinuxONE Telemetry, and Explainable Forensic Breakdown.
  */
 
 // Global State
@@ -29,12 +29,7 @@ let currentSimScenario = null;
 // DOM Elements
 const audioPlayer = document.getElementById('audioPlayer');
 const waveformCanvas = document.getElementById('waveformCanvas');
-const canvasCtx = waveformCanvas.getContext('2d');
-const playPauseBtn = document.getElementById('playPauseBtn');
-const playIcon = document.getElementById('playIcon');
-const audioScrubber = document.getElementById('audioScrubber');
-const audioDurationText = document.getElementById('audioDurationText');
-const activeAudioTitle = document.getElementById('activeAudioTitle');
+const canvasCtx = waveformCanvas ? waveformCanvas.getContext('2d') : null;
 
 // Initialize on DOM Load
 document.addEventListener('DOMContentLoaded', () => {
@@ -49,66 +44,55 @@ document.addEventListener('DOMContentLoaded', () => {
  * Fetch Demo Benchmark Scenarios from FastAPI backend
  */
 async function fetchPresets() {
-  const container = document.getElementById('presetsList');
   try {
     const res = await fetch('/api/presets');
     const data = await res.json();
     presetsList = data.presets || [];
 
-    if (presetsList.length === 0) {
-      container.innerHTML = `<div class="text-center py-4 text-stone-500 text-xs">No presets found.</div>`;
-      return;
-    }
-
-    container.innerHTML = '';
-    presetsList.forEach((preset, index) => {
-      const isScam = preset.is_synthetic;
-      const card = document.createElement('div');
-      card.id = `presetCard_${preset.id}`;
-      card.className = `preset-card p-3 rounded-xl border border-[#E4DDD2] bg-white hover:bg-stone-50 cursor-pointer transition-all space-y-2 shadow-sm ${index === 0 ? 'active' : ''}`;
-      card.onclick = () => selectPreset(preset);
-
-      card.innerHTML = `
-        <div class="flex items-center justify-between">
-          <div class="flex items-center space-x-2">
-            <span class="w-2 h-2 rounded-full ${isScam ? 'bg-rose-600' : 'bg-emerald-600'}"></span>
-            <span class="font-bold text-xs text-stone-900 truncate max-w-[210px]">${preset.title}</span>
-          </div>
-          <span class="text-[10px] font-mono px-2 py-0.5 rounded font-bold ${isScam ? 'bg-rose-50 text-rose-800 border border-rose-200' : 'bg-emerald-50 text-emerald-800 border border-emerald-200'}">
-            ${isScam ? 'AI CLONE' : 'HUMAN'}
-          </span>
-        </div>
-        <div class="text-[11px] text-stone-500 font-mono truncate">
-          ${preset.caller}
-        </div>
-        <div class="flex flex-wrap gap-1 pt-0.5">
-          ${preset.tags.map(t => `<span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-stone-100 text-stone-600 border border-stone-200 font-medium">${t}</span>`).join('')}
-        </div>
-      `;
-      container.appendChild(card);
-    });
-
-    lucide.createIcons();
-
     if (presetsList.length > 0) {
-      selectPreset(presetsList[0], false);
+      // Set default preset
+      currentSimScenario = presetsList[0];
+      activePreset = presetsList[0];
+      currentTrackedPhone = presetsList[0].caller || "+1 (844) 932-8491";
+      const displayEl = document.getElementById('activeTargetDisplay');
+      if (displayEl) displayEl.textContent = currentTrackedPhone;
     }
   } catch (err) {
     console.error('Failed to load presets:', err);
-    container.innerHTML = `<div class="p-3 text-rose-800 text-xs font-mono bg-rose-50 rounded-lg border border-rose-200">Failed to connect to backend presets. Check server status.</div>`;
   }
 }
 
 /**
- * Switch Navigation Tabs (5 Modes)
+ * Quick Preset Selection from top pill buttons
+ */
+function selectQuickPreset(type, phone) {
+  currentTrackedPhone = phone;
+  const displayEl = document.getElementById('activeTargetDisplay');
+  if (displayEl) displayEl.textContent = phone;
+
+  // Match preset scenario
+  if (presetsList.length > 0) {
+    if (type === 'scam_grandson') currentSimScenario = presetsList[0];
+    else if (type === 'scam_bank') currentSimScenario = presetsList[1];
+    else if (type === 'scam_ceo') currentSimScenario = presetsList[2];
+    else if (type === 'real_doctor') currentSimScenario = presetsList[3];
+    else if (type === 'real_family') currentSimScenario = presetsList[4];
+    else currentSimScenario = presetsList[0];
+    activePreset = currentSimScenario;
+  }
+
+  // Trigger call immediately for instant delight!
+  triggerIncomingCall();
+}
+
+/**
+ * Switch Navigation Modes (1. Live Call, 2. Mic/Upload, 3. Registry)
  */
 function switchMode(mode) {
   const tabs = {
     livecall: { btn: 'tabLiveCallBtn', panel: 'liveCallPanel' },
-    presets: { btn: 'tabPresetsBtn', panel: 'presetsPanel' },
     mic: { btn: 'tabMicBtn', panel: 'micPanel' },
-    registry: { btn: 'tabRegistryBtn', panel: 'registryPanel' },
-    upload: { btn: 'tabUploadBtn', panel: 'uploadPanel' }
+    registry: { btn: 'tabRegistryBtn', panel: 'registryPanel' }
   };
 
   for (const key in tabs) {
@@ -116,10 +100,10 @@ function switchMode(mode) {
     const p = document.getElementById(tabs[key].panel);
     if (!b || !p) continue;
     if (key === mode) {
-      b.className = "flex-1 py-2 px-3 text-xs font-semibold rounded-lg bg-stone-900 text-white shadow-sm transition-all flex items-center justify-center space-x-1.5 whitespace-nowrap";
+      b.className = "flex-1 py-2.5 px-3 text-xs font-semibold rounded-lg bg-cyan-600 text-white shadow-md transition-all flex items-center justify-center space-x-1.5";
       p.classList.remove('hidden');
     } else {
-      b.className = "flex-1 py-2 px-3 text-xs font-semibold rounded-lg text-stone-600 hover:text-stone-900 hover:bg-stone-100 transition-all flex items-center justify-center space-x-1.5 whitespace-nowrap";
+      b.className = "flex-1 py-2.5 px-3 text-xs font-semibold rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/60 transition-all flex items-center justify-center space-x-1.5";
       p.classList.add('hidden');
     }
   }
@@ -129,60 +113,82 @@ function switchMode(mode) {
   }
 }
 
-// ==============================================================================
-// FEATURE 1: LIVE CALL TRACKING & PRE-ALERT INTERCEPTOR
-// ==============================================================================
-function onSimCallerSelected(val) {
-  const customInput = document.getElementById('customPhoneInput');
-  if (val === 'custom') {
-    customInput.classList.remove('hidden');
-    currentTrackedPhone = customInput.value || "+1 (555) 123-4567";
-  } else {
-    customInput.classList.add('hidden');
-    currentTrackedPhone = val;
+/**
+ * Switch Details Tabs (Biomarkers, Transcript, Actions)
+ */
+function switchDetailsTab(tab) {
+  const tabs = {
+    biomarkers: { btn: 'tabDetailsBiomarkersBtn', panel: 'detailsBiomarkers' },
+    transcript: { btn: 'tabDetailsTranscriptBtn', panel: 'detailsTranscript' },
+    actions: { btn: 'tabDetailsActionsBtn', panel: 'detailsActions' }
+  };
+
+  for (const key in tabs) {
+    const b = document.getElementById(tabs[key].btn);
+    const p = document.getElementById(tabs[key].panel);
+    if (!b || !p) continue;
+    if (key === tab) {
+      b.className = "pb-2 text-cyan-400 border-b-2 border-cyan-400 font-bold";
+      p.classList.remove('hidden');
+    } else {
+      b.className = "pb-2 text-slate-400 hover:text-white font-medium";
+      p.classList.add('hidden');
+    }
   }
 }
 
+// ==============================================================================
+// FEATURE 1: LIVE CALL TRACKING & PRE-ALERT INTERCEPTOR
+// ==============================================================================
+
 /**
- * Simulates an incoming call with PRE-ALERT lookup before answering!
+ * Simulates incoming phone call with PRE-ALERT lookup BEFORE answering
  */
 async function triggerIncomingCall() {
-  const selectVal = document.getElementById('simCallerSelect').value;
-  if (selectVal === 'custom') {
-    currentTrackedPhone = document.getElementById('customPhoneInput').value || "+1 (555) 999-0000";
-  } else {
-    currentTrackedPhone = selectVal;
-  }
+  const displayEl = document.getElementById('ringingCallerNumber');
+  if (displayEl) displayEl.textContent = currentTrackedPhone;
 
-  currentSimScenario = presetsList.find(p => p.caller.includes(currentTrackedPhone.replace(/[() -]/g, '').slice(-7))) || presetsList[0];
-
-  document.getElementById('ringingCallerNumber').textContent = currentTrackedPhone;
+  const readyBox = document.getElementById('readyCallBox');
   const ringingBox = document.getElementById('ringingCallBox');
-  const activeTrackingBox = document.getElementById('activeCallTrackingBox');
-  activeTrackingBox.classList.add('hidden');
-  ringingBox.classList.remove('hidden');
+  const trackingBox = document.getElementById('activeCallTrackingBox');
 
+  if (readyBox) readyBox.classList.add('hidden');
+  if (trackingBox) trackingBox.classList.add('hidden');
+  if (ringingBox) ringingBox.classList.remove('hidden');
+
+  // Ringing audio simulation
   playTelephoneRing();
 
-  document.getElementById('preAlertHeadline').textContent = "🔍 QUERYING COMMUNITY REGISTRY...";
-  document.getElementById('preAlertMessage').textContent = "Scanning distributed fraud intelligence for prior scam reports...";
+  // Instant Pre-Alert Lookup
+  const headlineEl = document.getElementById('preAlertHeadline');
+  const messageEl = document.getElementById('preAlertMessage');
+  if (headlineEl) headlineEl.textContent = "🔍 QUERYING COMMUNITY REGISTRY...";
+  if (messageEl) messageEl.textContent = "Scanning distributed threat intelligence for prior scam reports...";
 
   try {
     const res = await fetch(`/api/caller-lookup?phone=${encodeURIComponent(currentTrackedPhone)}`);
     const data = await res.json();
     const alertData = data.pre_alert;
 
-    document.getElementById('preAlertHeadline').textContent = alertData.alert_headline;
-    document.getElementById('preAlertMessage').textContent = alertData.alert_message;
-    document.getElementById('preAlertRiskBadge').textContent = alertData.risk_level;
-    document.getElementById('preAlertRiskBadge').className = alertData.is_reported ? "text-rose-700 font-bold" : "text-emerald-700 font-bold";
-    document.getElementById('preAlertSignature').textContent = alertData.cpacf_signature;
+    if (headlineEl) headlineEl.textContent = alertData.alert_headline;
+    if (messageEl) messageEl.textContent = alertData.alert_message;
+    
+    const riskBadge = document.getElementById('preAlertRiskBadge');
+    if (riskBadge) {
+      riskBadge.textContent = alertData.risk_level;
+      riskBadge.className = alertData.is_reported ? "text-red-400 font-bold" : "text-emerald-400 font-bold";
+    }
+
+    const sigEl = document.getElementById('preAlertSignature');
+    if (sigEl) sigEl.textContent = alertData.cpacf_signature;
 
     const banner = document.getElementById('preAlertBanner');
-    if (alertData.is_reported) {
-      banner.className = "p-3.5 rounded-xl bg-rose-50 border border-rose-300 text-xs space-y-1.5 pulse-threat";
-    } else {
-      banner.className = "p-3.5 rounded-xl bg-emerald-50 border border-emerald-300 text-xs space-y-1.5";
+    if (banner) {
+      if (alertData.is_reported) {
+        banner.className = "p-4 rounded-xl bg-red-950/70 border border-red-500/80 space-y-2 text-xs pulse-threat";
+      } else {
+        banner.className = "p-4 rounded-xl bg-emerald-950/50 border border-emerald-500/60 space-y-2 text-xs";
+      }
     }
   } catch (err) {
     console.warn("Pre-alert lookup error:", err);
@@ -216,23 +222,21 @@ function stopTelephoneRing() {
 }
 
 /**
- * User answers the call -> Enters Live Call Tracking Mode
+ * User answers call -> Enters Live Call Tracking Mode
  */
 function acceptLiveCall() {
   stopTelephoneRing();
-  document.getElementById('ringingCallBox').classList.add('hidden');
+  const ringingBox = document.getElementById('ringingCallBox');
   const trackingBox = document.getElementById('activeCallTrackingBox');
-  trackingBox.classList.remove('hidden');
+  if (ringingBox) ringingBox.classList.add('hidden');
+  if (trackingBox) trackingBox.classList.remove('hidden');
 
   isLiveCallActive = true;
   liveCallSeconds = 0;
 
-  if (currentSimScenario) {
+  if (currentSimScenario && audioPlayer) {
     audioPlayer.src = `/samples/${currentSimScenario.filename}`;
-    audioPlayer.play();
-    activeAudioTitle.textContent = `📞 In-Call: ${currentTrackedPhone}`;
-    playIcon.setAttribute('data-lucide', 'pause');
-    lucide.createIcons();
+    audioPlayer.play().catch(e => console.log('Audio autoplay prevented:', e));
   }
 
   if (liveCallTimerInterval) clearInterval(liveCallTimerInterval);
@@ -240,7 +244,7 @@ function acceptLiveCall() {
 }
 
 /**
- * Real-time per-second telemetry loop during active call
+ * Per-second live streaming loop during active call
  */
 async function updateLiveCallTrackingTick() {
   if (!isLiveCallActive) return;
@@ -248,7 +252,8 @@ async function updateLiveCallTrackingTick() {
 
   const m = Math.floor(liveCallSeconds / 60).toString().padStart(2, '0');
   const s = (liveCallSeconds % 60).toString().padStart(2, '0');
-  document.getElementById('liveCallTimerText').textContent = `${m}:${s}`;
+  const timerEl = document.getElementById('liveCallTimerText');
+  if (timerEl) timerEl.textContent = `${m}:${s}`;
 
   const fullTranscript = currentSimScenario ? currentSimScenario.transcript : "Caller audio active...";
   const words = fullTranscript.split(' ');
@@ -269,26 +274,32 @@ async function updateLiveCallTrackingTick() {
     const data = await res.json();
 
     const threatScore = data.dynamic_threat_score;
-    document.getElementById('liveThreatText').textContent = `${Math.round(threatScore)}% ${data.call_status.replace('_', ' ')}`;
-    document.getElementById('liveThreatBar').style.width = `${Math.min(threatScore, 100)}%`;
+    const threatText = document.getElementById('liveThreatText');
+    const threatBar = document.getElementById('liveThreatBar');
 
-    if (threatScore >= 70) {
-      document.getElementById('liveThreatBar').className = "bg-rose-600 h-2 rounded-full transition-all duration-500 pulse-threat";
-      document.getElementById('liveThreatText').className = "text-rose-700 font-bold font-mono";
-    } else if (threatScore >= 40) {
-      document.getElementById('liveThreatBar').className = "bg-amber-600 h-2 rounded-full transition-all duration-500";
-      document.getElementById('liveThreatText').className = "text-amber-800 font-bold font-mono";
-    } else {
-      document.getElementById('liveThreatBar').className = "bg-emerald-700 h-2 rounded-full transition-all duration-500";
-      document.getElementById('liveThreatText').className = "text-emerald-800 font-bold font-mono";
+    if (threatText) threatText.textContent = `${Math.round(threatScore)}% ${data.call_status.replace('_', ' ')}`;
+    if (threatBar) {
+      threatBar.style.width = `${Math.min(threatScore, 100)}%`;
+      if (threatScore >= 70) {
+        threatBar.className = "bg-red-500 h-2.5 rounded-full transition-all duration-500 pulse-threat";
+        if (threatText) threatText.className = "text-red-400 font-bold font-mono";
+      } else if (threatScore >= 40) {
+        threatBar.className = "bg-amber-400 h-2.5 rounded-full transition-all duration-500";
+        if (threatText) threatText.className = "text-amber-400 font-bold font-mono";
+      } else {
+        threatBar.className = "bg-emerald-500 h-2.5 rounded-full transition-all duration-500";
+        if (threatText) threatText.className = "text-emerald-400 font-bold font-mono";
+      }
     }
 
-    document.getElementById('liveStreamTranscript').innerHTML = data.highlighted_transcript || currentSpokenText;
+    const transcriptEl = document.getElementById('liveStreamTranscript');
+    if (transcriptEl) transcriptEl.innerHTML = data.highlighted_transcript || currentSpokenText;
 
   } catch(e) {
     console.warn("Live tracking update error:", e);
   }
 
+  // Auto-finish after 8 seconds of demo
   if (liveCallSeconds >= 9) {
     hangupAndAnalyzeCall();
   }
@@ -296,15 +307,22 @@ async function updateLiveCallTrackingTick() {
 
 function rejectLiveCall() {
   stopTelephoneRing();
-  document.getElementById('ringingCallBox').classList.add('hidden');
+  const ringingBox = document.getElementById('ringingCallBox');
+  const readyBox = document.getElementById('readyCallBox');
+  if (ringingBox) ringingBox.classList.add('hidden');
+  if (readyBox) readyBox.classList.remove('hidden');
   alert(`Call from ${currentTrackedPhone} was declined and blocked. Pre-alert logged to protection registry.`);
 }
 
 async function hangupAndAnalyzeCall() {
   isLiveCallActive = false;
   if (liveCallTimerInterval) clearInterval(liveCallTimerInterval);
-  audioPlayer.pause();
-  document.getElementById('activeCallTrackingBox').classList.add('hidden');
+  if (audioPlayer) audioPlayer.pause();
+
+  const trackingBox = document.getElementById('activeCallTrackingBox');
+  const readyBox = document.getElementById('readyCallBox');
+  if (trackingBox) trackingBox.classList.add('hidden');
+  if (readyBox) readyBox.classList.remove('hidden');
 
   if (currentSimScenario) {
     await executeAnalysisFromPreset(currentSimScenario, currentTrackedPhone);
@@ -312,12 +330,13 @@ async function hangupAndAnalyzeCall() {
 }
 
 function quickReportFromLiveCall() {
-  document.getElementById('reportPhoneInput').value = currentTrackedPhone;
+  const phoneInput = document.getElementById('reportPhoneInput');
+  if (phoneInput) phoneInput.value = currentTrackedPhone;
   openReportScamModal();
 }
 
 // ==============================================================================
-// FEATURE 2: COMMUNITY SCAM REGISTRY & PRIOR REPORTS EXPLORER
+// COMMUNITY SCAM REGISTRY EXPLORER
 // ==============================================================================
 async function fetchCommunityReports() {
   const container = document.getElementById('communityReportsList');
@@ -331,19 +350,19 @@ async function fetchCommunityReports() {
     reports.forEach(r => {
       const isScam = r.verified_scam;
       const item = document.createElement('div');
-      item.className = "p-3 rounded-xl border border-[#E4DDD2] bg-white hover:bg-stone-50 text-xs space-y-1.5 transition-all shadow-sm";
+      item.className = "p-3.5 rounded-xl border border-slate-800 bg-[#0D121F] hover:border-slate-700 text-xs space-y-1.5 transition-all";
       item.innerHTML = `
         <div class="flex items-center justify-between font-mono">
-          <span class="font-bold text-stone-900 text-xs">${r.phone}</span>
-          <span class="px-2 py-0.5 rounded text-[10px] font-bold ${isScam ? 'bg-rose-50 text-rose-800 border border-rose-200' : 'bg-emerald-50 text-emerald-800 border border-emerald-200'}">
+          <span class="font-bold text-white text-xs">${r.phone}</span>
+          <span class="px-2 py-0.5 rounded text-[10px] font-bold ${isScam ? 'bg-red-500/20 text-red-400 border border-red-500/30' : 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'}">
             ${isScam ? `${r.report_count} REPORTS` : 'VERIFIED SAFE'}
           </span>
         </div>
-        <div class="text-[11px] text-amber-900 font-bold">${r.caller_name}</div>
-        <p class="text-[11px] text-stone-600 leading-tight">${r.modus_operandi}</p>
-        <div class="flex items-center justify-between text-[10px] text-stone-500 font-mono pt-1 border-t border-[#EAE3D6]">
+        <div class="text-[11px] text-cyan-300 font-bold">${r.caller_name}</div>
+        <p class="text-[11px] text-slate-400 leading-tight">${r.modus_operandi}</p>
+        <div class="flex items-center justify-between text-[10px] text-slate-500 font-mono pt-1 border-t border-slate-800/80">
           <span>Vector: ${r.scam_vector.split('(')[0]}</span>
-          <span class="truncate max-w-[130px] font-medium">${r.cpacf_signature}</span>
+          <span class="truncate max-w-[130px] text-slate-400">${r.cpacf_signature}</span>
         </div>
       `;
       container.appendChild(item);
@@ -354,7 +373,8 @@ async function fetchCommunityReports() {
 }
 
 async function searchScamRegistry() {
-  const phone = document.getElementById('registrySearchInput').value.trim();
+  const inputEl = document.getElementById('registrySearchInput');
+  const phone = inputEl ? inputEl.value.trim() : "";
   if (!phone) return;
   try {
     const res = await fetch(`/api/caller-lookup?phone=${encodeURIComponent(phone)}`);
@@ -368,12 +388,14 @@ async function searchScamRegistry() {
 }
 
 function openReportScamModal() {
-  document.getElementById('reportScamModal').classList.remove('hidden');
+  const modal = document.getElementById('reportScamModal');
+  if (modal) modal.classList.remove('hidden');
   lucide.createIcons();
 }
 
 function closeReportScamModal() {
-  document.getElementById('reportScamModal').classList.add('hidden');
+  const modal = document.getElementById('reportScamModal');
+  if (modal) modal.classList.add('hidden');
 }
 
 async function submitScamReport() {
@@ -408,47 +430,54 @@ async function submitScamReport() {
 }
 
 // ==============================================================================
-// FEATURE 3: IBM Z & LINUXONE TELEMETRY MODAL
+// MODAL CONTROLS: HOW IT WORKS GUIDE & IBM TELEMETRY
 // ==============================================================================
+function openGuideModal() {
+  const modal = document.getElementById('guideModal');
+  if (modal) modal.classList.remove('hidden');
+  lucide.createIcons();
+}
+
+function closeGuideModal() {
+  const modal = document.getElementById('guideModal');
+  if (modal) modal.classList.add('hidden');
+}
+
 async function openIbmModal() {
   try {
     const res = await fetch('/api/ibm-z/telemetry');
     const data = await res.json();
     const t = data.telemetry;
-    document.getElementById('telemetryPlatform').textContent = t.platform;
-    document.getElementById('telemetryAccelerator').textContent = `${t.ai_accelerator} (${t.inference_latency_ms}ms)`;
-    document.getElementById('telemetryCrypto').textContent = t.crypto_acceleration;
+    const p = document.getElementById('telemetryPlatform');
+    const a = document.getElementById('telemetryAccelerator');
+    const c = document.getElementById('telemetryCrypto');
+    if (p) p.textContent = t.platform;
+    if (a) a.textContent = `${t.ai_accelerator} (${t.inference_latency_ms}ms)`;
+    if (c) c.textContent = t.crypto_acceleration;
   } catch(e){}
-  document.getElementById('ibmModal').classList.remove('hidden');
+  const modal = document.getElementById('ibmModal');
+  if (modal) modal.classList.remove('hidden');
   lucide.createIcons();
 }
 
 function closeIbmModal() {
-  document.getElementById('ibmModal').classList.add('hidden');
+  const modal = document.getElementById('ibmModal');
+  if (modal) modal.classList.add('hidden');
+}
+
+function openHelplineModal() {
+  const modal = document.getElementById('helplineModal');
+  if (modal) modal.classList.remove('hidden');
+}
+
+function closeHelplineModal() {
+  const modal = document.getElementById('helplineModal');
+  if (modal) modal.classList.add('hidden');
 }
 
 // ==============================================================================
-// BENCHMARK PRESETS & FORENSIC EXECUTION
+// FORENSIC ANALYSIS PIPELINE & PRESETS
 // ==============================================================================
-async function selectPreset(preset, autoRun = true) {
-  activePreset = preset;
-
-  document.querySelectorAll('.preset-card').forEach(c => c.classList.remove('active'));
-  const card = document.getElementById(`presetCard_${preset.id}`);
-  if (card) card.classList.add('active');
-
-  activeAudioTitle.textContent = preset.title;
-  audioPlayer.src = `/samples/${preset.filename}`;
-  audioPlayer.load();
-
-  playIcon.setAttribute('data-lucide', 'play');
-  lucide.createIcons();
-
-  if (autoRun) {
-    await executeAnalysisFromPreset(preset, preset.caller);
-  }
-}
-
 async function executeAnalysisFromPreset(preset, phone = "") {
   showAnalyzingState(preset.title);
 
@@ -480,7 +509,7 @@ async function executeAnalysisFromPreset(preset, phone = "") {
 }
 
 // ==============================================================================
-// LIVE MIC INTERCEPTION & SPEECH RECOGNITION
+// LIVE MIC & UPLOAD CONTROLS
 // ==============================================================================
 async function startMicRecording() {
   if (isRecordingMic) return;
@@ -501,12 +530,18 @@ async function startMicRecording() {
 
     mediaRecorder.start(250);
 
-    document.getElementById('micRecordingTimer').classList.remove('hidden');
-    document.getElementById('startRecordBtn').disabled = true;
-    document.getElementById('startRecordBtn').classList.add('opacity-50', 'cursor-not-allowed');
-    document.getElementById('stopRecordBtn').disabled = false;
-    document.getElementById('stopRecordBtn').className = "px-5 py-2.5 rounded-xl bg-stone-900 hover:bg-stone-800 text-white font-semibold text-xs tracking-wider uppercase flex items-center space-x-2 transition-all cursor-pointer shadow-sm";
-    activeAudioTitle.textContent = "🎙️ Live Intercepted Microphone Stream";
+    const timerEl = document.getElementById('micRecordingTimer');
+    if (timerEl) timerEl.classList.remove('hidden');
+    const startBtn = document.getElementById('startRecordBtn');
+    if (startBtn) {
+      startBtn.disabled = true;
+      startBtn.classList.add('opacity-50', 'cursor-not-allowed');
+    }
+    const stopBtn = document.getElementById('stopRecordBtn');
+    if (stopBtn) {
+      stopBtn.disabled = false;
+      stopBtn.className = "px-4 py-2 rounded-xl bg-gradient-to-r from-red-600 to-rose-700 hover:from-red-500 text-white font-bold text-xs uppercase font-mono flex items-center space-x-1.5 cursor-pointer shadow-lg shadow-red-600/30";
+    }
 
     startLiveSpeechRecognition();
 
@@ -521,9 +556,11 @@ function startLiveSpeechRecognition() {
   const badgeEl = document.getElementById('sttStatusBadge');
 
   if (!SpeechRecognition) {
-    badgeEl.textContent = "STT NOT SUPPORTED";
-    badgeEl.className = "text-amber-800 font-bold";
-    transcriptEl.textContent = "Browser speech recognition not available. Pure acoustic analysis will still be executed.";
+    if (badgeEl) {
+      badgeEl.textContent = "STT NOT SUPPORTED";
+      badgeEl.className = "text-[10px] text-amber-400 block mb-0.5";
+    }
+    if (transcriptEl) transcriptEl.textContent = "Browser speech recognition not available. Pure acoustic analysis will still be executed.";
     return;
   }
 
@@ -533,26 +570,21 @@ function startLiveSpeechRecognition() {
   speechRecognizer.lang = 'en-US';
 
   speechRecognizer.onstart = () => {
-    badgeEl.textContent = "LISTENING LIVE...";
-    badgeEl.className = "text-rose-700 font-bold animate-pulse";
-    transcriptEl.textContent = "Listening... Speak now.";
+    if (badgeEl) {
+      badgeEl.textContent = "LISTENING LIVE...";
+      badgeEl.className = "text-[10px] text-red-400 font-bold block mb-0.5 animate-pulse";
+    }
+    if (transcriptEl) transcriptEl.textContent = "Listening... Speak now.";
   };
 
   speechRecognizer.onresult = (event) => {
     let interim = '';
     let final = '';
     for (let i = event.resultIndex; i < event.results.length; ++i) {
-      if (event.results[i].isFinal) {
-        final += event.results[i][0].transcript;
-      } else {
-        interim += event.results[i][0].transcript;
-      }
+      if (event.results[i].isFinal) final += event.results[i][0].transcript;
+      else interim += event.results[i][0].transcript;
     }
-    transcriptEl.textContent = final || interim || "Listening...";
-  };
-
-  speechRecognizer.onerror = (e) => {
-    console.warn("Speech recognition error:", e.error);
+    if (transcriptEl) transcriptEl.textContent = final || interim || "Listening...";
   };
 
   speechRecognizer.start();
@@ -568,20 +600,25 @@ async function stopMicRecording() {
     try { speechRecognizer.stop(); } catch(e){}
   }
 
-  document.getElementById('micRecordingTimer').classList.add('hidden');
-  document.getElementById('startRecordBtn').disabled = false;
-  document.getElementById('startRecordBtn').classList.remove('opacity-50', 'cursor-not-allowed');
-  document.getElementById('stopRecordBtn').disabled = true;
-  document.getElementById('stopRecordBtn').className = "px-5 py-2.5 rounded-xl bg-stone-200 text-stone-400 cursor-not-allowed font-semibold text-xs tracking-wider uppercase flex items-center space-x-2 transition-all";
+  const timerEl = document.getElementById('micRecordingTimer');
+  if (timerEl) timerEl.classList.add('hidden');
+  const startBtn = document.getElementById('startRecordBtn');
+  if (startBtn) {
+    startBtn.disabled = false;
+    startBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+  }
+  const stopBtn = document.getElementById('stopRecordBtn');
+  if (stopBtn) {
+    stopBtn.disabled = true;
+    stopBtn.className = "px-4 py-2 rounded-xl bg-slate-800 text-slate-500 font-bold text-xs uppercase font-mono flex items-center space-x-1.5 cursor-not-allowed";
+  }
 
   showAnalyzingState("Live Microphone Stream");
 
   mediaRecorder.onstop = async () => {
     const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
-    const audioUrl = URL.createObjectURL(audioBlob);
-    audioPlayer.src = audioUrl;
-
-    const transcript = document.getElementById('liveTranscriptText').textContent;
+    const transcriptEl = document.getElementById('liveTranscriptText');
+    const transcript = transcriptEl ? transcriptEl.textContent : "";
 
     const formData = new FormData();
     formData.append('audio', audioBlob, 'live_mic_call.webm');
@@ -605,9 +642,6 @@ async function stopMicRecording() {
   };
 }
 
-// ==============================================================================
-// FILE UPLOAD HANDLER
-// ==============================================================================
 let selectedUploadFile = null;
 
 function handleFileSelect(e) {
@@ -616,15 +650,16 @@ function handleFileSelect(e) {
 
   selectedUploadFile = file;
   const fileNameDisplay = document.getElementById('selectedFileName');
-  fileNameDisplay.textContent = `Selected: ${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)`;
-  fileNameDisplay.classList.remove('hidden');
+  if (fileNameDisplay) {
+    fileNameDisplay.textContent = `Selected: ${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)`;
+    fileNameDisplay.classList.remove('hidden');
+  }
 
   const analyzeBtn = document.getElementById('uploadAnalyzeBtn');
-  analyzeBtn.disabled = false;
-  analyzeBtn.className = "w-full py-2.5 rounded-xl bg-stone-900 hover:bg-stone-800 text-white font-semibold text-xs tracking-wider uppercase flex items-center justify-center space-x-2 transition-all cursor-pointer shadow-sm";
-
-  audioPlayer.src = URL.createObjectURL(file);
-  activeAudioTitle.textContent = file.name;
+  if (analyzeBtn) {
+    analyzeBtn.disabled = false;
+    analyzeBtn.className = "w-full py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs uppercase font-mono flex items-center justify-center space-x-1.5 transition-all cursor-pointer shadow-lg shadow-cyan-600/30";
+  }
 }
 
 async function analyzeUploadedFile() {
@@ -632,11 +667,12 @@ async function analyzeUploadedFile() {
 
   showAnalyzingState(selectedUploadFile.name);
 
-  const transcript = document.getElementById('uploadTranscriptInput').value;
+  const transcriptInput = document.getElementById('uploadTranscriptInput');
+  const transcript = transcriptInput ? transcriptInput.value : "";
   const formData = new FormData();
   formData.append('audio', selectedUploadFile);
   formData.append('transcript', transcript);
-  formData.append('phone_number', "Uploaded Audio Recording");
+  formData.append('phone_number', "Uploaded Recording");
 
   try {
     const res = await fetch('/api/analyze', {
@@ -655,13 +691,21 @@ async function analyzeUploadedFile() {
 }
 
 function showAnalyzingState(name) {
-  document.getElementById('threatStatusText').textContent = `INTERCEPTING & FORENSICALLY SCANNING ON IBM TELUM: ${name}...`;
-  document.getElementById('threatStatusDot').className = "w-3 h-3 rounded-full bg-amber-600 animate-ping";
-  document.getElementById('threatBanner').className = "p-4 rounded-xl border flex items-center justify-between mb-6 bg-amber-50 border-amber-200 text-amber-950 shadow-sm";
+  const statusText = document.getElementById('threatStatusText');
+  const statusDot = document.getElementById('threatStatusDot');
+  const banner = document.getElementById('threatBanner');
+
+  if (statusText) statusText.textContent = `INTERCEPTING & SCANNING WITH IBM TELUM: ${name}...`;
+  if (statusDot) statusDot.className = "w-3.5 h-3.5 rounded-full bg-cyan-400 animate-ping";
+  if (banner) banner.className = "p-4 rounded-xl border flex items-center justify-between bg-cyan-950/40 border-cyan-800/50 text-cyan-200";
+
+  // Smooth scroll to results
+  const resultsCard = document.getElementById('resultsCard');
+  if (resultsCard) resultsCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
 // ==============================================================================
-// RENDER COMPLETE FORENSIC RESULTS (CLASSY BEIGE DESIGN)
+// RENDER COMPLETE FORENSIC RESULTS (CLEAN OBSIDIAN HIERARCHY)
 // ==============================================================================
 function renderForensicResults(data) {
   currentIncidentData = data;
@@ -672,108 +716,142 @@ function renderForensicResults(data) {
   const preAlert = data.caller_pre_alert;
 
   // 1. Incident ID Badge
-  document.getElementById('incidentIdBadge').textContent = data.incident_id;
+  const badge = document.getElementById('incidentIdBadge');
+  if (badge) badge.textContent = data.incident_id;
 
   // 2. Banner and Status
   const banner = document.getElementById('threatBanner');
   const dot = document.getElementById('threatStatusDot');
   const statusText = document.getElementById('threatStatusText');
 
-  statusText.textContent = tm.badge_text;
+  if (statusText) statusText.textContent = tm.badge_text;
 
-  if (tm.color_code === 'red') {
-    banner.className = "p-4 rounded-xl border flex items-center justify-between mb-6 bg-rose-50 border-rose-300 text-rose-950 shadow-sm pulse-threat";
-    dot.className = "w-3 h-3 rounded-full bg-rose-600";
-  } else if (tm.color_code === 'amber' || tm.color_code === 'orange') {
-    banner.className = "p-4 rounded-xl border flex items-center justify-between mb-6 bg-amber-50 border-amber-300 text-amber-950 shadow-sm";
-    dot.className = "w-3 h-3 rounded-full bg-amber-600";
-  } else {
-    banner.className = "p-4 rounded-xl border flex items-center justify-between mb-6 bg-emerald-50 border-emerald-300 text-emerald-950 shadow-sm";
-    dot.className = "w-3 h-3 rounded-full bg-emerald-600";
+  if (banner && dot) {
+    if (tm.color_code === 'red') {
+      banner.className = "p-4 rounded-xl border flex items-center justify-between bg-red-950/60 border-red-500/60 text-red-200 pulse-threat";
+      dot.className = "w-3.5 h-3.5 rounded-full bg-red-500";
+    } else if (tm.color_code === 'amber' || tm.color_code === 'orange') {
+      banner.className = "p-4 rounded-xl border flex items-center justify-between bg-amber-950/40 border-amber-500/50 text-amber-200";
+      dot.className = "w-3.5 h-3.5 rounded-full bg-amber-400";
+    } else {
+      banner.className = "p-4 rounded-xl border flex items-center justify-between bg-emerald-950/40 border-emerald-500/50 text-emerald-200";
+      dot.className = "w-3.5 h-3.5 rounded-full bg-emerald-400";
+    }
   }
 
   // 3. Pre-Alert Prior Reports Notice
   const preNoticeBox = document.getElementById('resultsPreAlertNotice');
-  if (preAlert && preAlert.is_reported) {
-    preNoticeBox.classList.remove('hidden');
-    document.getElementById('resultsPreAlertTitle').textContent = `PRE-ALERT: ${preAlert.report_count} COMMUNITY FRAUD REPORTS FOR ${preAlert.phone}`;
-    document.getElementById('resultsPreAlertCount').textContent = `${preAlert.report_count} REPORTS`;
-    document.getElementById('resultsPreAlertDetails').textContent = `Reported Vector: ${preAlert.scam_vector}. Modus Operandi: ${preAlert.modus_operandi}`;
-  } else {
-    preNoticeBox.classList.add('hidden');
+  if (preNoticeBox) {
+    if (preAlert && preAlert.is_reported) {
+      preNoticeBox.classList.remove('hidden');
+      const titleEl = document.getElementById('resultsPreAlertTitle');
+      const countEl = document.getElementById('resultsPreAlertCount');
+      const detailsEl = document.getElementById('resultsPreAlertDetails');
+      if (titleEl) titleEl.textContent = `PRE-ALERT: ${preAlert.report_count} COMMUNITY FRAUD REPORTS FOR ${preAlert.phone}`;
+      if (countEl) countEl.textContent = `${preAlert.report_count} REPORTS`;
+      if (detailsEl) detailsEl.textContent = `Reported Vector: ${preAlert.scam_vector}. Modus Operandi: ${preAlert.modus_operandi}`;
+    } else {
+      preNoticeBox.classList.add('hidden');
+    }
   }
 
   // 4. Animate Master Unified Threat Gauge
   const unifiedPct = tm.unified_threat_score;
-  document.getElementById('unifiedScoreNumber').textContent = `${Math.round(unifiedPct)}%`;
+  const unifiedNum = document.getElementById('unifiedScoreNumber');
+  if (unifiedNum) unifiedNum.textContent = `${Math.round(unifiedPct)}%`;
   const unifiedCirc = 264;
   const unifiedOffset = unifiedCirc - (unifiedCirc * unifiedPct) / 100;
   const unifiedBar = document.getElementById('unifiedGaugeProgress');
-  unifiedBar.style.strokeDashoffset = unifiedOffset;
-  unifiedBar.className = `gauge-circle-progress ${unifiedPct >= 70 ? 'stroke-rose-600' : (unifiedPct >= 40 ? 'stroke-amber-600' : 'stroke-emerald-700')}`;
+  if (unifiedBar) {
+    unifiedBar.style.strokeDashoffset = unifiedOffset;
+    unifiedBar.className = `gauge-circle-progress ${unifiedPct >= 70 ? 'stroke-red-500' : (unifiedPct >= 40 ? 'stroke-amber-400' : 'stroke-emerald-400')}`;
+  }
 
   // 5. Animate Acoustic AI Gauge
   const acousticPct = ac.deepfake_probability_percent;
-  document.getElementById('acousticScoreNumber').textContent = `${Math.round(acousticPct)}%`;
+  const acousticNum = document.getElementById('acousticScoreNumber');
+  if (acousticNum) acousticNum.textContent = `${Math.round(acousticPct)}%`;
   const acousticCirc = 251;
   const acousticOffset = acousticCirc - (acousticCirc * acousticPct) / 100;
   const acousticBar = document.getElementById('acousticGaugeProgress');
-  acousticBar.style.strokeDashoffset = acousticOffset;
-  acousticBar.className = `gauge-circle-progress ${acousticPct >= 70 ? 'stroke-rose-600' : (acousticPct >= 40 ? 'stroke-amber-600' : 'stroke-blue-700')}`;
-  document.getElementById('suspectedEngineText').textContent = ac.suspected_engine.split('(')[0];
+  if (acousticBar) {
+    acousticBar.style.strokeDashoffset = acousticOffset;
+    acousticBar.className = `gauge-circle-progress ${acousticPct >= 70 ? 'stroke-red-500' : (acousticPct >= 40 ? 'stroke-amber-400' : 'stroke-blue-400')}`;
+  }
+  const engineText = document.getElementById('suspectedEngineText');
+  if (engineText) engineText.textContent = ac.suspected_engine.split('(')[0];
 
   // 6. Animate Scam Intent Gauge
   const scamPct = li.scam_risk_percent;
-  document.getElementById('scamScoreNumber').textContent = `${Math.round(scamPct)}%`;
+  const scamNum = document.getElementById('scamScoreNumber');
+  if (scamNum) scamNum.textContent = `${Math.round(scamPct)}%`;
   const scamCirc = 251;
   const scamOffset = scamCirc - (scamCirc * scamPct) / 100;
   const scamBar = document.getElementById('scamGaugeProgress');
-  scamBar.style.strokeDashoffset = scamOffset;
-  scamBar.className = `gauge-circle-progress ${scamPct >= 70 ? 'stroke-rose-600' : (scamPct >= 40 ? 'stroke-amber-600' : 'stroke-emerald-700')}`;
-  document.getElementById('scamRiskTierText').textContent = `Tier: ${li.risk_tier.replace('_', ' ')}`;
+  if (scamBar) {
+    scamBar.style.strokeDashoffset = scamOffset;
+    scamBar.className = `gauge-circle-progress ${scamPct >= 70 ? 'stroke-red-500' : (scamPct >= 40 ? 'stroke-amber-400' : 'stroke-emerald-400')}`;
+  }
+  const tierText = document.getElementById('scamRiskTierText');
+  if (tierText) tierText.textContent = `Tier: ${li.risk_tier.replace('_', ' ')}`;
 
-  // 7. Explainable AI Biomarkers Table
+  // 7. Plain English Advice Box
+  const adviceEl = document.getElementById('plainEnglishAdviceText');
+  if (adviceEl) adviceEl.textContent = tm.primary_advice;
+
+  // 8. Explainable AI Biomarkers Table
   const anomaliesContainer = document.getElementById('anomaliesContainer');
-  anomaliesContainer.innerHTML = '';
-  ac.anomalies.forEach(anomaly => {
-    const isAnomaly = anomaly.status === 'ANOMALY';
-    const card = document.createElement('div');
-    card.className = `p-3 rounded-xl border text-xs space-y-1 ${isAnomaly ? 'bg-rose-50 border-rose-200 text-rose-950' : 'bg-stone-50 border-[#E4DDD2] text-stone-800'}`;
-    card.innerHTML = `
-      <div class="flex items-center justify-between font-mono">
-        <span class="font-bold text-stone-900">${anomaly.metric}</span>
-        <span class="px-2 py-0.5 rounded text-[10px] font-bold ${isAnomaly ? 'bg-rose-100 text-rose-900 border border-rose-200' : 'bg-emerald-100 text-emerald-900 border border-emerald-200'}">
-          ${anomaly.status}
-        </span>
-      </div>
-      <div class="flex items-center justify-between text-[11px] text-stone-600 font-mono">
-        <span>Found: <strong class="text-stone-900">${anomaly.value}</strong></span>
-        <span>Baseline: ${anomaly.normal_range}</span>
-      </div>
-      <p class="text-[11px] text-stone-600 pt-0.5 leading-tight">${anomaly.reason}</p>
-    `;
-    anomaliesContainer.appendChild(card);
-  });
+  if (anomaliesContainer) {
+    anomaliesContainer.innerHTML = '';
+    ac.anomalies.forEach(anomaly => {
+      const isAnomaly = anomaly.status === 'ANOMALY';
+      const card = document.createElement('div');
+      card.className = `p-3.5 rounded-xl border text-xs space-y-1.5 ${isAnomaly ? 'bg-red-950/25 border-red-900/50 text-red-200' : 'bg-slate-900/80 border-slate-800 text-slate-300'}`;
+      card.innerHTML = `
+        <div class="flex items-center justify-between font-mono">
+          <span class="font-bold text-white text-xs">${anomaly.metric}</span>
+          <span class="px-2 py-0.5 rounded text-[10px] font-bold ${isAnomaly ? 'bg-red-500/20 text-red-400 border border-red-500/30' : 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'}">
+            ${anomaly.status}
+          </span>
+        </div>
+        <div class="flex items-center justify-between text-[11px] text-slate-400 font-mono">
+          <span>Observed: <strong class="text-white">${anomaly.value}</strong></span>
+          <span>Normal Baseline: ${anomaly.normal_range}</span>
+        </div>
+        <p class="text-[11px] text-slate-400 leading-tight pt-0.5">${anomaly.reason}</p>
+      `;
+      anomaliesContainer.appendChild(card);
+    });
+  }
 
-  // 8. Spoken Content & Scam Triggers
+  // 9. Spoken Transcript & Scam Triggers
   const transcriptBox = document.getElementById('transcriptDisplayBox');
-  transcriptBox.innerHTML = li.highlighted_transcript || data.transcript || "<em>No spoken words detected in audio.</em>";
-  document.getElementById('triggerCountBadge').textContent = `${li.detected_triggers.length} TRIGGERS FLAGGED`;
+  if (transcriptBox) transcriptBox.innerHTML = li.highlighted_transcript || data.transcript || "<em>No spoken words detected in audio.</em>";
+  const triggerBadge = document.getElementById('triggerCountBadge');
+  if (triggerBadge) triggerBadge.textContent = `${li.detected_triggers.length} TRIGGERS FLAGGED`;
 
-  // 9. Actionable Countermeasures Checklist
+  // 10. Actionable Countermeasures Checklist
   const countermeasuresList = document.getElementById('countermeasuresList');
-  countermeasuresList.innerHTML = '';
-  li.defense_protocol.forEach(action => {
-    const item = document.createElement('div');
-    item.className = "p-3 rounded-xl bg-stone-50 border border-[#E4DDD2] flex items-start space-x-2 text-xs font-mono text-stone-800 shadow-sm";
-    item.innerHTML = `<span>${action}</span>`;
-    countermeasuresList.appendChild(item);
-  });
+  if (countermeasuresList) {
+    countermeasuresList.innerHTML = '';
+    li.defense_protocol.forEach(action => {
+      const item = document.createElement('div');
+      item.className = "p-3 rounded-xl bg-slate-950/70 border border-slate-800 flex items-start space-x-2 text-xs font-mono text-slate-200";
+      item.innerHTML = `<span>${action}</span>`;
+      countermeasuresList.appendChild(item);
+    });
+  }
 
-  // Enable Export Dossier Button
+  // 11. Enable Export Report Button
   const exportBtn = document.getElementById('exportReportBtn');
-  exportBtn.disabled = false;
-  exportBtn.className = "px-3.5 py-1.5 rounded-lg bg-stone-900 hover:bg-stone-800 text-white text-xs font-mono flex items-center space-x-1.5 transition-all cursor-pointer shadow-sm";
+  if (exportBtn) {
+    exportBtn.disabled = false;
+    exportBtn.className = "px-4 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-mono text-xs font-bold flex items-center space-x-2 transition-all cursor-pointer shadow-lg shadow-cyan-600/30";
+  }
+
+  // Smooth scroll down to results
+  const resultsCard = document.getElementById('resultsCard');
+  if (resultsCard) resultsCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 // ==============================================================================
@@ -785,61 +863,59 @@ function exportIncidentDossier() {
   const modal = document.getElementById('reportModal');
   const content = document.getElementById('modalReportContent');
 
-  document.getElementById('modalIncidentId').textContent = `CASE ID: ${d.incident_id}`;
-
   content.innerHTML = `
-    <div class="p-3.5 bg-stone-50 rounded-xl border border-[#E4DDD2] space-y-1 text-xs">
+    <div class="p-3.5 bg-slate-950 rounded-xl border border-slate-800 space-y-1.5 text-xs">
       <div class="flex justify-between">
-        <span class="text-stone-500">TIMESTAMP:</span>
-        <span class="text-stone-900 font-bold">${new Date().toUTCString()}</span>
+        <span class="text-slate-500">TIMESTAMP:</span>
+        <span class="text-white font-bold">${new Date().toUTCString()}</span>
       </div>
       <div class="flex justify-between">
-        <span class="text-stone-500">CALLER IDENTIFIER:</span>
-        <span class="text-amber-800 font-mono font-bold">${d.caller_pre_alert ? d.caller_pre_alert.phone : 'Unknown'}</span>
+        <span class="text-slate-500">CALLER IDENTIFIER:</span>
+        <span class="text-amber-400 font-mono font-bold">${d.caller_pre_alert ? d.caller_pre_alert.phone : 'Unknown'}</span>
       </div>
       <div class="flex justify-between">
-        <span class="text-stone-500">AUDIO EVIDENCE HASH:</span>
-        <span class="text-stone-800 font-mono">${d.acoustic.file_info.sha256_hash}</span>
+        <span class="text-slate-500">AUDIO EVIDENCE SHA-256:</span>
+        <span class="text-cyan-400 font-mono">${d.acoustic.file_info.sha256_hash}</span>
       </div>
       <div class="flex justify-between">
-        <span class="text-stone-500">IBM CPACF HARDWARE SEAL:</span>
-        <span class="text-blue-800 font-mono font-bold">${d.ibm_z ? d.ibm_z.cpacf.signature : 'Verified'}</span>
+        <span class="text-slate-500">IBM CPACF HARDWARE SEAL:</span>
+        <span class="text-blue-400 font-mono">${d.ibm_z ? d.ibm_z.cpacf.signature : 'Verified'}</span>
       </div>
     </div>
 
-    <div class="p-4 rounded-xl border ${d.threat_matrix.color_code === 'red' ? 'bg-rose-50 border-rose-300 text-rose-950' : 'bg-emerald-50 border-emerald-300 text-emerald-950'}">
+    <div class="p-4 rounded-xl border ${d.threat_matrix.color_code === 'red' ? 'bg-red-950/40 border-red-700/60 text-red-200' : 'bg-emerald-950/40 border-emerald-700/60 text-emerald-200'}">
       <div class="font-bold text-sm mb-1">${d.threat_matrix.badge_text}</div>
-      <p class="text-xs text-stone-700">${d.threat_matrix.primary_advice}</p>
+      <p class="text-xs text-slate-300 leading-relaxed">${d.threat_matrix.primary_advice}</p>
     </div>
 
     <div class="space-y-2">
-      <h4 class="font-bold text-stone-900 text-xs uppercase tracking-wider text-amber-900">Biometric &amp; IBM Telum Forensic Score Matrix</h4>
+      <h4 class="font-bold text-cyan-400 text-xs uppercase tracking-wider">Biometric &amp; IBM Telum Forensic Matrix</h4>
       <div class="grid grid-cols-2 gap-2 text-xs">
-        <div class="p-2.5 bg-stone-50 rounded-lg border border-[#E4DDD2]">
-          Composite Threat Index: <strong class="text-stone-900">${d.threat_matrix.unified_threat_score}%</strong>
+        <div class="p-2.5 bg-slate-950 rounded-lg border border-slate-800">
+          Composite Threat Index: <strong class="text-white">${d.threat_matrix.unified_threat_score}%</strong>
         </div>
-        <div class="p-2.5 bg-stone-50 rounded-lg border border-[#E4DDD2]">
-          Acoustic Clone Probability: <strong class="text-stone-900">${d.acoustic.deepfake_probability_percent}%</strong>
+        <div class="p-2.5 bg-slate-950 rounded-lg border border-slate-800">
+          Acoustic Clone Probability: <strong class="text-white">${d.acoustic.deepfake_probability_percent}%</strong>
         </div>
-        <div class="p-2.5 bg-stone-50 rounded-lg border border-[#E4DDD2]">
-          Telum NNPA Latency: <strong class="text-blue-800">0.82 ms</strong>
+        <div class="p-2.5 bg-slate-950 rounded-lg border border-slate-800">
+          Telum NNPA Latency: <strong class="text-cyan-400">0.82 ms</strong>
         </div>
-        <div class="p-2.5 bg-stone-50 rounded-lg border border-[#E4DDD2]">
-          Prior Community Reports: <strong class="text-amber-800">${d.caller_pre_alert ? d.caller_pre_alert.report_count : 0}</strong>
+        <div class="p-2.5 bg-slate-950 rounded-lg border border-slate-800">
+          Prior Community Reports: <strong class="text-amber-400">${d.caller_pre_alert ? d.caller_pre_alert.report_count : 0}</strong>
         </div>
       </div>
     </div>
 
     <div class="space-y-2">
-      <h4 class="font-bold text-stone-900 text-xs uppercase tracking-wider text-amber-900">Spoken Conversational Evidence</h4>
-      <div class="p-3 bg-stone-50 rounded-lg border border-[#E4DDD2] text-xs italic text-stone-800">
+      <h4 class="font-bold text-amber-400 text-xs uppercase tracking-wider">Spoken Conversational Evidence</h4>
+      <div class="p-3 bg-slate-950 rounded-lg border border-slate-800 text-xs italic text-slate-300">
         "${d.transcript || 'No verbal transcript provided'}"
       </div>
     </div>
 
     <div class="space-y-2">
-      <h4 class="font-bold text-stone-900 text-xs uppercase tracking-wider text-emerald-900">Law Enforcement / Banking Submission Advisory</h4>
-      <ul class="list-disc pl-5 space-y-1 text-stone-700 text-xs">
+      <h4 class="font-bold text-emerald-400 text-xs uppercase tracking-wider">Law Enforcement Submission Advisory</h4>
+      <ul class="list-disc pl-5 space-y-1 text-slate-300 text-xs">
         <li>Submit this dossier directly to National Cybercrime Portal (cybercrime.gov.in / Dial 1930).</li>
         <li>Present audio SHA-256 and IBM CPACF signature to your bank fraud division to initiate an immediate transfer recall.</li>
         <li>Preserve raw audio file in original digital container without re-encoding to retain forensic chain of custody.</li>
@@ -847,24 +923,17 @@ function exportIncidentDossier() {
     </div>
   `;
 
-  modal.classList.remove('hidden');
+  if (modal) modal.classList.remove('hidden');
   lucide.createIcons();
 }
 
 function closeReportModal() {
-  document.getElementById('reportModal').classList.add('hidden');
-}
-
-function openHelplineModal() {
-  document.getElementById('helplineModal').classList.remove('hidden');
-}
-
-function closeHelplineModal() {
-  document.getElementById('helplineModal').classList.add('hidden');
+  const modal = document.getElementById('reportModal');
+  if (modal) modal.classList.add('hidden');
 }
 
 // ==============================================================================
-// WEB AUDIO API & EDITORIAL CANVAS OSCILLOSCOPE
+// WEB AUDIO API & CANVAS OSCILLOSCOPE VISUALIZER
 // ==============================================================================
 function initAudioContext() {
   if (!audioContext) {
@@ -879,93 +948,46 @@ function initAudioContext() {
 }
 
 function setupAudioPlayerEvents() {
-  audioPlayer.ontimeupdate = () => {
-    if (audioPlayer.duration) {
-      const pct = (audioPlayer.currentTime / audioPlayer.duration) * 100;
-      audioScrubber.value = pct;
-      audioDurationText.textContent = `${formatTime(audioPlayer.currentTime)} / ${formatTime(audioPlayer.duration)}`;
+  if (!audioPlayer) return;
+
+  audioPlayer.onplay = () => {
+    initAudioContext();
+    if (!audioSourceNode) {
+      try {
+        audioSourceNode = audioContext.createMediaElementSource(audioPlayer);
+        audioSourceNode.connect(analyserNode);
+        analyserNode.connect(audioContext.destination);
+      } catch(e){}
     }
   };
-
-  audioPlayer.onended = () => {
-    playIcon.setAttribute('data-lucide', 'play');
-    lucide.createIcons();
-  };
 }
 
-function toggleAudioPlayback() {
-  initAudioContext();
-
-  if (!audioSourceNode && audioPlayer.src) {
-    try {
-      audioSourceNode = audioContext.createMediaElementSource(audioPlayer);
-      audioSourceNode.connect(analyserNode);
-      analyserNode.connect(audioContext.destination);
-    } catch(e) {}
-  }
-
-  if (audioPlayer.paused) {
-    audioPlayer.play();
-    playIcon.setAttribute('data-lucide', 'pause');
-  } else {
-    audioPlayer.pause();
-    playIcon.setAttribute('data-lucide', 'play');
-  }
-  lucide.createIcons();
-}
-
-function restartAudioPlayback() {
-  audioPlayer.currentTime = 0;
-  audioPlayer.play();
-  playIcon.setAttribute('data-lucide', 'pause');
-  lucide.createIcons();
-}
-
-function seekAudio(val) {
-  if (audioPlayer.duration) {
-    audioPlayer.currentTime = (val / 100) * audioPlayer.duration;
-  }
-}
-
-function formatTime(sec) {
-  const m = Math.floor(sec / 60);
-  const s = Math.floor(sec % 60);
-  return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
-}
-
-/**
- * Editorial Luxury Oscilloscope Renderer
- */
 function initCanvasVisualizer() {
+  if (!waveformCanvas || !canvasCtx) return;
   const width = waveformCanvas.width;
   const height = waveformCanvas.height;
 
   function renderFrame() {
     animationFrameId = requestAnimationFrame(renderFrame);
 
-    // Clean warm card background
-    canvasCtx.fillStyle = '#FFFFFF';
+    canvasCtx.fillStyle = '#0B101D';
     canvasCtx.fillRect(0, 0, width, height);
 
     // Subtle fine grid lines
-    canvasCtx.strokeStyle = 'rgba(228, 221, 210, 0.4)';
+    canvasCtx.strokeStyle = 'rgba(30, 41, 59, 0.4)';
     canvasCtx.lineWidth = 1;
     canvasCtx.beginPath();
     canvasCtx.moveTo(0, height / 2);
     canvasCtx.lineTo(width, height / 2);
-    canvasCtx.moveTo(0, height / 4);
-    canvasCtx.lineTo(width, height / 4);
-    canvasCtx.moveTo(0, (height * 3) / 4);
-    canvasCtx.lineTo(width, (height * 3) / 4);
     canvasCtx.stroke();
 
-    if (analyserNode) {
+    if (analyserNode && isLiveCallActive) {
       const bufferLength = analyserNode.frequencyBinCount;
       const dataArray = new Uint8Array(bufferLength);
       analyserNode.getByteTimeDomainData(dataArray);
 
       canvasCtx.lineWidth = 2.2;
-      canvasCtx.strokeStyle = '#1C1917'; // Deep Obsidian Charcoal
+      canvasCtx.strokeStyle = '#38BDF8'; // Sky blue
       canvasCtx.beginPath();
 
       const sliceWidth = width / bufferLength;
@@ -975,20 +997,17 @@ function initCanvasVisualizer() {
         const v = dataArray[i] / 128.0;
         const y = (v * height) / 2;
 
-        if (i === 0) {
-          canvasCtx.moveTo(x, y);
-        } else {
-          canvasCtx.lineTo(x, y);
-        }
+        if (i === 0) canvasCtx.moveTo(x, y);
+        else canvasCtx.lineTo(x, y);
         x += sliceWidth;
       }
 
       canvasCtx.lineTo(width, height / 2);
       canvasCtx.stroke();
     } else {
-      // Idle classy calm pulse wave
+      // Idle animated calm wave
       canvasCtx.lineWidth = 1.8;
-      canvasCtx.strokeStyle = '#B45309'; // Warm Cognac
+      canvasCtx.strokeStyle = 'rgba(56, 189, 248, 0.35)';
       canvasCtx.beginPath();
       const t = Date.now() / 350;
       for (let x = 0; x < width; x += 5) {
