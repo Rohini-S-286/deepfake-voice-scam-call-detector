@@ -1,32 +1,34 @@
-/* AegisVoice AI - Warm Terracotta & Classy Beige Theme (Inspired by User Reference UI) */
+/* AegisVoice AI - Warm Terracotta & Classy Beige Palette (Exact Match to User Reference UI) */
 
 :root {
-  /* Warm Dusky Cocoa Background ("little dark as given") */
-  --bg-primary: #241715;          /* Deep Dusky Terracotta Mocha */
-  --bg-secondary: #2E1E1B;        /* Warm Dark Cocoa */
-  --bg-tertiary: #3A2623;         /* Subtle Dusky Rose Accent */
+  /* Warm Dark Terracotta Background ("warm dark colour like the reference image") */
+  --bg-primary: #5A3129;          /* Rich Warm Terracotta / Clay */
+  --bg-secondary: #48241D;        /* Deeper Warm Terracotta Cocoa */
+  --bg-header: #3E1E18;           /* Deep Terracotta Header */
+  --bg-surface: #683930;          /* Warm Terracotta Surface */
 
-  /* Classy Beige Surfaces ("options should be in beige") */
-  --beige-card: #FDF9F5;          /* Luminous Classy Warm Beige/Cream */
-  --beige-surface: #F7EDE4;       /* Soft Sand Beige */
-  --beige-subtle: #EFE0D3;        /* Warm Cashmere Beige */
-  --border-beige: #E5D5C6;        /* Refined Beige Border */
-  --border-beige-dark: #D4BEAA;   /* Defined Beige Border */
+  /* Classy Beige Option Cards ("options should be in beige") */
+  --beige-card: #FDF8F4;          /* Luminous Classy Warm Beige */
+  --beige-surface: #F6EDE4;       /* Soft Warm Sand */
+  --beige-subtle: #EFE2D6;        /* Warm Cashmere Beige */
+  --border-beige: #E6D4C4;        /* Refined Warm Beige Border */
+  --border-beige-dark: #D4BDAB;   /* Defined Warm Beige Border */
 
   /* Deep High-Contrast Text ("everything should be clearly visible") */
-  --text-dark: #1A100E;           /* Deep Charcoal Espresso (100% Readable) */
-  --text-dark-secondary: #422D29; /* Refined Cocoa Brown */
-  --text-dark-muted: #6B4E48;     /* Warm Taupe */
-  --text-light: #FDF9F5;          /* For Coral/Terracotta Buttons */
+  --text-dark: #1C100D;           /* Deep Dark Espresso (16:1 Contrast on Beige) */
+  --text-dark-secondary: #52342E; /* Refined Warm Cocoa Brown */
+  --text-dark-muted: #7A524A;     /* Soft Warm Taupe */
+  --text-light: #FDF8F4;          /* Classy Linen Cream on Dark Background */
+  --text-light-subtle: #F6D8CE;   /* Soft Peach Cream on Dark Background */
 
-  /* Reference Warm Coral/Terracotta Accents (Matching "Voice" & "Ask SARA" buttons) */
+  /* Reference Coral/Terracotta Accents (Matching "Voice" & "Ask SARA" pills in photo) */
   --coral-main: #C85A42;          /* Signature Warm Terracotta Coral */
-  --coral-hover: #B44C36;         /* Deep Terracotta Hover */
-  --coral-light: #FDEEEA;         /* Soft Coral/Peach Tint */
+  --coral-hover: #B44C36;         /* Deep Coral Hover */
+  --coral-light: #FDEEEA;         /* Soft Peach/Coral Tint */
   --coral-border: #F3B9AC;        /* Soft Coral Border */
 
   /* State Alerts */
-  --alert-red: #C83E2D;           /* High Alert Crimson Coral */
+  --alert-red: #C83E2D;           /* High Alert Coral Red */
   --alert-red-bg: #FDEBE8;        /* Soft Coral Red Tint */
   --alert-green: #2D7A4F;         /* Authentic Sage Green */
   --alert-green-bg: #E8F5ED;      /* Soft Sage Tint */
@@ -40,56 +42,56 @@ body {
   font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   overflow-x: hidden;
   background-image: 
-    radial-gradient(circle at 15% 10%, rgba(200, 90, 66, 0.18) 0%, transparent 45%),
-    radial-gradient(circle at 85% 15%, rgba(220, 130, 105, 0.14) 0%, transparent 45%),
-    radial-gradient(circle at 50% 90%, rgba(200, 90, 66, 0.12) 0%, transparent 50%);
+    radial-gradient(circle at 15% 10%, rgba(245, 160, 140, 0.22) 0%, transparent 45%),
+    radial-gradient(circle at 85% 15%, rgba(200, 90, 66, 0.25) 0%, transparent 50%),
+    radial-gradient(circle at 50% 90%, rgba(72, 36, 29, 0.6) 0%, transparent 60%);
   background-attachment: fixed;
 }
 
-/* Classy Beige Panel */
+/* Classy Beige Option Panel */
 .beige-panel {
   background: var(--beige-card);
   border: 1.5px solid var(--border-beige);
-  box-shadow: 0 10px 30px -8px rgba(26, 16, 14, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.6);
-  border-radius: 1.25rem;
+  box-shadow: 0 12px 35px -8px rgba(45, 20, 15, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.7);
+  border-radius: 1.5rem;
   color: var(--text-dark);
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .beige-panel:hover {
   border-color: var(--coral-border);
-  box-shadow: 0 14px 35px -8px rgba(26, 16, 14, 0.3);
+  box-shadow: 0 16px 40px -8px rgba(45, 20, 15, 0.42);
 }
 
-/* Warm Hero Box (Matching the reference screen upper card) */
-.hero-terracotta {
-  background: linear-gradient(135deg, #382421 0%, #2B1A18 100%);
-  border: 1.5px solid #543732;
-  box-shadow: 0 14px 35px -10px rgba(0, 0, 0, 0.45);
+/* Warm Hero Container (Inspired by reference screen) */
+.hero-warm-terracotta {
+  background: linear-gradient(135deg, #4A241D 0%, #3B1B15 100%);
+  border: 1.5px solid #66362D;
+  box-shadow: 0 14px 40px -10px rgba(35, 15, 10, 0.5);
 }
 
-/* Coral/Terracotta Button (Matching reference "Voice" & "Ask SARA" pills) */
+/* Signature Coral/Terracotta Button ("Voice" & "Ask SARA" in reference image) */
 .btn-coral {
-  background: linear-gradient(135deg, #D4634B 0%, #C04E38 100%);
+  background: linear-gradient(135deg, #D6634B 0%, #C04E38 100%);
   color: #FFFFFF;
   font-weight: 700;
-  box-shadow: 0 4px 14px rgba(200, 90, 66, 0.35);
+  box-shadow: 0 4px 15px rgba(200, 90, 66, 0.35);
   transition: all 0.2s ease-in-out;
 }
 
 .btn-coral:hover {
-  background: linear-gradient(135deg, #E06F57 0%, #CC5740 100%);
-  box-shadow: 0 6px 18px rgba(200, 90, 66, 0.45);
+  background: linear-gradient(135deg, #E27058 0%, #CC5740 100%);
+  box-shadow: 0 6px 20px rgba(200, 90, 66, 0.45);
   transform: translateY(-1px);
 }
 
-/* Classy Beige Secondary Button */
+/* Classy Beige Button */
 .btn-beige {
   background: var(--beige-card);
   color: var(--text-dark);
   border: 1.5px solid var(--border-beige);
   font-weight: 700;
-  box-shadow: 0 2px 8px rgba(26, 16, 14, 0.08);
+  box-shadow: 0 2px 8px rgba(40, 20, 15, 0.08);
   transition: all 0.2s ease-in-out;
 }
 
@@ -99,10 +101,10 @@ body {
   color: var(--coral-main);
 }
 
-/* Soft Pulsing Indicators */
+/* Pulsing Indicators */
 @keyframes coral-pulse {
   0% { transform: scale(0.95); opacity: 0.9; box-shadow: 0 0 0 0 rgba(200, 90, 66, 0.6); }
-  70% { transform: scale(1.08); opacity: 1; box-shadow: 0 0 0 8px rgba(200, 90, 66, 0); }
+  70% { transform: scale(1.08); opacity: 1; box-shadow: 0 0 0 10px rgba(200, 90, 66, 0); }
   100% { transform: scale(0.95); opacity: 0.9; box-shadow: 0 0 0 0 rgba(200, 90, 66, 0); }
 }
 
@@ -136,10 +138,10 @@ mark.scam-flag {
   height: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: #241715;
+  background: #48241D;
 }
 ::-webkit-scrollbar-thumb {
-  background: #543732;
+  background: #783F34;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
@@ -167,16 +169,16 @@ mark.scam-flag {
   width: 100%;
   height: 90px;
   border-radius: 14px;
-  background: #F7EFE7;
-  border: 1.5px solid #E5D5C6;
-  box-shadow: inset 0 2px 6px rgba(40, 24, 20, 0.08);
+  background: #F7EDE4;
+  border: 1.5px solid #E6D4C4;
+  box-shadow: inset 0 2px 6px rgba(45, 20, 15, 0.08);
 }
 
 /* Print styles for Forensic Report */
 @media print {
   body {
     background: #FFFFFF !important;
-    color: #1A100E !important;
+    color: #1C100D !important;
   }
   .no-print {
     display: none !important;
