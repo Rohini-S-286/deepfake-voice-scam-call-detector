@@ -35,6 +35,15 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Disable caching for instant UI updates during development
+@app.middleware("http")
+async def add_no_cache_headers(request, call_next):
+    response = await call_next(request)
+    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate, max-age=0"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "0"
+    return response
+
 # Initialize ML, Forensic, & IBM Z Engines
 forensics_engine = VoiceForensicsEngine()
 scam_analyzer = ScamIntentAnalyzer()
@@ -64,7 +73,14 @@ async def serve_index():
     index_path = os.path.join(STATIC_DIR, "index.html")
     if os.path.exists(index_path):
         with open(index_path, "r", encoding="utf-8") as f:
-            return f.read()
+            return HTMLResponse(
+                content=f.read(),
+                headers={
+                    "Cache-Control": "no-cache, no-store, must-revalidate",
+                    "Pragma": "no-cache",
+                    "Expires": "0"
+                }
+            )
     return "<h1>AegisVoice AI</h1><p>Static frontend is loading...</p>"
 
 @app.get("/api/presets")

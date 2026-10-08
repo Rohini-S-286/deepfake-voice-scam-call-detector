@@ -131,7 +131,7 @@ function switchDetailsTab(tab) {
       b.className = "pb-2.5 text-[#C85A42] border-b-2 border-[#C85A42] font-extrabold";
       p.classList.remove('hidden');
     } else {
-      b.className = "pb-2.5 text-[#593D37] hover:text-[#1A100E] font-semibold";
+      b.className = "pb-2.5 text-[#4A332C] hover:text-[#1A100E] font-semibold";
       p.classList.add('hidden');
     }
   }
@@ -350,7 +350,7 @@ async function fetchCommunityReports() {
     reports.forEach(r => {
       const isScam = r.verified_scam;
       const item = document.createElement('div');
-      item.className = "p-4 rounded-2xl border border-[#E5D5C6] bg-[#FDF9F5] hover:border-[#C85A42] text-xs space-y-2 transition-all shadow-sm";
+      item.className = "p-4 rounded-2xl border border-[#D0BEAA] bg-[#EFE3D3] hover:border-[#C85A42] text-xs space-y-2 transition-all shadow-sm";
       item.innerHTML = `
         <div class="flex items-center justify-between font-mono">
           <span class="font-extrabold text-[#1A100E] text-xs">${r.phone}</span>
@@ -360,7 +360,7 @@ async function fetchCommunityReports() {
         </div>
         <div class="text-xs text-[#C85A42] font-extrabold">${r.caller_name}</div>
         <p class="text-xs text-[#1A100E] leading-relaxed font-semibold">${r.modus_operandi}</p>
-        <div class="flex items-center justify-between text-xs text-[#593D37] font-mono pt-1.5 border-t border-[#E5D5C6]">
+        <div class="flex items-center justify-between text-xs text-[#4A332C] font-mono pt-1.5 border-t border-[#D0BEAA]">
           <span>Vector: <strong class="text-[#1A100E]">${r.scam_vector.split('(')[0]}</strong></span>
           <span class="truncate max-w-[160px] text-[#C85A42] font-bold">${r.cpacf_signature}</span>
         </div>
@@ -806,7 +806,7 @@ function renderForensicResults(data) {
     ac.anomalies.forEach(anomaly => {
       const isAnomaly = anomaly.status === 'ANOMALY';
       const card = document.createElement('div');
-      card.className = `p-4 rounded-2xl border-2 text-xs space-y-2 ${isAnomaly ? 'bg-[#FDEEEA] border-[#C83E2D] text-[#1A100E] shadow-sm' : 'bg-[#FDF9F5] border-[#E5D5C6] text-[#1A100E] shadow-sm'}`;
+      card.className = `p-4 rounded-2xl border-2 text-xs space-y-2 ${isAnomaly ? 'bg-[#FDEEEA] border-[#C83E2D] text-[#1A100E] shadow-sm' : 'bg-[#EFE3D3] border-[#D0BEAA] text-[#1A100E] shadow-sm'}`;
       card.innerHTML = `
         <div class="flex items-center justify-between font-mono">
           <span class="font-extrabold text-[#1A100E] text-xs">${anomaly.metric}</span>
@@ -814,7 +814,7 @@ function renderForensicResults(data) {
             ${anomaly.status}
           </span>
         </div>
-        <div class="flex items-center justify-between text-xs text-[#593D37] font-mono">
+        <div class="flex items-center justify-between text-xs text-[#4A332C] font-mono">
           <span>Observed: <strong class="text-[#C85A42] font-bold">${anomaly.value}</strong></span>
           <span>Normal Baseline: <strong class="text-[#1A100E]">${anomaly.normal_range}</strong></span>
         </div>
@@ -836,7 +836,7 @@ function renderForensicResults(data) {
     countermeasuresList.innerHTML = '';
     li.defense_protocol.forEach(action => {
       const item = document.createElement('div');
-      item.className = "p-3.5 rounded-2xl bg-[#F7EDE4] border border-[#E5D5C6] flex items-start space-x-2.5 text-xs font-mono text-[#1A100E]";
+      item.className = "p-3.5 rounded-2xl bg-[#E5D5C2] border border-[#D0BEAA] flex items-start space-x-2.5 text-xs font-mono text-[#1A100E]";
       item.innerHTML = `<span>${action}</span>`;
       countermeasuresList.appendChild(item);
     });
@@ -864,21 +864,21 @@ function exportIncidentDossier() {
   const content = document.getElementById('modalReportContent');
 
   content.innerHTML = `
-    <div class="p-4 bg-[#F7EDE4] rounded-2xl border border-[#E5D5C6] space-y-2 text-xs">
+    <div class="p-4 bg-[#E5D5C2] rounded-2xl border border-[#D0BEAA] space-y-2 text-xs">
       <div class="flex justify-between">
-        <span class="text-[#593D37] font-bold">TIMESTAMP:</span>
+        <span class="text-[#4A332C] font-bold">TIMESTAMP:</span>
         <span class="text-[#1A100E] font-extrabold">${new Date().toUTCString()}</span>
       </div>
       <div class="flex justify-between">
-        <span class="text-[#593D37] font-bold">CALLER IDENTIFIER:</span>
+        <span class="text-[#4A332C] font-bold">CALLER IDENTIFIER:</span>
         <span class="text-[#C85A42] font-mono font-extrabold">${d.caller_pre_alert ? d.caller_pre_alert.phone : 'Unknown'}</span>
       </div>
       <div class="flex justify-between">
-        <span class="text-[#593D37] font-bold">AUDIO EVIDENCE SHA-256:</span>
-        <span class="text-[#593D37] font-mono font-bold">${d.acoustic.file_info.sha256_hash}</span>
+        <span class="text-[#4A332C] font-bold">AUDIO EVIDENCE SHA-256:</span>
+        <span class="text-[#4A332C] font-mono font-bold">${d.acoustic.file_info.sha256_hash}</span>
       </div>
       <div class="flex justify-between">
-        <span class="text-[#593D37] font-bold">IBM CPACF HARDWARE SEAL:</span>
+        <span class="text-[#4A332C] font-bold">IBM CPACF HARDWARE SEAL:</span>
         <span class="text-[#C85A42] font-mono font-bold">${d.ibm_z ? d.ibm_z.cpacf.signature : 'Verified'}</span>
       </div>
     </div>
@@ -891,16 +891,16 @@ function exportIncidentDossier() {
     <div class="space-y-2">
       <h4 class="font-extrabold text-[#C85A42] text-xs uppercase tracking-wider">Biometric &amp; IBM Telum Forensic Matrix</h4>
       <div class="grid grid-cols-2 gap-2 text-xs">
-        <div class="p-3 bg-[#FDF9F5] rounded-xl border border-[#E5D5C6]">
+        <div class="p-3 bg-[#EFE3D3] rounded-xl border border-[#D0BEAA]">
           Composite Threat Index: <strong class="text-[#1A100E]">${d.threat_matrix.unified_threat_score}%</strong>
         </div>
-        <div class="p-3 bg-[#FDF9F5] rounded-xl border border-[#E5D5C6]">
+        <div class="p-3 bg-[#EFE3D3] rounded-xl border border-[#D0BEAA]">
           Acoustic Clone Probability: <strong class="text-[#1A100E]">${d.acoustic.deepfake_probability_percent}%</strong>
         </div>
-        <div class="p-3 bg-[#FDF9F5] rounded-xl border border-[#E5D5C6]">
+        <div class="p-3 bg-[#EFE3D3] rounded-xl border border-[#D0BEAA]">
           Telum NNPA Latency: <strong class="text-[#C85A42] font-bold">0.82 ms</strong>
         </div>
-        <div class="p-3 bg-[#FDF9F5] rounded-xl border border-[#E5D5C6]">
+        <div class="p-3 bg-[#EFE3D3] rounded-xl border border-[#D0BEAA]">
           Prior Community Reports: <strong class="text-[#C85A42] font-bold">${d.caller_pre_alert ? d.caller_pre_alert.report_count : 0}</strong>
         </div>
       </div>
@@ -908,7 +908,7 @@ function exportIncidentDossier() {
 
     <div class="space-y-2">
       <h4 class="font-extrabold text-[#C85A42] text-xs uppercase tracking-wider">Spoken Conversational Evidence</h4>
-      <div class="p-3.5 bg-[#FDF9F5] rounded-xl border border-[#E5D5C6] text-xs italic text-[#1A100E] font-semibold">
+      <div class="p-3.5 bg-[#EFE3D3] rounded-xl border border-[#D0BEAA] text-xs italic text-[#1A100E] font-semibold">
         "${d.transcript || 'No verbal transcript provided'}"
       </div>
     </div>
@@ -971,7 +971,7 @@ function initCanvasVisualizer() {
     animationFrameId = requestAnimationFrame(renderFrame);
 
     // Warm classy beige canvas background
-    canvasCtx.fillStyle = '#F7EFE7';
+    canvasCtx.fillStyle = '#E5D5C2';
     canvasCtx.fillRect(0, 0, width, height);
 
     // Subtle warm terracotta grid lines

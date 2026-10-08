@@ -7,17 +7,17 @@
   --bg-header: #241812;           /* Deep Almond Header */
   --bg-surface: #423026;          /* Almond Surface */
 
-  /* Classy Beige Option Cards ("options should be in beige") */
-  --beige-card: #FDF8F4;          /* Luminous Classy Warm Beige */
-  --beige-surface: #F6EDE4;       /* Soft Warm Sand */
-  --beige-subtle: #EFE2D6;        /* Warm Cashmere Beige */
-  --border-beige: #E6D4C4;        /* Refined Warm Beige Border */
-  --border-beige-dark: #D4BDAB;   /* Defined Warm Beige Border */
+  /* Real Classy Almond Beige Option Cards (Visibly Warm Almond Beige, Not White) */
+  --beige-card: #EFE3D3;          /* Distinct Classy Warm Beige */
+  --beige-surface: #E5D5C2;       /* Warm Almond Sand */
+  --beige-subtle: #DCBFAF;        /* Warm Cashmere Almond */
+  --border-beige: #D0BEAA;        /* Defined Warm Beige Border */
+  --border-beige-dark: #BAA48F;   /* Structured Almond Border */
 
   /* Deep High-Contrast Text ("everything should be clearly visible") */
-  --text-dark: #1C100D;           /* Deep Dark Espresso (16:1 Contrast on Beige) */
-  --text-dark-secondary: #52342E; /* Refined Warm Cocoa Brown */
-  --text-dark-muted: #7A524A;     /* Soft Warm Taupe */
+  --text-dark: #1C100D;           /* Deep Dark Espresso (14:1 Contrast on Beige) */
+  --text-dark-secondary: #4A332C; /* Refined Warm Cocoa Brown */
+  --text-dark-muted: #6B4C43;     /* Soft Warm Taupe */
   --text-light: #FDF8F4;          /* Classy Linen Cream on Dark Background */
   --text-light-subtle: #F6D8CE;   /* Soft Peach Cream on Dark Background */
 
@@ -52,7 +52,7 @@ body {
 .beige-panel {
   background: var(--beige-card);
   border: 1.5px solid var(--border-beige);
-  box-shadow: 0 12px 35px -8px rgba(35, 18, 12, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.7);
+  box-shadow: 0 12px 35px -8px rgba(25, 15, 10, 0.45);
   border-radius: 1.5rem;
   color: var(--text-dark);
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
@@ -164,13 +164,13 @@ mark.scam-flag {
   transition: stroke-dashoffset 1.2s cubic-bezier(0.16, 1, 0.3, 1), stroke 0.5s ease;
 }
 
-/* Oscilloscope Canvas (Warm Beige Canvas with Terracotta Wave) */
+/* Oscilloscope Canvas (Warm Almond Beige Canvas with Terracotta Wave) */
 #waveformCanvas {
   width: 100%;
   height: 90px;
   border-radius: 14px;
-  background: #F7EDE4;
-  border: 1.5px solid #E6D4C4;
+  background: #E5D5C2;
+  border: 1.5px solid #D0BEAA;
   box-shadow: inset 0 2px 6px rgba(45, 20, 15, 0.08);
 }
 
