@@ -12,21 +12,27 @@
       theme: {
         extend: {
           colors: {
-            deepdark: {
-              950: '#02050D',
-              900: '#050917',
-              850: '#080E21',
-              800: '#0E1733',
-              700: '#18264D'
+            beige: {
+              50: '#FDFBF7',
+              100: '#F5EBE1',
+              200: '#EBD8C3',
+              300: '#DFB78C',
+              400: '#C99E6B',
+              500: '#B0824E',
+              600: '#8C6436',
+              700: '#664724',
+              800: '#3D2A14',
+              900: '#24180A'
             },
-            cyber: {
-              cyan: '#00F2FE',
-              sky: '#38BDF8',
-              blue: '#2563EB',
-              ibm: '#0F62FE',
-              red: '#FF334B',
-              emerald: '#10E79D',
-              amber: '#FBBF24'
+            espresso: {
+              950: '#0A0806',
+              900: '#0D0B09',
+              850: '#120F0C',
+              800: '#181410',
+              750: '#1E1914',
+              700: '#27201A',
+              600: '#382F26',
+              500: '#4F4236'
             }
           }
         }
@@ -40,49 +46,49 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif; background-color: #02050D; }
+    body { font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif; background-color: #0D0B09; color: #F5EBE1; }
     .font-mono { font-family: 'JetBrains Mono', monospace; }
   </style>
 </head>
-<body class="min-h-screen text-slate-100 flex flex-col justify-between selection:bg-cyan-400 selection:text-slate-950 bg-[#02050D]">
+<body class="min-h-screen text-[#F5EBE1] flex flex-col justify-between selection:bg-[#DFB78C] selection:text-[#120F0C] bg-[#0D0B09]">
 
-  <!-- Top Enterprise Header (Pure Dark Obsidian) -->
-  <header class="border-b border-[#1E293B] bg-[#040814]/95 backdrop-blur-md sticky top-0 z-50 shadow-lg shadow-black/60">
+  <!-- Top Enterprise Header (Classy Dark Beige & Warm Espresso) -->
+  <header class="border-b border-[#382F26] bg-[#120F0C]/95 backdrop-blur-md sticky top-0 z-50 shadow-lg shadow-black/70">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       
       <!-- Brand & Version -->
       <div class="flex items-center space-x-3.5">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-400 via-blue-500 to-indigo-600 p-0.5 shadow-lg shadow-cyan-500/25 flex items-center justify-center">
-          <div class="w-full h-full bg-[#050917] rounded-[10px] flex items-center justify-center">
-            <i data-lucide="shield-alert" class="w-5 h-5 text-cyan-400"></i>
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#DFB78C] via-[#C99E6B] to-[#8C6436] p-0.5 shadow-lg shadow-[#DFB78C]/20 flex items-center justify-center">
+          <div class="w-full h-full bg-[#120F0C] rounded-[10px] flex items-center justify-center">
+            <i data-lucide="shield-alert" class="w-5 h-5 text-[#DFB78C]"></i>
           </div>
         </div>
         <div>
           <div class="flex items-center space-x-2">
-            <span class="font-extrabold text-xl tracking-tight text-white">AEGISVOICE <span class="text-cyan-400 glow-cyan">AI</span></span>
-            <span class="px-2.5 py-0.5 text-[11px] font-mono font-bold uppercase tracking-wider bg-blue-950/80 text-blue-300 border border-blue-500/40 rounded-full flex items-center space-x-1 shadow-sm">
-              <i data-lucide="cpu" class="w-3.5 h-3.5 text-cyan-400"></i>
+            <span class="font-extrabold text-xl tracking-tight text-[#F5EBE1]">AEGISVOICE <span class="text-[#DFB78C] glow-beige">AI</span></span>
+            <span class="px-2.5 py-0.5 text-[11px] font-mono font-bold uppercase tracking-wider bg-[#241B13] text-[#DFB78C] border border-[#524131] rounded-full flex items-center space-x-1 shadow-sm">
+              <i data-lucide="cpu" class="w-3.5 h-3.5 text-[#DFB78C]"></i>
               <span>IBM LinuxONE</span>
             </span>
           </div>
-          <p class="text-xs text-slate-300 font-medium hidden sm:block">Carrier-Grade Deepfake Voice Interceptor & Community Pre-Alerts</p>
+          <p class="text-xs text-[#C2B09D] font-medium hidden sm:block">Carrier-Grade Deepfake Voice Interceptor & Community Pre-Alerts</p>
         </div>
       </div>
 
       <!-- Quick Actions & Telemetry -->
       <div class="flex items-center space-x-3">
-        <button onclick="openGuideModal()" class="flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg bg-[#0A1024] border border-[#233558] text-slate-200 text-xs font-semibold hover:border-cyan-400 hover:text-white transition-all shadow-md">
-          <i data-lucide="help-circle" class="w-4 h-4 text-cyan-400"></i>
+        <button onclick="openGuideModal()" class="flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg bg-[#1E1914] border border-[#3D3227] text-[#E8D8C8] text-xs font-semibold hover:border-[#DFB78C] hover:text-[#F5EBE1] transition-all shadow-md">
+          <i data-lucide="help-circle" class="w-4 h-4 text-[#DFB78C]"></i>
           <span class="hidden sm:inline">How It Works</span>
         </button>
 
-        <button onclick="openIbmModal()" class="flex items-center space-x-2 px-3.5 py-1.5 rounded-lg bg-[#08122B] border border-blue-500/40 text-blue-200 text-xs hover:border-cyan-400 transition-all font-mono shadow-md">
-          <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 pulse-radar"></span>
-          <span>TELUM: <strong class="text-white font-bold">0.82ms</strong></span>
+        <button onclick="openIbmModal()" class="flex items-center space-x-2 px-3.5 py-1.5 rounded-lg bg-[#1A1612] border border-[#4A3B2C] text-[#DFB78C] text-xs hover:border-[#DFB78C] transition-all font-mono shadow-md">
+          <span class="w-2.5 h-2.5 rounded-full bg-[#DFB78C] pulse-radar"></span>
+          <span>TELUM: <strong class="text-[#F5EBE1] font-bold">0.82ms</strong></span>
         </button>
 
-        <button onclick="openHelplineModal()" class="flex items-center space-x-1.5 px-3.5 py-1.5 text-xs font-bold rounded-lg bg-red-950/80 text-red-300 border border-red-500/50 hover:bg-red-900/60 transition-all shadow-md">
-          <i data-lucide="phone-call" class="w-4 h-4 text-red-400"></i>
+        <button onclick="openHelplineModal()" class="flex items-center space-x-1.5 px-3.5 py-1.5 text-xs font-bold rounded-lg bg-[#2E1416] text-[#FFA8A8] border border-[#852C32] hover:bg-[#3D1A1D] transition-all shadow-md">
+          <i data-lucide="phone-call" class="w-4 h-4 text-[#FF7070]"></i>
           <span class="hidden md:inline">HELPLINE 1930</span>
         </button>
       </div>
@@ -93,59 +99,59 @@
   <!-- Main Container -->
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow space-y-7">
 
-    <!-- Value Proposition & 3-Step First-Time User Banner (Rich Obsidian Background) -->
-    <div class="glass-panel rounded-2xl p-6 sm:p-8 relative overflow-hidden border border-[#1E293B] shadow-2xl">
+    <!-- Value Proposition & 3-Step First-Time User Banner (Classy Dark Beige Surface) -->
+    <div class="glass-panel rounded-2xl p-6 sm:p-8 relative overflow-hidden border border-[#382F26] shadow-2xl">
       <div class="max-w-3xl space-y-2.5">
-        <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-cyan-950/80 border border-cyan-400/40 text-cyan-300 text-xs font-mono font-semibold">
-          <i data-lucide="zap" class="w-3.5 h-3.5 text-cyan-400"></i>
+        <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-[#261E16] border border-[#524131] text-[#DFB78C] text-xs font-mono font-semibold">
+          <i data-lucide="zap" class="w-3.5 h-3.5 text-[#DFB78C]"></i>
           <span>Carrier-Grade IBM Z Architecture &bull; Sub-Millisecond AI Interception</span>
         </div>
-        <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white leading-tight">
-          Stop AI Voice Cloning & Telephone Fraud <span class="text-cyan-400 glow-cyan">Before You Lose Money</span>
+        <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#F5EBE1] leading-tight">
+          Stop AI Voice Cloning & Telephone Fraud <span class="text-[#DFB78C] glow-beige">Before You Lose Money</span>
         </h1>
-        <p class="text-slate-200 text-sm leading-relaxed max-w-2xl font-normal">
-          AegisVoice pre-alerts you when an incoming call matches known scam patterns, then analyzes in-flight conversations with <strong class="text-cyan-300">0.82ms IBM Telum on-chip inference</strong> to detect vocoder artifacts and conversational extortion tactics.
+        <p class="text-[#D8C6B4] text-sm leading-relaxed max-w-2xl font-normal">
+          AegisVoice pre-alerts you when an incoming call matches known scam patterns, then analyzes in-flight conversations with <strong class="text-[#DFB78C]">0.82ms IBM Telum on-chip inference</strong> to detect synthetic vocoder artifacts and conversational extortion tactics.
         </p>
       </div>
 
       <!-- 3-Step Clear Visual Workflow for First-Time Users & Judges -->
-      <div class="mt-6 pt-6 border-t border-[#1E293B] grid grid-cols-1 sm:grid-cols-3 gap-3.5 text-xs font-mono">
-        <div class="p-4 rounded-xl bg-[#060B18] border border-[#233558] hover:border-cyan-400/60 flex items-start space-x-3.5 transition-all">
-          <div class="w-7 h-7 rounded-lg bg-cyan-500/20 text-cyan-300 border border-cyan-400/40 flex items-center justify-center font-extrabold text-sm shrink-0">1</div>
+      <div class="mt-6 pt-6 border-t border-[#382F26] grid grid-cols-1 sm:grid-cols-3 gap-3.5 text-xs font-mono">
+        <div class="p-4 rounded-xl bg-[#14110E] border border-[#3D3227] hover:border-[#DFB78C] flex items-start space-x-3.5 transition-all">
+          <div class="w-7 h-7 rounded-lg bg-[#2E241B] text-[#DFB78C] border border-[#594735] flex items-center justify-center font-extrabold text-sm shrink-0">1</div>
           <div>
-            <div class="text-white font-extrabold text-sm">Pick a Scenario</div>
-            <div class="text-slate-300 text-xs mt-1">Select a scam or authentic benchmark call below.</div>
+            <div class="text-[#F5EBE1] font-extrabold text-sm">Pick a Scenario</div>
+            <div class="text-[#C2B09D] text-xs mt-1">Select a scam or authentic benchmark call below.</div>
           </div>
         </div>
-        <div class="p-4 rounded-xl bg-[#060B18] border border-[#233558] hover:border-amber-400/60 flex items-start space-x-3.5 transition-all">
-          <div class="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-300 border border-amber-400/40 flex items-center justify-center font-extrabold text-sm shrink-0">2</div>
+        <div class="p-4 rounded-xl bg-[#14110E] border border-[#3D3227] hover:border-[#DFB78C] flex items-start space-x-3.5 transition-all">
+          <div class="w-7 h-7 rounded-lg bg-[#2E241B] text-[#DFB78C] border border-[#594735] flex items-center justify-center font-extrabold text-sm shrink-0">2</div>
           <div>
-            <div class="text-white font-extrabold text-sm">Inspect Pre-Alert</div>
-            <div class="text-slate-300 text-xs mt-1">See prior community fraud warnings before answering.</div>
+            <div class="text-[#F5EBE1] font-extrabold text-sm">Inspect Pre-Alert</div>
+            <div class="text-[#C2B09D] text-xs mt-1">See prior community fraud warnings before answering.</div>
           </div>
         </div>
-        <div class="p-4 rounded-xl bg-[#060B18] border border-[#233558] hover:border-emerald-400/60 flex items-start space-x-3.5 transition-all">
-          <div class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 flex items-center justify-center font-extrabold text-sm shrink-0">3</div>
+        <div class="p-4 rounded-xl bg-[#14110E] border border-[#3D3227] hover:border-[#DFB78C] flex items-start space-x-3.5 transition-all">
+          <div class="w-7 h-7 rounded-lg bg-[#2E241B] text-[#DFB78C] border border-[#594735] flex items-center justify-center font-extrabold text-sm shrink-0">3</div>
           <div>
-            <div class="text-white font-extrabold text-sm">Forensic Verdict</div>
-            <div class="text-slate-300 text-xs mt-1">Review deepfake vocal biomarkers and action protocol.</div>
+            <div class="text-[#F5EBE1] font-extrabold text-sm">Forensic Verdict</div>
+            <div class="text-[#C2B09D] text-xs mt-1">Review deepfake vocal biomarkers and action protocol.</div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Mode Selector Navigation Tabs (Deep Dark, High Contrast) -->
-    <div class="glass-panel p-2 rounded-2xl flex items-center space-x-2 border border-[#1E293B] max-w-xl mx-auto shadow-xl">
-      <button id="tabLiveCallBtn" onclick="switchMode('livecall')" class="flex-1 py-3 px-4 text-xs font-bold rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 text-white shadow-lg shadow-cyan-600/30 transition-all flex items-center justify-center space-x-2">
+    <!-- Mode Selector Navigation Tabs (Classy Dark Warm Style) -->
+    <div class="glass-panel p-2 rounded-2xl flex items-center space-x-2 border border-[#382F26] max-w-xl mx-auto shadow-xl">
+      <button id="tabLiveCallBtn" onclick="switchMode('livecall')" class="flex-1 py-3 px-4 text-xs font-bold rounded-xl btn-classy-beige transition-all flex items-center justify-center space-x-2">
         <i data-lucide="phone-call" class="w-4 h-4"></i>
         <span>1. Live Call Simulator</span>
       </button>
-      <button id="tabMicBtn" onclick="switchMode('mic')" class="flex-1 py-3 px-4 text-xs font-semibold rounded-xl text-slate-300 hover:text-white hover:bg-[#0E1733] transition-all flex items-center justify-center space-x-2">
-        <i data-lucide="mic" class="w-4 h-4 text-cyan-400"></i>
+      <button id="tabMicBtn" onclick="switchMode('mic')" class="flex-1 py-3 px-4 text-xs font-semibold rounded-xl text-[#C2B09D] hover:text-[#F5EBE1] hover:bg-[#211B15] transition-all flex items-center justify-center space-x-2">
+        <i data-lucide="mic" class="w-4 h-4 text-[#DFB78C]"></i>
         <span>2. Test Mic & Upload</span>
       </button>
-      <button id="tabRegistryBtn" onclick="switchMode('registry')" class="flex-1 py-3 px-4 text-xs font-semibold rounded-xl text-slate-300 hover:text-white hover:bg-[#0E1733] transition-all flex items-center justify-center space-x-2">
-        <i data-lucide="database" class="w-4 h-4 text-amber-400"></i>
+      <button id="tabRegistryBtn" onclick="switchMode('registry')" class="flex-1 py-3 px-4 text-xs font-semibold rounded-xl text-[#C2B09D] hover:text-[#F5EBE1] hover:bg-[#211B15] transition-all flex items-center justify-center space-x-2">
+        <i data-lucide="database" class="w-4 h-4 text-[#DFB78C]"></i>
         <span>3. Scam Registry</span>
       </button>
     </div>
@@ -157,184 +163,184 @@
 
       <!-- Preset Scenarios Selector Bar -->
       <div class="space-y-2.5">
-        <div class="flex items-center justify-between text-xs font-mono text-slate-300 px-1 font-semibold">
+        <div class="flex items-center justify-between text-xs font-mono text-[#D8C6B4] px-1 font-semibold">
           <span class="flex items-center space-x-2">
-            <i data-lucide="play-circle" class="w-4 h-4 text-cyan-400"></i>
-            <span class="text-white">SELECT DEMO SCENARIO TO TEST:</span>
+            <i data-lucide="play-circle" class="w-4 h-4 text-[#DFB78C]"></i>
+            <span class="text-[#F5EBE1]">SELECT DEMO SCENARIO TO TEST:</span>
           </span>
-          <span class="text-cyan-300 text-xs">Click any scenario to simulate an incoming call</span>
+          <span class="text-[#DFB78C] text-xs">Click any scenario to simulate an incoming call</span>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-3">
-          <button onclick="selectQuickPreset('scam_grandson', '+1 (844) 932-8491')" class="p-3.5 rounded-xl bg-[#070D1D] hover:bg-[#0E1836] border-2 border-red-500/50 hover:border-red-400 text-left transition-all space-y-1.5 shadow-lg group">
+          <button onclick="selectQuickPreset('scam_grandson', '+1 (844) 932-8491')" class="p-3.5 rounded-xl bg-[#16120E] hover:bg-[#211B15] border-2 border-[#8A2B31] hover:border-[#DF525B] text-left transition-all space-y-1.5 shadow-lg group">
             <div class="flex items-center justify-between">
-              <span class="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse"></span>
-              <span class="text-[10px] font-mono text-red-300 font-extrabold px-2 py-0.5 rounded bg-red-950/80 border border-red-500/40">CLONED VOICE</span>
+              <span class="w-2.5 h-2.5 rounded-full bg-[#E05353] animate-pulse"></span>
+              <span class="text-[10px] font-mono text-[#FFA3A3] font-extrabold px-2 py-0.5 rounded bg-[#331114] border border-[#6B242A]">CLONED VOICE</span>
             </div>
-            <div class="text-xs font-extrabold text-white group-hover:text-red-300">Grandson Kidnap / Bail</div>
-            <div class="text-xs text-cyan-300 font-mono font-bold truncate">+1 (844) 932-8491</div>
+            <div class="text-xs font-extrabold text-[#F5EBE1] group-hover:text-[#FFA3A3]">Grandson Kidnap / Bail</div>
+            <div class="text-xs text-[#DFB78C] font-mono font-bold truncate">+1 (844) 932-8491</div>
           </button>
 
-          <button onclick="selectQuickPreset('scam_bank', '+1 (800) 432-1000')" class="p-3.5 rounded-xl bg-[#070D1D] hover:bg-[#0E1836] border-2 border-red-500/50 hover:border-red-400 text-left transition-all space-y-1.5 shadow-lg group">
+          <button onclick="selectQuickPreset('scam_bank', '+1 (800) 432-1000')" class="p-3.5 rounded-xl bg-[#16120E] hover:bg-[#211B15] border-2 border-[#8A2B31] hover:border-[#DF525B] text-left transition-all space-y-1.5 shadow-lg group">
             <div class="flex items-center justify-between">
-              <span class="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse"></span>
-              <span class="text-[10px] font-mono text-red-300 font-extrabold px-2 py-0.5 rounded bg-red-950/80 border border-red-500/40">OTP THEFT</span>
+              <span class="w-2.5 h-2.5 rounded-full bg-[#E05353] animate-pulse"></span>
+              <span class="text-[10px] font-mono text-[#FFA3A3] font-extrabold px-2 py-0.5 rounded bg-[#331114] border border-[#6B242A]">OTP THEFT</span>
             </div>
-            <div class="text-xs font-extrabold text-white group-hover:text-red-300">Bank Account Freeze</div>
-            <div class="text-xs text-cyan-300 font-mono font-bold truncate">+1 (800) 432-1000</div>
+            <div class="text-xs font-extrabold text-[#F5EBE1] group-hover:text-[#FFA3A3]">Bank Account Freeze</div>
+            <div class="text-xs text-[#DFB78C] font-mono font-bold truncate">+1 (800) 432-1000</div>
           </button>
 
-          <button onclick="selectQuickPreset('scam_ceo', '+44 20 7946 0192')" class="p-3.5 rounded-xl bg-[#070D1D] hover:bg-[#0E1836] border-2 border-red-500/50 hover:border-red-400 text-left transition-all space-y-1.5 shadow-lg group">
+          <button onclick="selectQuickPreset('scam_ceo', '+44 20 7946 0192')" class="p-3.5 rounded-xl bg-[#16120E] hover:bg-[#211B15] border-2 border-[#8A2B31] hover:border-[#DF525B] text-left transition-all space-y-1.5 shadow-lg group">
             <div class="flex items-center justify-between">
-              <span class="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse"></span>
-              <span class="text-[10px] font-mono text-red-300 font-extrabold px-2 py-0.5 rounded bg-red-950/80 border border-red-500/40">CORP WIRE</span>
+              <span class="w-2.5 h-2.5 rounded-full bg-[#E05353] animate-pulse"></span>
+              <span class="text-[10px] font-mono text-[#FFA3A3] font-extrabold px-2 py-0.5 rounded bg-[#331114] border border-[#6B242A]">CORP WIRE</span>
             </div>
-            <div class="text-xs font-extrabold text-white group-hover:text-red-300">CEO Urgent Acquisition</div>
-            <div class="text-xs text-cyan-300 font-mono font-bold truncate">+44 20 7946 0192</div>
+            <div class="text-xs font-extrabold text-[#F5EBE1] group-hover:text-[#FFA3A3]">CEO Urgent Wire</div>
+            <div class="text-xs text-[#DFB78C] font-mono font-bold truncate">+44 20 7946 0192</div>
           </button>
 
-          <button onclick="selectQuickPreset('real_doctor', '+1 (212) 555-0144')" class="p-3.5 rounded-xl bg-[#070D1D] hover:bg-[#0E1836] border-2 border-emerald-500/50 hover:border-emerald-400 text-left transition-all space-y-1.5 shadow-lg group">
+          <button onclick="selectQuickPreset('real_doctor', '+1 (212) 555-0144')" class="p-3.5 rounded-xl bg-[#16120E] hover:bg-[#211B15] border-2 border-[#336B4D] hover:border-[#52B788] text-left transition-all space-y-1.5 shadow-lg group">
             <div class="flex items-center justify-between">
-              <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
-              <span class="text-[10px] font-mono text-emerald-300 font-extrabold px-2 py-0.5 rounded bg-emerald-950/80 border border-emerald-500/40">AUTHENTIC</span>
+              <span class="w-2.5 h-2.5 rounded-full bg-[#52B788]"></span>
+              <span class="text-[10px] font-mono text-[#A3E2C3] font-extrabold px-2 py-0.5 rounded bg-[#13291E] border border-[#23523B]">AUTHENTIC</span>
             </div>
-            <div class="text-xs font-extrabold text-white group-hover:text-emerald-300">Doctor Appointment</div>
-            <div class="text-xs text-cyan-300 font-mono font-bold truncate">+1 (212) 555-0144</div>
+            <div class="text-xs font-extrabold text-[#F5EBE1] group-hover:text-[#A3E2C3]">Doctor Appointment</div>
+            <div class="text-xs text-[#DFB78C] font-mono font-bold truncate">+1 (212) 555-0144</div>
           </button>
 
-          <button onclick="selectQuickPreset('real_family', '+1 (312) 555-0188')" class="p-3.5 rounded-xl bg-[#070D1D] hover:bg-[#0E1836] border-2 border-emerald-500/50 hover:border-emerald-400 text-left transition-all space-y-1.5 shadow-lg group">
+          <button onclick="selectQuickPreset('real_family', '+1 (312) 555-0188')" class="p-3.5 rounded-xl bg-[#16120E] hover:bg-[#211B15] border-2 border-[#336B4D] hover:border-[#52B788] text-left transition-all space-y-1.5 shadow-lg group">
             <div class="flex items-center justify-between">
-              <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
-              <span class="text-[10px] font-mono text-emerald-300 font-extrabold px-2 py-0.5 rounded bg-emerald-950/80 border border-emerald-500/40">AUTHENTIC</span>
+              <span class="w-2.5 h-2.5 rounded-full bg-[#52B788]"></span>
+              <span class="text-[10px] font-mono text-[#A3E2C3] font-extrabold px-2 py-0.5 rounded bg-[#13291E] border border-[#23523B]">AUTHENTIC</span>
             </div>
-            <div class="text-xs font-extrabold text-white group-hover:text-emerald-300">Family Member Call</div>
-            <div class="text-xs text-cyan-300 font-mono font-bold truncate">+1 (312) 555-0188</div>
+            <div class="text-xs font-extrabold text-[#F5EBE1] group-hover:text-[#A3E2C3]">Family Member Call</div>
+            <div class="text-xs text-[#DFB78C] font-mono font-bold truncate">+1 (312) 555-0188</div>
           </button>
         </div>
       </div>
 
       <!-- Main Interception Console (Smart Phone / Telecom Terminal) -->
-      <div class="glass-panel rounded-2xl p-6 sm:p-7 border border-[#1E293B] space-y-6 shadow-2xl">
+      <div class="glass-panel rounded-2xl p-6 sm:p-7 border border-[#382F26] space-y-6 shadow-2xl">
         
         <!-- Header Info of Active Terminal -->
-        <div class="flex items-center justify-between border-b border-[#1E293B] pb-4">
+        <div class="flex items-center justify-between border-b border-[#382F26] pb-4">
           <div class="flex items-center space-x-2.5">
-            <span class="w-3 h-3 rounded-full bg-cyan-400 pulse-radar"></span>
-            <span class="text-xs font-mono font-extrabold text-white uppercase tracking-wider">TELECOM CARRIER INTERCEPTION TERMINAL</span>
+            <span class="w-3 h-3 rounded-full bg-[#DFB78C] pulse-radar"></span>
+            <span class="text-xs font-mono font-extrabold text-[#F5EBE1] uppercase tracking-wider">TELECOM CARRIER INTERCEPTION TERMINAL</span>
           </div>
-          <span class="text-xs font-mono text-cyan-300 bg-[#08122B] px-3 py-1 rounded-lg border border-cyan-500/40">
-            CURRENT TARGET: <strong id="activeTargetDisplay" class="text-white font-bold">+1 (844) 932-8491</strong>
+          <span class="text-xs font-mono text-[#DFB78C] bg-[#1E1914] px-3 py-1 rounded-lg border border-[#524131]">
+            CURRENT TARGET: <strong id="activeTargetDisplay" class="text-[#F5EBE1] font-bold">+1 (844) 932-8491</strong>
           </span>
         </div>
 
         <!-- STATE 1: Ready to Trigger Incoming Call -->
         <div id="readyCallBox" class="py-6 text-center space-y-5">
           <div class="max-w-md mx-auto space-y-2">
-            <h3 class="text-xl font-extrabold text-white">Ready to Simulate Incoming Call</h3>
-            <p class="text-sm text-slate-300 leading-relaxed font-normal">
-              Click below to trigger a live incoming phone call. AegisVoice queries the community registry to show a pre-alert before you pick up.
+            <h3 class="text-xl font-extrabold text-[#F5EBE1]">Ready to Simulate Incoming Call</h3>
+            <p class="text-sm text-[#C2B09D] leading-relaxed font-normal">
+              Click below to trigger a live incoming phone call. AegisVoice queries the community registry to display a pre-alert before you pick up.
             </p>
           </div>
 
-          <button onclick="triggerIncomingCall()" class="px-7 py-3.5 rounded-xl bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 hover:from-cyan-500 hover:to-indigo-500 text-white font-extrabold text-xs uppercase tracking-wider font-mono shadow-xl shadow-cyan-600/30 inline-flex items-center space-x-2.5 transition-all cursor-pointer">
+          <button onclick="triggerIncomingCall()" class="px-7 py-3.5 rounded-xl btn-classy-beige text-xs uppercase tracking-wider font-mono shadow-xl inline-flex items-center space-x-2.5 cursor-pointer">
             <i data-lucide="phone-incoming" class="w-4 h-4"></i>
             <span>Simulate Incoming Call & Test Pre-Alert</span>
           </button>
         </div>
 
-        <!-- STATE 2: Phone is Ringing with PRE-ALERT Notice (High Visibility Deep Crimson) -->
-        <div id="ringingCallBox" class="hidden rounded-2xl p-6 bg-[#16060A] border-2 border-red-500 space-y-5 shadow-2xl pulse-threat">
+        <!-- STATE 2: Phone is Ringing with PRE-ALERT Notice -->
+        <div id="ringingCallBox" class="hidden rounded-2xl p-6 bg-[#211114] border-2 border-[#E05353] space-y-5 shadow-2xl pulse-threat">
           <div class="flex items-center justify-between">
             <div class="flex items-center space-x-3.5">
-              <div class="w-12 h-12 rounded-full bg-red-500/25 border-2 border-red-500/60 flex items-center justify-center">
-                <i data-lucide="phone-incoming" class="w-6 h-6 text-red-400 animate-bounce"></i>
+              <div class="w-12 h-12 rounded-full bg-[#40161A] border-2 border-[#E05353] flex items-center justify-center">
+                <i data-lucide="phone-incoming" class="w-6 h-6 text-[#FFA3A3] animate-bounce"></i>
               </div>
               <div>
-                <div class="text-xs font-mono font-extrabold text-red-400 uppercase tracking-widest glow-red">INCOMING CALL RINGING...</div>
-                <div id="ringingCallerNumber" class="text-lg font-mono font-extrabold text-white">+1 (844) 932-8491</div>
+                <div class="text-xs font-mono font-extrabold text-[#FFA3A3] uppercase tracking-widest glow-red">INCOMING CALL RINGING...</div>
+                <div id="ringingCallerNumber" class="text-lg font-mono font-extrabold text-[#F5EBE1]">+1 (844) 932-8491</div>
               </div>
             </div>
-            <span class="text-xs font-mono bg-red-950 text-red-200 px-3.5 py-1.5 rounded-full border border-red-600 font-extrabold">RINGING NOW</span>
+            <span class="text-xs font-mono bg-[#3D1418] text-[#FFA8A8] px-3.5 py-1.5 rounded-full border border-[#8C2C34] font-extrabold">RINGING NOW</span>
           </div>
 
           <!-- THE PRE-ALERT HEADS-UP WARNING BANNER -->
-          <div id="preAlertBanner" class="p-5 rounded-xl bg-[#22070D] border-2 border-red-500/80 space-y-2.5 text-xs shadow-lg">
-            <div class="flex items-center space-x-2.5 font-extrabold text-white">
-              <i data-lucide="alert-octagon" class="w-5 h-5 text-red-400 shrink-0"></i>
+          <div id="preAlertBanner" class="p-5 rounded-xl bg-[#2E1216] border-2 border-[#E05353] space-y-2.5 text-xs shadow-lg">
+            <div class="flex items-center space-x-2.5 font-extrabold text-[#F5EBE1]">
+              <i data-lucide="alert-octagon" class="w-5 h-5 text-[#FF7070] shrink-0"></i>
               <span id="preAlertHeadline" class="text-sm glow-red">🚨 PRE-ALERT: 142 COMMUNITY FRAUD REPORTS DETECTED!</span>
             </div>
-            <p id="preAlertMessage" class="text-slate-200 text-xs leading-relaxed font-medium">
+            <p id="preAlertMessage" class="text-[#E8D8C8] text-xs leading-relaxed font-medium">
               Checking distributed community threat registry...
             </p>
-            <div class="flex items-center justify-between text-xs font-mono text-slate-300 pt-3 border-t border-red-900/80">
-              <span>COMMUNITY RISK: <strong id="preAlertRiskBadge" class="text-red-400 font-extrabold">CRITICAL</strong></span>
-              <span id="preAlertSignature" class="text-slate-300 font-bold truncate max-w-[220px]">zCPACF Hardware Verified</span>
+            <div class="flex items-center justify-between text-xs font-mono text-[#D8C6B4] pt-3 border-t border-[#662026]">
+              <span>COMMUNITY RISK: <strong id="preAlertRiskBadge" class="text-[#FFA3A3] font-extrabold">CRITICAL</strong></span>
+              <span id="preAlertSignature" class="text-[#D8C6B4] font-bold truncate max-w-[220px]">zCPACF Hardware Verified</span>
             </div>
           </div>
 
           <!-- Call Action Controls -->
           <div class="grid grid-cols-2 gap-4 pt-1">
-            <button onclick="acceptLiveCall()" class="py-3.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs font-mono uppercase flex items-center justify-center space-x-2 shadow-xl shadow-emerald-600/30 transition-all cursor-pointer">
+            <button onclick="acceptLiveCall()" class="py-3.5 px-4 rounded-xl bg-[#2D6A4F] hover:bg-[#3D8B68] text-[#F5EBE1] font-extrabold text-xs font-mono uppercase flex items-center justify-center space-x-2 shadow-xl shadow-[#2D6A4F]/30 transition-all cursor-pointer">
               <i data-lucide="phone" class="w-4 h-4"></i>
               <span>Accept & Track Live Audio</span>
             </button>
-            <button onclick="rejectLiveCall()" class="py-3.5 px-4 rounded-xl bg-red-600 hover:bg-red-500 text-white font-extrabold text-xs font-mono uppercase flex items-center justify-center space-x-2 shadow-xl shadow-red-600/30 transition-all cursor-pointer">
+            <button onclick="rejectLiveCall()" class="py-3.5 px-4 rounded-xl bg-[#8A2B31] hover:bg-[#A8373E] text-[#F5EBE1] font-extrabold text-xs font-mono uppercase flex items-center justify-center space-x-2 shadow-xl shadow-[#8A2B31]/30 transition-all cursor-pointer">
               <i data-lucide="phone-off" class="w-4 h-4"></i>
               <span>Decline & Block Number</span>
             </button>
           </div>
         </div>
 
-        <!-- STATE 3: Active In-Call Tracking Stream (Deep Cyber Black Surface) -->
-        <div id="activeCallTrackingBox" class="hidden rounded-2xl p-6 bg-[#060B18] border-2 border-cyan-500/60 space-y-5 shadow-2xl">
-          <div class="flex items-center justify-between border-b border-[#1E293B] pb-3.5">
+        <!-- STATE 3: Active In-Call Tracking Stream -->
+        <div id="activeCallTrackingBox" class="hidden rounded-2xl p-6 bg-[#16120E] border-2 border-[#DFB78C]/70 space-y-5 shadow-2xl">
+          <div class="flex items-center justify-between border-b border-[#382F26] pb-3.5">
             <div class="flex items-center space-x-3">
-              <span class="w-3.5 h-3.5 rounded-full bg-red-500 animate-ping"></span>
-              <span class="text-xs font-extrabold text-white font-mono uppercase tracking-wider">TRACKING IN-PROGRESS TELEPHONE STREAM</span>
+              <span class="w-3.5 h-3.5 rounded-full bg-[#E05353] animate-ping"></span>
+              <span class="text-xs font-extrabold text-[#F5EBE1] font-mono uppercase tracking-wider">TRACKING IN-PROGRESS TELEPHONE STREAM</span>
             </div>
-            <span id="liveCallTimerText" class="font-mono text-lg font-extrabold text-cyan-400 glow-cyan">00:04</span>
+            <span id="liveCallTimerText" class="font-mono text-lg font-extrabold text-[#DFB78C] glow-beige">00:04</span>
           </div>
 
           <!-- Live Telemetry Stats -->
           <div class="grid grid-cols-3 gap-3 text-xs font-mono">
-            <div class="p-3 bg-[#030612] rounded-xl border border-[#1E293B]">
-              <span class="text-slate-400 text-[11px] font-bold block mb-0.5">BITRATE:</span>
-              <div class="text-white font-extrabold text-xs">G.711 / 64 kbps</div>
+            <div class="p-3 bg-[#100D0A] rounded-xl border border-[#382F26]">
+              <span class="text-[#C2B09D] text-[11px] font-bold block mb-0.5">BITRATE:</span>
+              <div class="text-[#F5EBE1] font-extrabold text-xs">G.711 / 64 kbps</div>
             </div>
-            <div class="p-3 bg-[#030612] rounded-xl border border-[#1E293B]">
-              <span class="text-slate-400 text-[11px] font-bold block mb-0.5">TELUM INFERENCE:</span>
-              <div class="text-cyan-400 font-extrabold text-xs glow-cyan">0.82 ms</div>
+            <div class="p-3 bg-[#100D0A] rounded-xl border border-[#382F26]">
+              <span class="text-[#C2B09D] text-[11px] font-bold block mb-0.5">TELUM INFERENCE:</span>
+              <div class="text-[#DFB78C] font-extrabold text-xs glow-beige">0.82 ms</div>
             </div>
-            <div class="p-3 bg-[#030612] rounded-xl border border-[#1E293B]">
-              <span class="text-slate-400 text-[11px] font-bold block mb-0.5">ENCLAVE:</span>
-              <div class="text-emerald-400 font-extrabold text-xs">IBM Secure Execution</div>
+            <div class="p-3 bg-[#100D0A] rounded-xl border border-[#382F26]">
+              <span class="text-[#C2B09D] text-[11px] font-bold block mb-0.5">ENCLAVE:</span>
+              <div class="text-[#52B788] font-extrabold text-xs">IBM Secure Execution</div>
             </div>
           </div>
 
           <!-- Dynamic Rolling Risk Bar -->
           <div class="space-y-2">
             <div class="flex justify-between text-xs font-mono font-bold">
-              <span class="text-slate-300">IN-CALL RISK TRAJECTORY:</span>
-              <span id="liveThreatText" class="text-red-400 font-extrabold glow-red">95.5% CRITICAL SCAM</span>
+              <span class="text-[#D8C6B4]">IN-CALL RISK TRAJECTORY:</span>
+              <span id="liveThreatText" class="text-[#FFA3A3] font-extrabold glow-red">95.5% CRITICAL SCAM</span>
             </div>
-            <div class="w-full bg-[#030612] rounded-full h-3 overflow-hidden border border-[#1E293B]">
-              <div id="liveThreatBar" class="bg-red-500 h-3 rounded-full transition-all duration-500 shadow-lg shadow-red-500/50" style="width: 95%;"></div>
+            <div class="w-full bg-[#100D0A] rounded-full h-3 overflow-hidden border border-[#382F26]">
+              <div id="liveThreatBar" class="bg-[#E05353] h-3 rounded-full transition-all duration-500 shadow-lg shadow-[#E05353]/50" style="width: 95%;"></div>
             </div>
           </div>
 
           <!-- Spoken Transcript Feed with Live Highlighting -->
-          <div class="p-4 bg-[#030612] rounded-xl border border-[#1E293B] space-y-1.5 shadow-inner">
-            <div class="text-[11px] text-cyan-400 font-mono font-extrabold uppercase tracking-wider">LIVE SPOKEN TRANSCRIPT (AI COERCION SPOTTED):</div>
-            <p id="liveStreamTranscript" class="text-xs font-mono text-white leading-relaxed font-semibold">
+          <div class="p-4 bg-[#100D0A] rounded-xl border border-[#382F26] space-y-1.5 shadow-inner">
+            <div class="text-[11px] text-[#DFB78C] font-mono font-extrabold uppercase tracking-wider">LIVE SPOKEN TRANSCRIPT (AI COERCION SPOTTED):</div>
+            <p id="liveStreamTranscript" class="text-xs font-mono text-[#F5EBE1] leading-relaxed font-semibold">
               "Grandma please don't hang up! I had an accident and I will go to jail unless you wire money..."
             </p>
           </div>
 
           <!-- Oscilloscope Waveform Display -->
           <div class="space-y-2">
-            <div class="flex items-center justify-between text-xs font-mono text-slate-300 font-semibold">
+            <div class="flex items-center justify-between text-xs font-mono text-[#D8C6B4] font-semibold">
               <span>LIVE AUDIO WAVEFORM MONITOR</span>
-              <span id="audioSrBadge" class="text-cyan-400 font-bold">22.05 kHz</span>
+              <span id="audioSrBadge" class="text-[#DFB78C] font-bold">22.05 kHz</span>
             </div>
             <canvas id="waveformCanvas" width="600" height="90"></canvas>
             <audio id="audioPlayer" class="w-full hidden" controls></audio>
@@ -342,12 +348,12 @@
 
           <!-- Action Buttons -->
           <div class="flex items-center space-x-3.5 pt-1">
-            <button onclick="hangupAndAnalyzeCall()" class="flex-1 py-3.5 rounded-xl bg-red-600 hover:bg-red-500 text-white font-mono text-xs font-extrabold uppercase tracking-wider flex items-center justify-center space-x-2 shadow-xl shadow-red-600/30 transition-all cursor-pointer">
+            <button onclick="hangupAndAnalyzeCall()" class="flex-1 py-3.5 rounded-xl bg-[#8A2B31] hover:bg-[#A8373E] text-[#F5EBE1] font-mono text-xs font-extrabold uppercase tracking-wider flex items-center justify-center space-x-2 shadow-xl shadow-[#8A2B31]/30 transition-all cursor-pointer">
               <i data-lucide="phone-off" class="w-4 h-4"></i>
               <span>Hang Up & Deep Scan Forensics</span>
             </button>
-            <button onclick="quickReportFromLiveCall()" class="py-3.5 px-4 rounded-xl bg-[#0F172E] hover:bg-[#18264D] text-amber-300 border border-amber-500/40 text-xs font-mono font-extrabold flex items-center space-x-1.5 transition-all cursor-pointer">
-              <i data-lucide="flag" class="w-4 h-4 text-amber-400"></i>
+            <button onclick="quickReportFromLiveCall()" class="py-3.5 px-4 rounded-xl bg-[#211B15] hover:bg-[#30261E] text-[#DFB78C] border border-[#594735] text-xs font-mono font-extrabold flex items-center space-x-1.5 transition-all cursor-pointer">
+              <i data-lucide="flag" class="w-4 h-4 text-[#DFB78C]"></i>
               <span>Report Number</span>
             </button>
           </div>
@@ -360,56 +366,56 @@
     <!-- ================================================================= -->
     <!-- PRIMARY STAGE: MODE 2 - LIVE MIC & CUSTOM AUDIO UPLOADER          -->
     <!-- ================================================================= -->
-    <div id="micPanel" class="hidden glass-panel rounded-2xl p-6 sm:p-8 space-y-6 border border-[#1E293B]">
+    <div id="micPanel" class="hidden glass-panel rounded-2xl p-6 sm:p-8 space-y-6 border border-[#382F26]">
       <div class="text-center max-w-lg mx-auto space-y-1.5">
-        <h3 class="text-xl font-extrabold text-white">Test Your Own Voice or Upload Recording</h3>
-        <p class="text-xs text-slate-300">
+        <h3 class="text-xl font-extrabold text-[#F5EBE1]">Test Your Own Voice or Upload Recording</h3>
+        <p class="text-xs text-[#C2B09D]">
           Speak into your microphone to verify that authentic human voices score safe, or upload an audio file.
         </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
         <!-- Mic Box -->
-        <div class="p-6 rounded-xl bg-[#060B18] border border-[#1E293B] text-center space-y-4">
-          <div class="w-16 h-16 mx-auto rounded-full bg-cyan-500/15 border-2 border-cyan-400/40 flex items-center justify-center text-cyan-400">
+        <div class="p-6 rounded-xl bg-[#14110E] border border-[#382F26] text-center space-y-4">
+          <div class="w-16 h-16 mx-auto rounded-full bg-[#292017] border-2 border-[#524131] flex items-center justify-center text-[#DFB78C]">
             <i id="micStatusIcon" data-lucide="mic" class="w-8 h-8"></i>
           </div>
           <div>
-            <h4 class="font-extrabold text-sm text-white">Live Microphone Test</h4>
-            <p class="text-xs text-slate-300 mt-1">Real-time STT speech transcription + acoustic analysis</p>
+            <h4 class="font-extrabold text-sm text-[#F5EBE1]">Live Microphone Test</h4>
+            <p class="text-xs text-[#C2B09D] mt-1">Real-time STT speech transcription + acoustic analysis</p>
           </div>
-          <div id="micRecordingTimer" class="hidden font-mono text-xl font-extrabold text-red-400 animate-pulse">
-            00:04 <span class="text-xs text-slate-300 uppercase font-bold">RECORDING AUDIO</span>
+          <div id="micRecordingTimer" class="hidden font-mono text-xl font-extrabold text-[#FFA3A3] animate-pulse">
+            00:04 <span class="text-xs text-[#D8C6B4] uppercase font-bold">RECORDING AUDIO</span>
           </div>
           <div class="flex items-center justify-center space-x-2.5 pt-2">
-            <button id="startRecordBtn" onclick="startMicRecording()" class="px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-xs uppercase font-mono flex items-center space-x-2 transition-all cursor-pointer shadow-lg shadow-red-600/30">
+            <button id="startRecordBtn" onclick="startMicRecording()" class="px-5 py-2.5 rounded-xl bg-[#8A2B31] hover:bg-[#A8373E] text-[#F5EBE1] font-bold text-xs uppercase font-mono flex items-center space-x-2 transition-all cursor-pointer shadow-lg">
               <i data-lucide="radio" class="w-4 h-4"></i>
               <span>Start Speaking</span>
             </button>
-            <button id="stopRecordBtn" onclick="stopMicRecording()" disabled class="px-5 py-2.5 rounded-xl bg-[#0A1024] text-slate-500 font-bold text-xs uppercase font-mono flex items-center space-x-2 cursor-not-allowed">
+            <button id="stopRecordBtn" onclick="stopMicRecording()" disabled class="px-5 py-2.5 rounded-xl bg-[#1E1914] text-[#7A6B5D] font-bold text-xs uppercase font-mono flex items-center space-x-2 cursor-not-allowed">
               <i data-lucide="square" class="w-4 h-4"></i>
               <span>Stop & Scan</span>
             </button>
           </div>
-          <div class="text-left bg-[#030612] p-3.5 rounded-lg border border-[#1E293B] text-xs font-mono text-slate-200 min-h-[45px]">
-            <span id="sttStatusBadge" class="text-xs text-emerald-400 font-bold block mb-1">READY</span>
-            <span id="liveTranscriptText" class="text-slate-300">Click "Start Speaking" and talk...</span>
+          <div class="text-left bg-[#0D0B09] p-3.5 rounded-lg border border-[#382F26] text-xs font-mono text-[#E8D8C8] min-h-[45px]">
+            <span id="sttStatusBadge" class="text-xs text-[#52B788] font-bold block mb-1">READY</span>
+            <span id="liveTranscriptText" class="text-[#C2B09D]">Click "Start Speaking" and talk...</span>
           </div>
         </div>
 
         <!-- File Upload Box -->
-        <div class="p-6 rounded-xl bg-[#060B18] border border-[#1E293B] text-center space-y-4 flex flex-col justify-between">
+        <div class="p-6 rounded-xl bg-[#14110E] border border-[#382F26] text-center space-y-4 flex flex-col justify-between">
           <div>
-            <div id="dropzone" onclick="document.getElementById('audioFileInput').click()" class="border-2 border-dashed border-[#2A3C63] hover:border-cyan-400 rounded-xl p-6 cursor-pointer transition-all bg-[#030612]">
+            <div id="dropzone" onclick="document.getElementById('audioFileInput').click()" class="border-2 border-dashed border-[#544638] hover:border-[#DFB78C] rounded-xl p-6 cursor-pointer transition-all bg-[#0D0B09]">
               <input type="file" id="audioFileInput" accept="audio/*" class="hidden" onchange="handleFileSelect(event)">
-              <i data-lucide="upload-cloud" class="w-9 h-9 text-cyan-400 mx-auto mb-2"></i>
-              <div class="text-xs font-bold text-white">Click to Select Audio File</div>
-              <div class="text-[11px] text-slate-300 mt-1">WAV, MP3, OGG, M4A, FLAC</div>
-              <div id="selectedFileName" class="mt-2 text-xs font-mono text-cyan-300 font-bold hidden truncate"></div>
+              <i data-lucide="upload-cloud" class="w-9 h-9 text-[#DFB78C] mx-auto mb-2"></i>
+              <div class="text-xs font-bold text-[#F5EBE1]">Click to Select Audio File</div>
+              <div class="text-[11px] text-[#C2B09D] mt-1">WAV, MP3, OGG, M4A, FLAC</div>
+              <div id="selectedFileName" class="mt-2 text-xs font-mono text-[#DFB78C] font-bold hidden truncate"></div>
             </div>
-            <textarea id="uploadTranscriptInput" rows="2" placeholder="Optional: Enter spoken transcript if known..." class="w-full mt-3 bg-[#030612] border border-[#1E293B] rounded-lg p-3 text-xs font-mono text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400"></textarea>
+            <textarea id="uploadTranscriptInput" rows="2" placeholder="Optional: Enter spoken transcript if known..." class="w-full mt-3 bg-[#0D0B09] border border-[#382F26] rounded-lg p-3 text-xs font-mono text-[#F5EBE1] placeholder-[#7A6B5D] focus:outline-none focus:border-[#DFB78C]"></textarea>
           </div>
-          <button id="uploadAnalyzeBtn" onclick="analyzeUploadedFile()" disabled class="w-full py-3 rounded-xl bg-[#0A1024] text-slate-500 font-bold text-xs uppercase font-mono flex items-center justify-center space-x-2 transition-all cursor-not-allowed">
+          <button id="uploadAnalyzeBtn" onclick="analyzeUploadedFile()" disabled class="w-full py-3 rounded-xl bg-[#1E1914] text-[#7A6B5D] font-bold text-xs uppercase font-mono flex items-center justify-center space-x-2 transition-all cursor-not-allowed">
             <i data-lucide="scan" class="w-4 h-4"></i>
             <span>Scan Uploaded File</span>
           </button>
@@ -420,13 +426,13 @@
     <!-- ================================================================= -->
     <!-- PRIMARY STAGE: MODE 3 - COMMUNITY PRE-ALERT SCAM REGISTRY        -->
     <!-- ================================================================= -->
-    <div id="registryPanel" class="hidden glass-panel rounded-2xl p-6 sm:p-8 space-y-5 border border-[#1E293B]">
-      <div class="flex items-center justify-between border-b border-[#1E293B] pb-4">
+    <div id="registryPanel" class="hidden glass-panel rounded-2xl p-6 sm:p-8 space-y-5 border border-[#382F26]">
+      <div class="flex items-center justify-between border-b border-[#382F26] pb-4">
         <div>
-          <h3 class="text-base font-extrabold text-white font-mono uppercase">Community Scam Threat Database</h3>
-          <p class="text-xs text-slate-300 mt-0.5">Crowdsourced fraudulent numbers, previous voice clone vectors & IBM CPACF signatures</p>
+          <h3 class="text-base font-extrabold text-[#F5EBE1] font-mono uppercase">Community Scam Threat Database</h3>
+          <p class="text-xs text-[#C2B09D] mt-0.5">Crowdsourced fraudulent numbers, previous voice clone vectors & IBM CPACF signatures</p>
         </div>
-        <button onclick="openReportScamModal()" class="px-4 py-2 text-xs rounded-lg bg-amber-600 hover:bg-amber-500 text-white font-mono font-bold flex items-center space-x-2 shadow-md transition-all cursor-pointer">
+        <button onclick="openReportScamModal()" class="px-4 py-2 text-xs rounded-lg btn-classy-beige flex items-center space-x-2 shadow-md transition-all cursor-pointer">
           <i data-lucide="plus" class="w-4 h-4"></i>
           <span>Report New Number</span>
         </button>
@@ -434,71 +440,71 @@
 
       <!-- Quick Search Box -->
       <div class="flex space-x-2.5 max-w-xl">
-        <input type="text" id="registrySearchInput" placeholder="Check a phone number: e.g. +1 844 932 8491" class="flex-grow bg-[#030612] border border-[#1E293B] rounded-lg p-3 text-xs font-mono text-white focus:outline-none focus:border-cyan-400">
-        <button onclick="searchScamRegistry()" class="px-5 py-3 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-mono font-bold transition-all cursor-pointer">
+        <input type="text" id="registrySearchInput" placeholder="Check a phone number: e.g. +1 844 932 8491" class="flex-grow bg-[#0D0B09] border border-[#382F26] rounded-lg p-3 text-xs font-mono text-[#F5EBE1] focus:outline-none focus:border-[#DFB78C]">
+        <button onclick="searchScamRegistry()" class="px-5 py-3 rounded-lg btn-classy-beige text-xs font-mono font-bold transition-all cursor-pointer">
           Lookup
         </button>
       </div>
 
       <!-- Feed List -->
       <div id="communityReportsList" class="space-y-3.5 max-h-[420px] overflow-y-auto pr-1">
-        <div class="text-center py-6 text-slate-400 text-xs font-mono">Loading community scam registry...</div>
+        <div class="text-center py-6 text-[#A89885] text-xs font-mono">Loading community scam registry...</div>
       </div>
     </div>
 
     <!-- ================================================================= -->
     <!-- FORENSIC RESULTS DASHBOARD (ORGANIZED, CLEAR & UNCLUTTERED)       -->
     <!-- ================================================================= -->
-    <div id="resultsCard" class="glass-panel rounded-2xl p-6 sm:p-8 space-y-6 border border-[#1E293B] relative transition-all duration-500 shadow-2xl">
+    <div id="resultsCard" class="glass-panel rounded-2xl p-6 sm:p-8 space-y-6 border border-[#382F26] relative transition-all duration-500 shadow-2xl">
       
       <!-- Section Title & Case ID -->
-      <div class="flex items-center justify-between border-b border-[#1E293B] pb-4">
-        <div class="flex items-center space-x-2 text-cyan-400 font-mono text-xs font-extrabold">
+      <div class="flex items-center justify-between border-b border-[#382F26] pb-4">
+        <div class="flex items-center space-x-2 text-[#DFB78C] font-mono text-xs font-extrabold">
           <i data-lucide="activity" class="w-4 h-4"></i>
           <span>FORENSIC SCAN RESULTS & MULTI-MODAL AUDIT</span>
         </div>
-        <span id="incidentIdBadge" class="text-xs font-mono text-cyan-300 bg-[#060B18] px-3.5 py-1 rounded-md border border-[#233558] font-bold">AEGIS-STANDBY</span>
+        <span id="incidentIdBadge" class="text-xs font-mono text-[#DFB78C] bg-[#1E1914] px-3.5 py-1 rounded-md border border-[#524131] font-bold">AEGIS-STANDBY</span>
       </div>
 
       <!-- Master Verdict Alert Banner -->
-      <div id="threatBanner" class="p-4 rounded-xl border flex items-center justify-between bg-[#060B18] border-[#1E293B] text-slate-200">
+      <div id="threatBanner" class="p-4 rounded-xl border flex items-center justify-between bg-[#14110E] border-[#382F26] text-[#E8D8C8]">
         <div class="flex items-center space-x-3">
-          <div id="threatStatusDot" class="w-3.5 h-3.5 rounded-full bg-slate-500"></div>
-          <span id="threatStatusText" class="font-extrabold text-sm font-mono tracking-wide text-white">SYSTEM READY: AWAITING AUDIO INGESTION</span>
+          <div id="threatStatusDot" class="w-3.5 h-3.5 rounded-full bg-[#7A6B5D]"></div>
+          <span id="threatStatusText" class="font-extrabold text-sm font-mono tracking-wide text-[#F5EBE1]">SYSTEM READY: AWAITING AUDIO INGESTION</span>
         </div>
-        <span class="text-xs text-cyan-300 font-mono font-bold hidden sm:inline">IBM TELUM NNPA EVALUATED</span>
+        <span class="text-xs text-[#DFB78C] font-mono font-bold hidden sm:inline">IBM TELUM NNPA EVALUATED</span>
       </div>
 
       <!-- Pre-Alert Notice (Shown when number has prior community history) -->
-      <div id="resultsPreAlertNotice" class="hidden p-4 rounded-xl bg-[#20070D] border-2 border-red-500/80 space-y-1.5 shadow-lg">
+      <div id="resultsPreAlertNotice" class="hidden p-4 rounded-xl bg-[#291216] border-2 border-[#E05353] space-y-1.5 shadow-lg">
         <div class="flex items-center justify-between font-mono text-xs">
-          <span class="font-bold text-red-200 flex items-center space-x-2">
-            <i data-lucide="shield-alert" class="w-4 h-4 text-red-400"></i>
+          <span class="font-bold text-[#FFA3A3] flex items-center space-x-2">
+            <i data-lucide="shield-alert" class="w-4 h-4 text-[#FF7070]"></i>
             <span id="resultsPreAlertTitle" class="glow-red">PRIOR COMMUNITY FRAUD REPORTS DETECTED</span>
           </span>
-          <span id="resultsPreAlertCount" class="px-2.5 py-0.5 rounded bg-red-900 text-white font-extrabold text-[11px] border border-red-600">142 REPORTS</span>
+          <span id="resultsPreAlertCount" class="px-2.5 py-0.5 rounded bg-[#4F1A1F] text-[#FFA8A8] font-extrabold text-[11px] border border-[#8C2C34]">142 REPORTS</span>
         </div>
-        <p id="resultsPreAlertDetails" class="text-xs text-slate-200 leading-relaxed font-medium">
+        <p id="resultsPreAlertDetails" class="text-xs text-[#E8D8C8] leading-relaxed font-medium">
           Caller ID matched prior reports of synthetic voice extortion.
         </p>
       </div>
 
       <!-- Master Gauges Row (Large, Clear Visuals) -->
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 items-center border-b border-[#1E293B] pb-7">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 items-center border-b border-[#382F26] pb-7">
         
         <!-- Gauge 1: Unified Threat Index -->
         <div class="flex flex-col items-center text-center">
           <div class="relative w-32 h-32 flex items-center justify-center">
             <svg class="w-full h-full gauge-svg" viewBox="0 0 100 100">
               <circle class="gauge-circle-bg" cx="50" cy="50" r="42" stroke-width="8"></circle>
-              <circle id="unifiedGaugeProgress" class="gauge-circle-progress stroke-cyan-400" cx="50" cy="50" r="42" stroke-width="8" stroke-dasharray="264" stroke-dashoffset="264"></circle>
+              <circle id="unifiedGaugeProgress" class="gauge-circle-progress stroke-[#DFB78C]" cx="50" cy="50" r="42" stroke-width="8" stroke-dasharray="264" stroke-dashoffset="264"></circle>
             </svg>
             <div class="absolute flex flex-col items-center">
-              <span id="unifiedScoreNumber" class="text-3xl font-extrabold font-mono text-white glow-cyan">0%</span>
-              <span class="text-[10px] uppercase font-mono tracking-wider text-slate-300 font-bold">COMPOSITE RISK</span>
+              <span id="unifiedScoreNumber" class="text-3xl font-extrabold font-mono text-[#F5EBE1] glow-beige">0%</span>
+              <span class="text-[10px] uppercase font-mono tracking-wider text-[#C2B09D] font-bold">COMPOSITE RISK</span>
             </div>
           </div>
-          <span class="mt-2 text-xs font-extrabold text-white">Unified Threat Index</span>
+          <span class="mt-2 text-xs font-extrabold text-[#F5EBE1]">Unified Threat Index</span>
         </div>
 
         <!-- Gauge 2: Acoustic AI Cloned Voice Score -->
@@ -506,15 +512,15 @@
           <div class="relative w-28 h-28 flex items-center justify-center">
             <svg class="w-full h-full gauge-svg" viewBox="0 0 100 100">
               <circle class="gauge-circle-bg" cx="50" cy="50" r="40" stroke-width="7"></circle>
-              <circle id="acousticGaugeProgress" class="gauge-circle-progress stroke-blue-500" cx="50" cy="50" r="40" stroke-width="7" stroke-dasharray="251" stroke-dashoffset="251"></circle>
+              <circle id="acousticGaugeProgress" class="gauge-circle-progress stroke-[#C99E6B]" cx="50" cy="50" r="40" stroke-width="7" stroke-dasharray="251" stroke-dashoffset="251"></circle>
             </svg>
             <div class="absolute flex flex-col items-center">
-              <span id="acousticScoreNumber" class="text-2xl font-extrabold font-mono text-white">0%</span>
-              <span class="text-[9px] uppercase font-mono tracking-wider text-slate-300 font-bold">ACOUSTIC AI</span>
+              <span id="acousticScoreNumber" class="text-2xl font-extrabold font-mono text-[#F5EBE1]">0%</span>
+              <span class="text-[9px] uppercase font-mono tracking-wider text-[#C2B09D] font-bold">ACOUSTIC AI</span>
             </div>
           </div>
-          <span class="mt-2 text-xs font-extrabold text-white">Vocoder Cloning Score</span>
-          <span id="suspectedEngineText" class="text-xs text-cyan-300 font-mono mt-0.5 max-w-[140px] truncate font-semibold">Model: None</span>
+          <span class="mt-2 text-xs font-extrabold text-[#F5EBE1]">Vocoder Cloning Score</span>
+          <span id="suspectedEngineText" class="text-xs text-[#DFB78C] font-mono mt-0.5 max-w-[140px] truncate font-semibold">Model: None</span>
         </div>
 
         <!-- Gauge 3: Conversational Social Engineering Risk -->
@@ -522,23 +528,23 @@
           <div class="relative w-28 h-28 flex items-center justify-center">
             <svg class="w-full h-full gauge-svg" viewBox="0 0 100 100">
               <circle class="gauge-circle-bg" cx="50" cy="50" r="40" stroke-width="7"></circle>
-              <circle id="scamGaugeProgress" class="gauge-circle-progress stroke-amber-400" cx="50" cy="50" r="40" stroke-width="7" stroke-dasharray="251" stroke-dashoffset="251"></circle>
+              <circle id="scamGaugeProgress" class="gauge-circle-progress stroke-[#E0A96D]" cx="50" cy="50" r="40" stroke-width="7" stroke-dasharray="251" stroke-dashoffset="251"></circle>
             </svg>
             <div class="absolute flex flex-col items-center">
-              <span id="scamScoreNumber" class="text-2xl font-extrabold font-mono text-white">0%</span>
-              <span class="text-[9px] uppercase font-mono tracking-wider text-slate-300 font-bold">SCAM INTENT</span>
+              <span id="scamScoreNumber" class="text-2xl font-extrabold font-mono text-[#F5EBE1]">0%</span>
+              <span class="text-[9px] uppercase font-mono tracking-wider text-[#C2B09D] font-bold">SCAM INTENT</span>
             </div>
           </div>
-          <span class="mt-2 text-xs font-extrabold text-white">Social Engineering</span>
-          <span id="scamRiskTierText" class="text-xs text-amber-300 font-mono mt-0.5 font-semibold">Tier: Inactive</span>
+          <span class="mt-2 text-xs font-extrabold text-[#F5EBE1]">Social Engineering</span>
+          <span id="scamRiskTierText" class="text-xs text-[#E0A96D] font-mono mt-0.5 font-semibold">Tier: Inactive</span>
         </div>
 
       </div>
 
       <!-- Plain-English Verdict Explanation -->
-      <div id="plainEnglishAdviceBox" class="p-4 rounded-xl bg-[#060B18] border border-[#1E293B] text-xs text-slate-200 space-y-1.5 shadow-md">
-        <div class="font-extrabold text-cyan-400 text-xs uppercase tracking-wider font-mono">EXPLAINABLE AI DIAGNOSIS:</div>
-        <p id="plainEnglishAdviceText" class="text-slate-200 leading-relaxed font-medium">
+      <div id="plainEnglishAdviceBox" class="p-4 rounded-xl bg-[#14110E] border border-[#382F26] text-xs text-[#E8D8C8] space-y-1.5 shadow-md">
+        <div class="font-extrabold text-[#DFB78C] text-xs uppercase tracking-wider font-mono">EXPLAINABLE AI DIAGNOSIS:</div>
+        <p id="plainEnglishAdviceText" class="text-[#E8D8C8] leading-relaxed font-medium">
           System is standing by. Choose a scenario or record live audio above to view the forensic diagnosis.
         </p>
       </div>
@@ -547,16 +553,16 @@
       <div class="space-y-4 pt-2">
         
         <!-- Tabbed Deep Dive for Clean Organization -->
-        <div class="flex border-b border-[#1E293B] space-x-6 text-xs font-mono">
-          <button id="tabDetailsBiomarkersBtn" onclick="switchDetailsTab('biomarkers')" class="pb-2.5 text-cyan-400 border-b-2 border-cyan-400 font-extrabold">1. Vocal Biomarkers (5)</button>
-          <button id="tabDetailsTranscriptBtn" onclick="switchDetailsTab('transcript')" class="pb-2.5 text-slate-400 hover:text-white font-semibold">2. Spoken Transcript</button>
-          <button id="tabDetailsActionsBtn" onclick="switchDetailsTab('actions')" class="pb-2.5 text-slate-400 hover:text-white font-semibold">3. Action Protocol</button>
+        <div class="flex border-b border-[#382F26] space-x-6 text-xs font-mono">
+          <button id="tabDetailsBiomarkersBtn" onclick="switchDetailsTab('biomarkers')" class="pb-2.5 text-[#DFB78C] border-b-2 border-[#DFB78C] font-extrabold">1. Vocal Biomarkers (5)</button>
+          <button id="tabDetailsTranscriptBtn" onclick="switchDetailsTab('transcript')" class="pb-2.5 text-[#A89885] hover:text-[#F5EBE1] font-semibold">2. Spoken Transcript</button>
+          <button id="tabDetailsActionsBtn" onclick="switchDetailsTab('actions')" class="pb-2.5 text-[#A89885] hover:text-[#F5EBE1] font-semibold">3. Action Protocol</button>
         </div>
 
         <!-- Details Tab 1: Vocal Biomarkers -->
         <div id="detailsBiomarkers" class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
           <div id="anomaliesContainer" class="contents">
-            <div class="p-5 rounded-xl bg-[#030612] border border-[#1E293B] text-xs text-slate-400 text-center col-span-2">
+            <div class="p-5 rounded-xl bg-[#100D0A] border border-[#382F26] text-xs text-[#A89885] text-center col-span-2">
               Run an audio analysis to inspect vocal cord micro-jitter, 7.5 kHz vocoder cutoffs, and respiratory dynamics.
             </div>
           </div>
@@ -564,20 +570,20 @@
 
         <!-- Details Tab 2: Spoken Transcript -->
         <div id="detailsTranscript" class="hidden space-y-2.5">
-          <div class="flex justify-between items-center text-xs font-mono text-slate-300 font-semibold">
+          <div class="flex justify-between items-center text-xs font-mono text-[#D8C6B4] font-semibold">
             <span>TRANSCRIPT WITH HIGHLIGHTED COERCION KEYWORDS:</span>
-            <span id="triggerCountBadge" class="text-red-400 font-bold">0 TRIGGERS DETECTED</span>
+            <span id="triggerCountBadge" class="text-[#FFA3A3] font-bold">0 TRIGGERS DETECTED</span>
           </div>
-          <div id="transcriptDisplayBox" class="p-4 rounded-xl bg-[#030612] border border-[#1E293B] text-xs font-mono text-slate-200 leading-relaxed max-h-44 overflow-y-auto">
+          <div id="transcriptDisplayBox" class="p-4 rounded-xl bg-[#100D0A] border border-[#382F26] text-xs font-mono text-[#E8D8C8] leading-relaxed max-h-44 overflow-y-auto">
             Awaiting audio input to extract and analyze spoken content...
           </div>
         </div>
 
         <!-- Details Tab 3: Action Protocol -->
         <div id="detailsActions" class="hidden space-y-2.5">
-          <div id="countermeasuresList" class="space-y-2 text-xs font-mono text-slate-200">
-            <div class="p-3.5 rounded-xl bg-[#030612] border border-[#1E293B] flex items-start space-x-2.5">
-              <i data-lucide="check-circle-2" class="w-4 h-4 text-cyan-400 mt-0.5 shrink-0"></i>
+          <div id="countermeasuresList" class="space-y-2 text-xs font-mono text-[#E8D8C8]">
+            <div class="p-3.5 rounded-xl bg-[#100D0A] border border-[#382F26] flex items-start space-x-2.5">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-[#DFB78C] mt-0.5 shrink-0"></i>
               <span>System standing by to guide caller defense protocols upon call detection.</span>
             </div>
           </div>
@@ -586,11 +592,11 @@
       </div>
 
       <!-- Bottom Export & Share Row -->
-      <div class="pt-4 border-t border-[#1E293B] flex items-center justify-between">
-        <div class="text-xs font-mono text-slate-400">
+      <div class="pt-4 border-t border-[#382F26] flex items-center justify-between">
+        <div class="text-xs font-mono text-[#A89885]">
           Cryptographic Chain of Custody: SHA-256 Hashed &amp; IBM CPACF Sealed
         </div>
-        <button id="exportReportBtn" onclick="exportIncidentDossier()" disabled class="px-5 py-2.5 rounded-xl bg-[#0A1024] text-slate-500 font-mono text-xs font-extrabold flex items-center space-x-2 transition-all cursor-not-allowed">
+        <button id="exportReportBtn" onclick="exportIncidentDossier()" disabled class="px-5 py-2.5 rounded-xl bg-[#1E1914] text-[#7A6B5D] font-mono text-xs font-extrabold flex items-center space-x-2 transition-all cursor-not-allowed">
           <i data-lucide="download" class="w-4 h-4"></i>
           <span>EXPORT FORENSIC DOSSIER (PDF)</span>
         </button>
@@ -604,35 +610,35 @@
   <!-- MODAL 1: HOW IT WORKS GUIDE (FIRST-TIME USER FRIENDLY)            -->
   <!-- ================================================================= -->
   <div id="guideModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
-    <div class="glass-panel max-w-xl w-full p-6 sm:p-7 rounded-2xl border-2 border-cyan-500/50 space-y-5 shadow-2xl">
-      <div class="flex items-center justify-between border-b border-[#1E293B] pb-3.5">
-        <div class="flex items-center space-x-2.5 text-cyan-400">
+    <div class="glass-panel max-w-xl w-full p-6 sm:p-7 rounded-2xl border-2 border-[#DFB78C]/60 space-y-5 shadow-2xl">
+      <div class="flex items-center justify-between border-b border-[#382F26] pb-3.5">
+        <div class="flex items-center space-x-2.5 text-[#DFB78C]">
           <i data-lucide="info" class="w-5 h-5"></i>
-          <h3 class="font-extrabold text-base text-white">How AegisVoice AI Works (30-Sec Guide)</h3>
+          <h3 class="font-extrabold text-base text-[#F5EBE1]">How AegisVoice AI Works (30-Sec Guide)</h3>
         </div>
-        <button onclick="closeGuideModal()" class="text-slate-400 hover:text-white">
+        <button onclick="closeGuideModal()" class="text-[#A89885] hover:text-[#F5EBE1]">
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
       </div>
 
-      <div class="space-y-3.5 text-xs text-slate-200 leading-relaxed">
-        <div class="p-3.5 rounded-xl bg-[#060B18] border border-[#233558] space-y-1">
-          <div class="font-extrabold text-white text-xs">1. Pre-Alert Before Interaction</div>
-          <p class="text-slate-300 text-xs">When a call rings, AegisVoice checks the crowdsourced registry. If the number was reported for AI voice cloning, an instant red pre-alert tells you what scam vector it uses before you answer.</p>
+      <div class="space-y-3.5 text-xs text-[#E8D8C8] leading-relaxed">
+        <div class="p-3.5 rounded-xl bg-[#14110E] border border-[#3D3227] space-y-1">
+          <div class="font-extrabold text-[#F5EBE1] text-xs">1. Pre-Alert Before Interaction</div>
+          <p class="text-[#C2B09D] text-xs">When a call rings, AegisVoice checks the crowdsourced registry. If the number was reported for AI voice cloning, an instant red pre-alert tells you what scam vector it uses before you answer.</p>
         </div>
 
-        <div class="p-3.5 rounded-xl bg-[#060B18] border border-[#233558] space-y-1">
-          <div class="font-extrabold text-white text-xs">2. In-Call Audio Bio-Acoustics</div>
-          <p class="text-slate-300 text-xs">AI vocoders (ElevenLabs, Bark, XTTS) lack natural human vocal cord micro-jitter (&lt;0.3%) and clamp frequencies above 7.5 kHz. Our engine inspects these physical acoustic invariants in under 40 milliseconds.</p>
+        <div class="p-3.5 rounded-xl bg-[#14110E] border border-[#3D3227] space-y-1">
+          <div class="font-extrabold text-[#F5EBE1] text-xs">2. In-Call Audio Bio-Acoustics</div>
+          <p class="text-[#C2B09D] text-xs">AI vocoders (ElevenLabs, Bark, XTTS) lack natural human vocal cord micro-jitter (&lt;0.3%) and clamp frequencies above 7.5 kHz. Our engine inspects these physical acoustic invariants in under 40 milliseconds.</p>
         </div>
 
-        <div class="p-3.5 rounded-xl bg-[#060B18] border border-[#233558] space-y-1">
-          <div class="font-extrabold text-white text-xs">3. Carrier-Grade IBM LinuxONE &amp; Telum</div>
-          <p class="text-slate-300 text-xs">Powered by the IBM Telum on-chip AI accelerator for sub-millisecond execution, while all reports are cryptographically sealed with IBM CPACF SHA-512 hardware cryptography.</p>
+        <div class="p-3.5 rounded-xl bg-[#14110E] border border-[#3D3227] space-y-1">
+          <div class="font-extrabold text-[#F5EBE1] text-xs">3. Carrier-Grade IBM LinuxONE &amp; Telum</div>
+          <p class="text-[#C2B09D] text-xs">Powered by the IBM Telum on-chip AI accelerator for sub-millisecond execution, while all reports are cryptographically sealed with IBM CPACF SHA-512 hardware cryptography.</p>
         </div>
       </div>
 
-      <button onclick="closeGuideModal()" class="w-full py-3 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-mono font-extrabold text-xs cursor-pointer shadow-lg shadow-cyan-600/30">
+      <button onclick="closeGuideModal()" class="w-full py-3 rounded-xl btn-classy-beige text-xs font-mono font-extrabold cursor-pointer">
         Got It, Let's Test!
       </button>
     </div>
@@ -642,41 +648,41 @@
   <!-- MODAL 2: IBM Z & LINUXONE SPECIFICATIONS MODAL                    -->
   <!-- ================================================================= -->
   <div id="ibmModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
-    <div class="glass-panel max-w-2xl w-full p-6 sm:p-7 rounded-2xl border-2 border-blue-500/50 space-y-5 shadow-2xl">
-      <div class="flex items-center justify-between border-b border-[#1E293B] pb-3.5">
-        <div class="flex items-center space-x-2.5 text-blue-400">
+    <div class="glass-panel max-w-2xl w-full p-6 sm:p-7 rounded-2xl border-2 border-[#DFB78C]/60 space-y-5 shadow-2xl">
+      <div class="flex items-center justify-between border-b border-[#382F26] pb-3.5">
+        <div class="flex items-center space-x-2.5 text-[#DFB78C]">
           <i data-lucide="cpu" class="w-5 h-5"></i>
-          <h3 class="font-extrabold text-base text-white">IBM LinuxONE &amp; IBM Telum Architecture</h3>
+          <h3 class="font-extrabold text-base text-[#F5EBE1]">IBM LinuxONE &amp; IBM Telum Architecture</h3>
         </div>
-        <button onclick="closeIbmModal()" class="text-slate-400 hover:text-white">
+        <button onclick="closeIbmModal()" class="text-[#A89885] hover:text-[#F5EBE1]">
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
       </div>
 
       <div class="grid grid-cols-2 gap-3 text-xs font-mono">
-        <div class="p-3 bg-[#030612] rounded-xl border border-[#1E293B]">
-          <span class="text-slate-400 text-xs font-semibold">PLATFORM:</span>
-          <div class="text-white font-extrabold text-xs mt-0.5" id="telemetryPlatform">IBM LinuxONE III / Emperor 4 (s390x)</div>
+        <div class="p-3 bg-[#100D0A] rounded-xl border border-[#382F26]">
+          <span class="text-[#A89885] text-xs font-semibold">PLATFORM:</span>
+          <div class="text-[#F5EBE1] font-extrabold text-xs mt-0.5" id="telemetryPlatform">IBM LinuxONE III / Emperor 4 (s390x)</div>
         </div>
-        <div class="p-3 bg-[#030612] rounded-xl border border-[#1E293B]">
-          <span class="text-slate-400 text-xs font-semibold">AI SILICON:</span>
-          <div class="text-cyan-400 font-extrabold text-xs mt-0.5 glow-cyan" id="telemetryAccelerator">IBM Telum NNPA (0.82ms)</div>
+        <div class="p-3 bg-[#100D0A] rounded-xl border border-[#382F26]">
+          <span class="text-[#A89885] text-xs font-semibold">AI SILICON:</span>
+          <div class="text-[#DFB78C] font-extrabold text-xs mt-0.5 glow-beige" id="telemetryAccelerator">IBM Telum NNPA (0.82ms)</div>
         </div>
-        <div class="p-3 bg-[#030612] rounded-xl border border-[#1E293B]">
-          <span class="text-slate-400 text-xs font-semibold">CRYPTO ENGINE:</span>
-          <div class="text-emerald-400 font-extrabold text-xs mt-0.5" id="telemetryCrypto">IBM CPACF SHA-512 Co-processor</div>
+        <div class="p-3 bg-[#100D0A] rounded-xl border border-[#382F26]">
+          <span class="text-[#A89885] text-xs font-semibold">CRYPTO ENGINE:</span>
+          <div class="text-[#52B788] font-extrabold text-xs mt-0.5" id="telemetryCrypto">IBM CPACF SHA-512 Co-processor</div>
         </div>
-        <div class="p-3 bg-[#030612] rounded-xl border border-[#1E293B]">
-          <span class="text-slate-400 text-xs font-semibold">UPTIME:</span>
-          <div class="text-white font-extrabold text-xs mt-0.5">99.999% (Carrier-Grade)</div>
+        <div class="p-3 bg-[#100D0A] rounded-xl border border-[#382F26]">
+          <span class="text-[#A89885] text-xs font-semibold">UPTIME:</span>
+          <div class="text-[#F5EBE1] font-extrabold text-xs mt-0.5">99.999% (Carrier-Grade)</div>
         </div>
       </div>
 
-      <div class="p-4 bg-[#08122B] rounded-xl border border-blue-500/40 text-xs text-slate-200 leading-relaxed font-normal">
-        <strong class="text-white">Enterprise Impact:</strong> IBM Telum's on-chip AI accelerator evaluates 100% of live telephone streams directly on the silicon die without network latency, while IBM Secure Execution enclaves keep caller voice buffers encrypted in hardware.
+      <div class="p-4 bg-[#1E1914] rounded-xl border border-[#524131] text-xs text-[#E8D8C8] leading-relaxed font-normal">
+        <strong class="text-[#F5EBE1]">Enterprise Impact:</strong> IBM Telum's on-chip AI accelerator evaluates 100% of live telephone streams directly on the silicon die without network latency, while IBM Secure Execution enclaves keep caller voice buffers encrypted in hardware.
       </div>
 
-      <button onclick="closeIbmModal()" class="w-full py-2.5 rounded-xl bg-[#0E1733] hover:bg-[#18264D] text-slate-200 font-mono text-xs font-bold cursor-pointer">
+      <button onclick="closeIbmModal()" class="w-full py-2.5 rounded-xl bg-[#211B15] hover:bg-[#30261E] text-[#E8D8C8] font-mono text-xs font-bold cursor-pointer">
         Close Window
       </button>
     </div>
@@ -686,26 +692,26 @@
   <!-- MODAL 3: REPORT FRAUDULENT CALLER NUMBER                          -->
   <!-- ================================================================= -->
   <div id="reportScamModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
-    <div class="glass-panel max-w-lg w-full p-6 sm:p-7 rounded-2xl border-2 border-amber-500/50 space-y-4 shadow-2xl">
-      <div class="flex items-center justify-between border-b border-[#1E293B] pb-3.5">
-        <div class="flex items-center space-x-2 text-amber-400">
+    <div class="glass-panel max-w-lg w-full p-6 sm:p-7 rounded-2xl border-2 border-[#DFB78C]/60 space-y-4 shadow-2xl">
+      <div class="flex items-center justify-between border-b border-[#382F26] pb-3.5">
+        <div class="flex items-center space-x-2 text-[#DFB78C]">
           <i data-lucide="flag" class="w-5 h-5"></i>
-          <h3 class="font-extrabold text-base text-white">Report Scam Number to Registry</h3>
+          <h3 class="font-extrabold text-base text-[#F5EBE1]">Report Scam Number to Registry</h3>
         </div>
-        <button onclick="closeReportScamModal()" class="text-slate-400 hover:text-white">
+        <button onclick="closeReportScamModal()" class="text-[#A89885] hover:text-[#F5EBE1]">
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
       </div>
 
       <div class="space-y-3.5 text-xs">
         <div>
-          <label class="block text-slate-300 font-mono mb-1 font-bold">PHONE NUMBER / CALLER ID:</label>
-          <input type="text" id="reportPhoneInput" placeholder="+1 (800) 000-0000" class="w-full bg-[#030612] border border-[#1E293B] rounded-lg p-3 text-white font-mono text-xs focus:outline-none focus:border-amber-500">
+          <label class="block text-[#D8C6B4] font-mono mb-1 font-bold">PHONE NUMBER / CALLER ID:</label>
+          <input type="text" id="reportPhoneInput" placeholder="+1 (800) 000-0000" class="w-full bg-[#100D0A] border border-[#382F26] rounded-lg p-3 text-[#F5EBE1] font-mono text-xs focus:outline-none focus:border-[#DFB78C]">
         </div>
 
         <div>
-          <label class="block text-slate-300 font-mono mb-1 font-bold">SCAM VECTOR:</label>
-          <select id="reportVectorSelect" class="w-full bg-[#030612] border border-[#1E293B] rounded-lg p-3 text-white font-mono text-xs focus:outline-none focus:border-amber-500">
+          <label class="block text-[#D8C6B4] font-mono mb-1 font-bold">SCAM VECTOR:</label>
+          <select id="reportVectorSelect" class="w-full bg-[#100D0A] border border-[#382F26] rounded-lg p-3 text-[#F5EBE1] font-mono text-xs focus:outline-none focus:border-[#DFB78C]">
             <option value="AI Voice Clone (Relative / Grandson Emergency)">AI Voice Clone (Relative / Grandson Emergency)</option>
             <option value="Bank Security OTP & Credential Harvesting">Bank Security OTP & Credential Harvesting</option>
             <option value="Executive CEO Impersonation Wire Transfer">Executive CEO Impersonation Wire Transfer</option>
@@ -715,21 +721,21 @@
         </div>
 
         <div>
-          <label class="block text-slate-300 font-mono mb-1 font-bold">NOTES / WHAT DID THEY SAY?:</label>
-          <textarea id="reportNotesInput" rows="3" placeholder="Caller sounded like an AI voice clone of my son claiming an emergency and demanded $3,000..." class="w-full bg-[#030612] border border-[#1E293B] rounded-lg p-3 text-white font-mono text-xs focus:outline-none focus:border-amber-500"></textarea>
+          <label class="block text-[#D8C6B4] font-mono mb-1 font-bold">NOTES / WHAT DID THEY SAY?:</label>
+          <textarea id="reportNotesInput" rows="3" placeholder="Caller sounded like an AI voice clone of my son claiming an emergency and demanded $3,000..." class="w-full bg-[#100D0A] border border-[#382F26] rounded-lg p-3 text-[#F5EBE1] font-mono text-xs focus:outline-none focus:border-[#DFB78C]"></textarea>
         </div>
 
-        <div class="p-3 rounded-lg bg-[#08122B] border border-blue-500/40 text-xs font-mono text-blue-300 flex items-center space-x-2.5">
-          <i data-lucide="lock" class="w-4 h-4 text-cyan-400 shrink-0"></i>
+        <div class="p-3 rounded-lg bg-[#211B15] border border-[#524131] text-xs font-mono text-[#DFB78C] flex items-center space-x-2.5">
+          <i data-lucide="lock" class="w-4 h-4 text-[#DFB78C] shrink-0"></i>
           <span>Report will be cryptographically sealed with IBM CPACF SHA-512 hardware seal.</span>
         </div>
       </div>
 
-      <div class="flex items-center justify-end space-x-3 pt-3 border-t border-[#1E293B]">
-        <button onclick="closeReportScamModal()" class="px-4 py-2.5 rounded-xl bg-[#0E1733] text-slate-300 text-xs font-bold cursor-pointer">
+      <div class="flex items-center justify-end space-x-3 pt-3 border-t border-[#382F26]">
+        <button onclick="closeReportScamModal()" class="px-4 py-2.5 rounded-xl bg-[#211B15] text-[#C2B09D] text-xs font-bold cursor-pointer">
           Cancel
         </button>
-        <button onclick="submitScamReport()" class="px-5 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-500 text-white font-mono font-extrabold text-xs flex items-center space-x-1.5 shadow-md cursor-pointer">
+        <button onclick="submitScamReport()" class="px-5 py-2.5 rounded-xl btn-classy-beige text-xs flex items-center space-x-1.5 shadow-md cursor-pointer">
           <i data-lucide="check" class="w-4 h-4"></i>
           <span>Submit & Pre-Alert Community</span>
         </button>
@@ -739,40 +745,40 @@
 
   <!-- MODAL 4: EMERGENCY HELPLINE -->
   <div id="helplineModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
-    <div class="glass-panel max-w-md w-full p-6 sm:p-7 rounded-2xl border-2 border-red-500/50 space-y-4 shadow-2xl">
-      <div class="flex items-center justify-between border-b border-[#1E293B] pb-3.5">
-        <div class="flex items-center space-x-2 text-red-400">
+    <div class="glass-panel max-w-md w-full p-6 sm:p-7 rounded-2xl border-2 border-[#E05353]/70 space-y-4 shadow-2xl">
+      <div class="flex items-center justify-between border-b border-[#382F26] pb-3.5">
+        <div class="flex items-center space-x-2 text-[#FFA3A3]">
           <i data-lucide="alert-triangle" class="w-5 h-5"></i>
-          <h3 class="font-extrabold text-base text-white">Emergency Scam Incident Protocol</h3>
+          <h3 class="font-extrabold text-base text-[#F5EBE1]">Emergency Scam Incident Protocol</h3>
         </div>
-        <button onclick="closeHelplineModal()" class="text-slate-400 hover:text-white">
+        <button onclick="closeHelplineModal()" class="text-[#A89885] hover:text-[#F5EBE1]">
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
       </div>
 
-      <div class="space-y-3.5 text-xs text-slate-200">
-        <div class="p-3.5 rounded-xl bg-[#20070D] border border-red-600 text-red-200 font-medium">
-          <strong class="text-white">🚨 IF YOU ARE ON A SCAM CALL NOW:</strong> Hang up immediately. Never transfer funds, buy gift cards, or share OTP codes.
+      <div class="space-y-3.5 text-xs text-[#E8D8C8]">
+        <div class="p-3.5 rounded-xl bg-[#291216] border border-[#8C2C34] text-[#FFA3A3] font-medium">
+          <strong class="text-[#F5EBE1]">🚨 IF YOU ARE ON A SCAM CALL NOW:</strong> Hang up immediately. Never transfer funds, buy gift cards, or share OTP codes.
         </div>
         <div class="space-y-2.5">
-          <div class="flex items-center justify-between p-3.5 rounded-lg bg-[#060B18] border border-[#1E293B]">
+          <div class="flex items-center justify-between p-3.5 rounded-lg bg-[#14110E] border border-[#382F26]">
             <div>
-              <div class="font-extrabold text-white text-xs">National Cybercrime Helpline</div>
-              <div class="text-[11px] text-slate-300">Immediate Financial Fraud Freeze</div>
+              <div class="font-extrabold text-[#F5EBE1] text-xs">National Cybercrime Helpline</div>
+              <div class="text-[11px] text-[#C2B09D]">Immediate Financial Fraud Freeze</div>
             </div>
-            <a href="tel:1930" class="px-3.5 py-1.5 bg-red-600 hover:bg-red-500 text-white font-mono font-bold rounded-lg text-xs shadow-md">DIAL 1930</a>
+            <a href="tel:1930" class="px-3.5 py-1.5 bg-[#8A2B31] hover:bg-[#A8373E] text-[#F5EBE1] font-mono font-bold rounded-lg text-xs shadow-md">DIAL 1930</a>
           </div>
-          <div class="flex items-center justify-between p-3.5 rounded-lg bg-[#060B18] border border-[#1E293B]">
+          <div class="flex items-center justify-between p-3.5 rounded-lg bg-[#14110E] border border-[#382F26]">
             <div>
-              <div class="font-extrabold text-white text-xs">Cyber Crime Portal</div>
-              <div class="text-[11px] text-slate-300">Online Reporting & FIR</div>
+              <div class="font-extrabold text-[#F5EBE1] text-xs">Cyber Crime Portal</div>
+              <div class="text-[11px] text-[#C2B09D]">Online Reporting & FIR</div>
             </div>
-            <a href="https://cybercrime.gov.in" target="_blank" class="px-3.5 py-1.5 bg-cyan-600 hover:bg-cyan-500 text-white font-mono font-bold rounded-lg text-xs shadow-md">cybercrime.gov.in</a>
+            <a href="https://cybercrime.gov.in" target="_blank" class="px-3.5 py-1.5 btn-classy-beige font-mono font-bold rounded-lg text-xs shadow-md">cybercrime.gov.in</a>
           </div>
         </div>
       </div>
 
-      <button onclick="closeHelplineModal()" class="w-full py-2.5 rounded-xl bg-[#0E1733] hover:bg-[#18264D] text-slate-200 font-mono text-xs font-bold cursor-pointer">
+      <button onclick="closeHelplineModal()" class="w-full py-2.5 rounded-xl bg-[#211B15] hover:bg-[#30261E] text-[#E8D8C8] font-mono text-xs font-bold cursor-pointer">
         Close Window
       </button>
     </div>
@@ -780,27 +786,27 @@
 
   <!-- MODAL 5: INCIDENT DOSSIER -->
   <div id="reportModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
-    <div class="glass-panel max-w-2xl w-full p-6 sm:p-8 rounded-2xl border-2 border-cyan-500/50 space-y-5 my-8 shadow-2xl">
-      <div class="flex items-center justify-between border-b border-[#1E293B] pb-3.5">
-        <div class="flex items-center space-x-2.5 text-cyan-400">
+    <div class="glass-panel max-w-2xl w-full p-6 sm:p-8 rounded-2xl border-2 border-[#DFB78C]/60 space-y-5 my-8 shadow-2xl">
+      <div class="flex items-center justify-between border-b border-[#382F26] pb-3.5">
+        <div class="flex items-center space-x-2.5 text-[#DFB78C]">
           <i data-lucide="file-check" class="w-5 h-5"></i>
-          <h3 class="font-extrabold text-base text-white">Official Cyber Forensic Incident Dossier</h3>
+          <h3 class="font-extrabold text-base text-[#F5EBE1]">Official Cyber Forensic Incident Dossier</h3>
         </div>
-        <button onclick="closeReportModal()" class="text-slate-400 hover:text-white">
+        <button onclick="closeReportModal()" class="text-[#A89885] hover:text-[#F5EBE1]">
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
       </div>
 
-      <div id="modalReportContent" class="space-y-4 text-xs font-mono text-slate-200">
+      <div id="modalReportContent" class="space-y-4 text-xs font-mono text-[#E8D8C8]">
         <!-- Injected dynamically -->
       </div>
 
-      <div class="flex items-center justify-end space-x-3 pt-3.5 border-t border-[#1E293B]">
-        <button onclick="window.print()" class="px-5 py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-extrabold text-xs flex items-center space-x-2 shadow-md cursor-pointer">
+      <div class="flex items-center justify-end space-x-3 pt-3.5 border-t border-[#382F26]">
+        <button onclick="window.print()" class="px-5 py-2.5 rounded-xl btn-classy-beige text-xs flex items-center space-x-2 shadow-md cursor-pointer">
           <i data-lucide="printer" class="w-4 h-4"></i>
           <span>Print / Save PDF</span>
         </button>
-        <button onclick="closeReportModal()" class="px-4 py-2.5 rounded-xl bg-[#0E1733] text-slate-200 text-xs font-bold cursor-pointer">
+        <button onclick="closeReportModal()" class="px-4 py-2.5 rounded-xl bg-[#211B15] text-[#C2B09D] text-xs font-bold cursor-pointer">
           Close Dossier
         </button>
       </div>
@@ -808,10 +814,10 @@
   </div>
 
   <!-- Clean Minimal Footer -->
-  <footer class="border-t border-[#1E293B] bg-[#030612] py-6 text-center text-xs text-slate-400 font-mono">
+  <footer class="border-t border-[#382F26] bg-[#0A0806] py-6 text-center text-xs text-[#A89885] font-mono">
     <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
-      <div class="font-semibold text-slate-300">AEGISVOICE AI &copy; 2026 | Built for Global Hackathon Excellence</div>
-      <div class="flex items-center space-x-3 text-cyan-300 font-bold">
+      <div class="font-semibold text-[#C2B09D]">AEGISVOICE AI &copy; 2026 | Built for Global Hackathon Excellence</div>
+      <div class="flex items-center space-x-3 text-[#DFB78C] font-bold">
         <span>IBM LinuxONE (s390x)</span>
         <span>&bull;</span>
         <span>Telum NNPA AI</span>
