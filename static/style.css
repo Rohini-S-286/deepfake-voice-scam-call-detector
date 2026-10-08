@@ -1,143 +1,159 @@
-/* AegisVoice AI - Classy Dark Beige & Warm Obsidian Luxury Theme (Hackathon Winner Edition) */
+/* AegisVoice AI - Warm Terracotta & Classy Beige Theme (Inspired by User Reference UI) */
 
 :root {
-  --bg-primary: #0D0B09;          /* Deep Warm Dark Espresso */
-  --bg-secondary: #14110E;        /* Dark Mocha Truffle */
-  --bg-card: rgba(24, 20, 16, 0.94); /* Warm Dark Bronze Glass */
-  --bg-surface-elevated: #211C17; /* Elevated Warm Surface */
-  --border-card: #382F26;         /* Classy Warm Beige-Bronze Border */
-  --border-bright: #544638;       /* Refined Sand-Gold Border */
-  --border-active: #DFB78C;       /* Classy Champagne Beige */
+  /* Warm Dusky Cocoa Background ("little dark as given") */
+  --bg-primary: #241715;          /* Deep Dusky Terracotta Mocha */
+  --bg-secondary: #2E1E1B;        /* Warm Dark Cocoa */
+  --bg-tertiary: #3A2623;         /* Subtle Dusky Rose Accent */
 
-  --text-primary: #F5EBE1;        /* Classy Warm Cream Linen (Zero Harsh White) */
-  --text-secondary: #DFB78C;      /* Refined Golden Beige */
-  --text-muted: #C2B09D;          /* Soft Sand Cashmere */
-  --text-subtle: #9E8C7A;         /* Warm Taupe */
-  
-  --beige-light: #F5EBE1;
-  --beige-main: #DFB78C;
-  --beige-gold: #C99E6B;
-  --beige-dark: #8C6F4D;
+  /* Classy Beige Surfaces ("options should be in beige") */
+  --beige-card: #FDF9F5;          /* Luminous Classy Warm Beige/Cream */
+  --beige-surface: #F7EDE4;       /* Soft Sand Beige */
+  --beige-subtle: #EFE0D3;        /* Warm Cashmere Beige */
+  --border-beige: #E5D5C6;        /* Refined Beige Border */
+  --border-beige-dark: #D4BEAA;   /* Defined Beige Border */
 
-  --alert-red: #E05353;
-  --alert-red-bg: #261012;
-  --alert-green: #52B788;
-  --alert-green-bg: #102117;
-  --alert-amber: #E0A96D;
+  /* Deep High-Contrast Text ("everything should be clearly visible") */
+  --text-dark: #1A100E;           /* Deep Charcoal Espresso (100% Readable) */
+  --text-dark-secondary: #422D29; /* Refined Cocoa Brown */
+  --text-dark-muted: #6B4E48;     /* Warm Taupe */
+  --text-light: #FDF9F5;          /* For Coral/Terracotta Buttons */
+
+  /* Reference Warm Coral/Terracotta Accents (Matching "Voice" & "Ask SARA" buttons) */
+  --coral-main: #C85A42;          /* Signature Warm Terracotta Coral */
+  --coral-hover: #B44C36;         /* Deep Terracotta Hover */
+  --coral-light: #FDEEEA;         /* Soft Coral/Peach Tint */
+  --coral-border: #F3B9AC;        /* Soft Coral Border */
+
+  /* State Alerts */
+  --alert-red: #C83E2D;           /* High Alert Crimson Coral */
+  --alert-red-bg: #FDEBE8;        /* Soft Coral Red Tint */
+  --alert-green: #2D7A4F;         /* Authentic Sage Green */
+  --alert-green-bg: #E8F5ED;      /* Soft Sage Tint */
+  --alert-amber: #C67828;         /* Warm Caramel Amber */
+  --alert-amber-bg: #FEF3E6;      /* Soft Amber Tint */
 }
 
 body {
   background-color: var(--bg-primary);
-  color: var(--text-primary);
+  color: var(--text-dark);
   font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   overflow-x: hidden;
   background-image: 
-    radial-gradient(circle at 15% 10%, rgba(223, 183, 140, 0.07) 0%, transparent 45%),
-    radial-gradient(circle at 85% 15%, rgba(201, 158, 107, 0.06) 0%, transparent 45%),
-    radial-gradient(circle at 50% 90%, rgba(82, 183, 136, 0.05) 0%, transparent 50%);
+    radial-gradient(circle at 15% 10%, rgba(200, 90, 66, 0.18) 0%, transparent 45%),
+    radial-gradient(circle at 85% 15%, rgba(220, 130, 105, 0.14) 0%, transparent 45%),
+    radial-gradient(circle at 50% 90%, rgba(200, 90, 66, 0.12) 0%, transparent 50%);
   background-attachment: fixed;
 }
 
-/* Classy Beige Glass Panel */
-.glass-panel {
-  background: rgba(24, 20, 16, 0.95);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid var(--border-card);
-  box-shadow: 0 14px 40px -10px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(223, 183, 140, 0.08);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+/* Classy Beige Panel */
+.beige-panel {
+  background: var(--beige-card);
+  border: 1.5px solid var(--border-beige);
+  box-shadow: 0 10px 30px -8px rgba(26, 16, 14, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.6);
+  border-radius: 1.25rem;
+  color: var(--text-dark);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.glass-panel:hover {
-  border-color: rgba(223, 183, 140, 0.35);
-  box-shadow: 0 18px 45px -10px rgba(0, 0, 0, 0.85), 0 0 25px rgba(223, 183, 140, 0.08);
+.beige-panel:hover {
+  border-color: var(--coral-border);
+  box-shadow: 0 14px 35px -8px rgba(26, 16, 14, 0.3);
 }
 
-/* Classy Luxury Card */
-.luxury-card {
-  background: #181410;
-  border: 1px solid #382F26;
-  border-radius: 0.75rem;
+/* Warm Hero Box (Matching the reference screen upper card) */
+.hero-terracotta {
+  background: linear-gradient(135deg, #382421 0%, #2B1A18 100%);
+  border: 1.5px solid #543732;
+  box-shadow: 0 14px 35px -10px rgba(0, 0, 0, 0.45);
+}
+
+/* Coral/Terracotta Button (Matching reference "Voice" & "Ask SARA" pills) */
+.btn-coral {
+  background: linear-gradient(135deg, #D4634B 0%, #C04E38 100%);
+  color: #FFFFFF;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(200, 90, 66, 0.35);
   transition: all 0.2s ease-in-out;
 }
 
-.luxury-card:hover {
-  background: #221D17;
-  border-color: #DFB78C;
-  box-shadow: 0 0 20px rgba(223, 183, 140, 0.15);
+.btn-coral:hover {
+  background: linear-gradient(135deg, #E06F57 0%, #CC5740 100%);
+  box-shadow: 0 6px 18px rgba(200, 90, 66, 0.45);
+  transform: translateY(-1px);
 }
 
-/* Classy Beige Glows */
-.glow-beige {
-  text-shadow: 0 0 14px rgba(223, 183, 140, 0.5);
+/* Classy Beige Secondary Button */
+.btn-beige {
+  background: var(--beige-card);
+  color: var(--text-dark);
+  border: 1.5px solid var(--border-beige);
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(26, 16, 14, 0.08);
+  transition: all 0.2s ease-in-out;
 }
 
-.glow-red {
-  text-shadow: 0 0 14px rgba(224, 83, 83, 0.6);
+.btn-beige:hover {
+  background: #FFFFFF;
+  border-color: var(--coral-main);
+  color: var(--coral-main);
 }
 
-.glow-green {
-  text-shadow: 0 0 14px rgba(82, 183, 136, 0.5);
-}
-
-/* Pulsing Indicators */
-@keyframes radar-pulse {
-  0% { transform: scale(0.95); opacity: 0.9; box-shadow: 0 0 0 0 rgba(223, 183, 140, 0.6); }
-  70% { transform: scale(1.08); opacity: 1; box-shadow: 0 0 0 10px rgba(223, 183, 140, 0); }
-  100% { transform: scale(0.95); opacity: 0.9; box-shadow: 0 0 0 0 rgba(223, 183, 140, 0); }
+/* Soft Pulsing Indicators */
+@keyframes coral-pulse {
+  0% { transform: scale(0.95); opacity: 0.9; box-shadow: 0 0 0 0 rgba(200, 90, 66, 0.6); }
+  70% { transform: scale(1.08); opacity: 1; box-shadow: 0 0 0 8px rgba(200, 90, 66, 0); }
+  100% { transform: scale(0.95); opacity: 0.9; box-shadow: 0 0 0 0 rgba(200, 90, 66, 0); }
 }
 
 .pulse-radar {
-  animation: radar-pulse 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+  animation: coral-pulse 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
 }
 
 @keyframes threat-pulse {
-  0% { box-shadow: 0 0 0 0 rgba(224, 83, 83, 0.7); border-color: rgba(224, 83, 83, 0.9); }
-  70% { box-shadow: 0 0 0 16px rgba(224, 83, 83, 0); border-color: rgba(224, 83, 83, 0.5); }
-  100% { box-shadow: 0 0 0 0 rgba(224, 83, 83, 0); border-color: rgba(224, 83, 83, 0.9); }
+  0% { box-shadow: 0 0 0 0 rgba(200, 62, 45, 0.6); }
+  70% { box-shadow: 0 0 0 14px rgba(200, 62, 45, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(200, 62, 45, 0); }
 }
 
 .pulse-threat {
-  animation: threat-pulse 1.6s infinite;
+  animation: threat-pulse 1.8s infinite;
 }
 
 /* Transcript scam flag highlight */
 mark.scam-flag {
-  background-color: rgba(224, 83, 83, 0.35);
-  color: #FFA3A3;
-  border-bottom: 2px solid #E05353;
-  padding: 2px 8px;
+  background-color: #FDEBE8;
+  color: #C83E2D;
+  border-bottom: 2px solid #C83E2D;
+  padding: 2px 7px;
   border-radius: 4px;
   font-weight: 700;
-  box-shadow: 0 0 10px rgba(224, 83, 83, 0.3);
 }
 
-/* Classy Custom Scrollbars */
+/* Refined Scrollbars */
 ::-webkit-scrollbar {
   width: 7px;
   height: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: #0D0B09;
+  background: #241715;
 }
 ::-webkit-scrollbar-thumb {
-  background: #382F26;
+  background: #543732;
   border-radius: 4px;
-  border: 1px solid #211C17;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #DFB78C;
+  background: #C85A42;
 }
 
 /* Gauge Meter Animations */
 .gauge-svg {
   transform: rotate(-90deg);
-  filter: drop-shadow(0 0 10px rgba(223, 183, 140, 0.25));
 }
 
 .gauge-circle-bg {
   fill: none;
-  stroke: rgba(223, 183, 140, 0.12);
+  stroke: #EAE0D5;
 }
 
 .gauge-circle-progress {
@@ -146,36 +162,21 @@ mark.scam-flag {
   transition: stroke-dashoffset 1.2s cubic-bezier(0.16, 1, 0.3, 1), stroke 0.5s ease;
 }
 
-/* Oscilloscope Canvas */
+/* Oscilloscope Canvas (Warm Beige Canvas with Terracotta Wave) */
 #waveformCanvas {
   width: 100%;
   height: 90px;
-  border-radius: 12px;
-  background: #120F0C;
-  border: 1px solid #382F26;
-  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.8);
-}
-
-/* Primary Classy Beige Button Style */
-.btn-classy-beige {
-  background: linear-gradient(135deg, #DFB78C 0%, #C99E6B 100%);
-  color: #120F0C;
-  font-weight: 800;
-  box-shadow: 0 4px 15px rgba(223, 183, 140, 0.25);
-  transition: all 0.2s ease-in-out;
-}
-
-.btn-classy-beige:hover {
-  background: linear-gradient(135deg, #EAD0B3 0%, #D8AF7C 100%);
-  box-shadow: 0 6px 20px rgba(223, 183, 140, 0.4);
-  transform: translateY(-1px);
+  border-radius: 14px;
+  background: #F7EFE7;
+  border: 1.5px solid #E5D5C6;
+  box-shadow: inset 0 2px 6px rgba(40, 24, 20, 0.08);
 }
 
 /* Print styles for Forensic Report */
 @media print {
   body {
-    background: #FDFBF7 !important;
-    color: #1A1714 !important;
+    background: #FFFFFF !important;
+    color: #1A100E !important;
   }
   .no-print {
     display: none !important;
@@ -183,9 +184,9 @@ mark.scam-flag {
   .print-only {
     display: block !important;
   }
-  .glass-panel {
-    border: 1px solid #C4B5A5 !important;
+  .beige-panel {
+    border: 1px solid #CCC !important;
     box-shadow: none !important;
-    background: #FDFBF7 !important;
+    background: #FFFFFF !important;
   }
 }

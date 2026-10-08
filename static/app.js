@@ -100,10 +100,10 @@ function switchMode(mode) {
     const p = document.getElementById(tabs[key].panel);
     if (!b || !p) continue;
     if (key === mode) {
-      b.className = "flex-1 py-3 px-4 text-xs font-bold rounded-xl btn-classy-beige transition-all flex items-center justify-center space-x-2";
+      b.className = "flex-1 py-3 px-4 text-xs font-bold rounded-xl btn-coral transition-all flex items-center justify-center space-x-2";
       p.classList.remove('hidden');
     } else {
-      b.className = "flex-1 py-3 px-4 text-xs font-semibold rounded-xl text-[#C2B09D] hover:text-[#F5EBE1] hover:bg-[#211B15] transition-all flex items-center justify-center space-x-2";
+      b.className = "flex-1 py-3 px-4 text-xs font-bold rounded-xl text-[#422D29] hover:bg-[#F2E4D8] transition-all flex items-center justify-center space-x-2";
       p.classList.add('hidden');
     }
   }
@@ -128,10 +128,10 @@ function switchDetailsTab(tab) {
     const p = document.getElementById(tabs[key].panel);
     if (!b || !p) continue;
     if (key === tab) {
-      b.className = "pb-2.5 text-[#DFB78C] border-b-2 border-[#DFB78C] font-extrabold";
+      b.className = "pb-2.5 text-[#C85A42] border-b-2 border-[#C85A42] font-extrabold";
       p.classList.remove('hidden');
     } else {
-      b.className = "pb-2.5 text-[#A89885] hover:text-[#F5EBE1] font-semibold";
+      b.className = "pb-2.5 text-[#593D37] hover:text-[#1A100E] font-semibold";
       p.classList.add('hidden');
     }
   }
@@ -350,19 +350,19 @@ async function fetchCommunityReports() {
     reports.forEach(r => {
       const isScam = r.verified_scam;
       const item = document.createElement('div');
-      item.className = "p-4 rounded-xl border border-[#382F26] bg-[#16120E] hover:border-[#DFB78C] text-xs space-y-2 transition-all shadow-md";
+      item.className = "p-4 rounded-2xl border border-[#E5D5C6] bg-[#FDF9F5] hover:border-[#C85A42] text-xs space-y-2 transition-all shadow-sm";
       item.innerHTML = `
         <div class="flex items-center justify-between font-mono">
-          <span class="font-extrabold text-[#F5EBE1] text-xs">${r.phone}</span>
-          <span class="px-2.5 py-0.5 rounded text-[11px] font-extrabold ${isScam ? 'bg-[#331114] text-[#FFA3A3] border border-[#6B242A]' : 'bg-[#13291E] text-[#A3E2C3] border border-[#23523B]'}">
+          <span class="font-extrabold text-[#1A100E] text-xs">${r.phone}</span>
+          <span class="px-2.5 py-0.5 rounded-full text-[11px] font-extrabold ${isScam ? 'bg-[#FDEEEA] text-[#C83E2D] border border-[#F3B9AC]' : 'bg-[#E8F5ED] text-[#2D7A4F] border border-[#BDE3CC]'}">
             ${isScam ? `${r.report_count} FRAUD REPORTS` : 'VERIFIED SAFE'}
           </span>
         </div>
-        <div class="text-xs text-[#DFB78C] font-bold">${r.caller_name}</div>
-        <p class="text-xs text-[#E8D8C8] leading-relaxed font-medium">${r.modus_operandi}</p>
-        <div class="flex items-center justify-between text-xs text-[#C2B09D] font-mono pt-1.5 border-t border-[#382F26]">
-          <span>Vector: <strong class="text-[#F5EBE1]">${r.scam_vector.split('(')[0]}</strong></span>
-          <span class="truncate max-w-[160px] text-[#DFB78C] font-bold">${r.cpacf_signature}</span>
+        <div class="text-xs text-[#C85A42] font-extrabold">${r.caller_name}</div>
+        <p class="text-xs text-[#1A100E] leading-relaxed font-semibold">${r.modus_operandi}</p>
+        <div class="flex items-center justify-between text-xs text-[#593D37] font-mono pt-1.5 border-t border-[#E5D5C6]">
+          <span>Vector: <strong class="text-[#1A100E]">${r.scam_vector.split('(')[0]}</strong></span>
+          <span class="truncate max-w-[160px] text-[#C85A42] font-bold">${r.cpacf_signature}</span>
         </div>
       `;
       container.appendChild(item);
@@ -696,8 +696,8 @@ function showAnalyzingState(name) {
   const banner = document.getElementById('threatBanner');
 
   if (statusText) statusText.textContent = `INTERCEPTING & SCANNING WITH IBM TELUM: ${name}...`;
-  if (statusDot) statusDot.className = "w-3.5 h-3.5 rounded-full bg-[#DFB78C] animate-ping";
-  if (banner) banner.className = "p-4 rounded-xl border flex items-center justify-between bg-[#261E16] border-[#524131] text-[#DFB78C]";
+  if (statusDot) statusDot.className = "w-3.5 h-3.5 rounded-full bg-[#C85A42] animate-ping";
+  if (banner) banner.className = "p-4 rounded-2xl border flex items-center justify-between bg-[#FDEEEA] border-[#F3B9AC] text-[#C85A42]";
 
   // Smooth scroll to results
   const resultsCard = document.getElementById('resultsCard');
@@ -705,7 +705,7 @@ function showAnalyzingState(name) {
 }
 
 // ==============================================================================
-// RENDER COMPLETE FORENSIC RESULTS (CLASSY DARK BEIGE LUXURY HIERARCHY)
+// RENDER COMPLETE FORENSIC RESULTS (CLASSY BEIGE & WARM CORAL HIERARCHY)
 // ==============================================================================
 function renderForensicResults(data) {
   currentIncidentData = data;
@@ -728,14 +728,14 @@ function renderForensicResults(data) {
 
   if (banner && dot) {
     if (tm.color_code === 'red') {
-      banner.className = "p-4 rounded-xl border-2 flex items-center justify-between bg-[#291216] border-[#E05353] text-[#FFA3A3] pulse-threat";
-      dot.className = "w-3.5 h-3.5 rounded-full bg-[#E05353]";
+      banner.className = "p-4 rounded-2xl border-2 flex items-center justify-between bg-[#FDEEEA] border-[#C83E2D] text-[#C83E2D] pulse-threat";
+      dot.className = "w-3.5 h-3.5 rounded-full bg-[#C83E2D]";
     } else if (tm.color_code === 'amber' || tm.color_code === 'orange') {
-      banner.className = "p-4 rounded-xl border-2 flex items-center justify-between bg-[#2E2014] border-[#E0A96D] text-[#E0A96D]";
-      dot.className = "w-3.5 h-3.5 rounded-full bg-[#E0A96D]";
+      banner.className = "p-4 rounded-2xl border-2 flex items-center justify-between bg-[#FEF3E6] border-[#C67828] text-[#C67828]";
+      dot.className = "w-3.5 h-3.5 rounded-full bg-[#C67828]";
     } else {
-      banner.className = "p-4 rounded-xl border-2 flex items-center justify-between bg-[#13291E] border-[#52B788] text-[#A3E2C3]";
-      dot.className = "w-3.5 h-3.5 rounded-full bg-[#52B788]";
+      banner.className = "p-4 rounded-2xl border-2 flex items-center justify-between bg-[#E8F5ED] border-[#2D7A4F] text-[#2D7A4F]";
+      dot.className = "w-3.5 h-3.5 rounded-full bg-[#2D7A4F]";
     }
   }
 
@@ -764,7 +764,7 @@ function renderForensicResults(data) {
   const unifiedBar = document.getElementById('unifiedGaugeProgress');
   if (unifiedBar) {
     unifiedBar.style.strokeDashoffset = unifiedOffset;
-    unifiedBar.className = `gauge-circle-progress ${unifiedPct >= 70 ? 'stroke-[#E05353]' : (unifiedPct >= 40 ? 'stroke-[#E0A96D]' : 'stroke-[#52B788]')}`;
+    unifiedBar.className = `gauge-circle-progress ${unifiedPct >= 70 ? 'stroke-[#C83E2D]' : (unifiedPct >= 40 ? 'stroke-[#C67828]' : 'stroke-[#2D7A4F]')}`;
   }
 
   // 5. Animate Acoustic AI Gauge
@@ -776,7 +776,7 @@ function renderForensicResults(data) {
   const acousticBar = document.getElementById('acousticGaugeProgress');
   if (acousticBar) {
     acousticBar.style.strokeDashoffset = acousticOffset;
-    acousticBar.className = `gauge-circle-progress ${acousticPct >= 70 ? 'stroke-[#E05353]' : (acousticPct >= 40 ? 'stroke-[#E0A96D]' : 'stroke-[#DFB78C]')}`;
+    acousticBar.className = `gauge-circle-progress ${acousticPct >= 70 ? 'stroke-[#C83E2D]' : (acousticPct >= 40 ? 'stroke-[#C67828]' : 'stroke-[#C85A42]')}`;
   }
   const engineText = document.getElementById('suspectedEngineText');
   if (engineText) engineText.textContent = ac.suspected_engine.split('(')[0];
@@ -790,7 +790,7 @@ function renderForensicResults(data) {
   const scamBar = document.getElementById('scamGaugeProgress');
   if (scamBar) {
     scamBar.style.strokeDashoffset = scamOffset;
-    scamBar.className = `gauge-circle-progress ${scamPct >= 70 ? 'stroke-[#E05353]' : (scamPct >= 40 ? 'stroke-[#E0A96D]' : 'stroke-[#52B788]')}`;
+    scamBar.className = `gauge-circle-progress ${scamPct >= 70 ? 'stroke-[#C83E2D]' : (scamPct >= 40 ? 'stroke-[#C67828]' : 'stroke-[#2D7A4F]')}`;
   }
   const tierText = document.getElementById('scamRiskTierText');
   if (tierText) tierText.textContent = `Tier: ${li.risk_tier.replace('_', ' ')}`;
@@ -799,26 +799,26 @@ function renderForensicResults(data) {
   const adviceEl = document.getElementById('plainEnglishAdviceText');
   if (adviceEl) adviceEl.textContent = tm.primary_advice;
 
-  // 8. Explainable AI Biomarkers Table
+  // 8. Explainable AI Biomarkers Table (Classy Beige Cards)
   const anomaliesContainer = document.getElementById('anomaliesContainer');
   if (anomaliesContainer) {
     anomaliesContainer.innerHTML = '';
     ac.anomalies.forEach(anomaly => {
       const isAnomaly = anomaly.status === 'ANOMALY';
       const card = document.createElement('div');
-      card.className = `p-4 rounded-xl border text-xs space-y-2 ${isAnomaly ? 'bg-[#18070B] border-red-500/70 text-red-200 shadow-md' : 'bg-[#060B18] border-[#1E293B] text-slate-200'}`;
+      card.className = `p-4 rounded-2xl border-2 text-xs space-y-2 ${isAnomaly ? 'bg-[#FDEEEA] border-[#C83E2D] text-[#1A100E] shadow-sm' : 'bg-[#FDF9F5] border-[#E5D5C6] text-[#1A100E] shadow-sm'}`;
       card.innerHTML = `
         <div class="flex items-center justify-between font-mono">
-          <span class="font-extrabold text-white text-xs">${anomaly.metric}</span>
-          <span class="px-2.5 py-0.5 rounded text-[11px] font-extrabold ${isAnomaly ? 'bg-red-950/90 text-red-300 border border-red-500/60' : 'bg-emerald-950/90 text-emerald-300 border border-emerald-500/60'}">
+          <span class="font-extrabold text-[#1A100E] text-xs">${anomaly.metric}</span>
+          <span class="px-2.5 py-0.5 rounded-full text-[11px] font-extrabold ${isAnomaly ? 'bg-[#C83E2D] text-white' : 'bg-[#2D7A4F] text-white'}">
             ${anomaly.status}
           </span>
         </div>
-        <div class="flex items-center justify-between text-xs text-slate-300 font-mono">
-          <span>Observed: <strong class="text-cyan-300 font-bold">${anomaly.value}</strong></span>
-          <span>Normal Baseline: <strong class="text-white">${anomaly.normal_range}</strong></span>
+        <div class="flex items-center justify-between text-xs text-[#593D37] font-mono">
+          <span>Observed: <strong class="text-[#C85A42] font-bold">${anomaly.value}</strong></span>
+          <span>Normal Baseline: <strong class="text-[#1A100E]">${anomaly.normal_range}</strong></span>
         </div>
-        <p class="text-xs text-slate-200 leading-relaxed font-medium pt-0.5">${anomaly.reason}</p>
+        <p class="text-xs text-[#1A100E] leading-relaxed font-semibold pt-0.5">${anomaly.reason}</p>
       `;
       anomaliesContainer.appendChild(card);
     });
@@ -836,7 +836,7 @@ function renderForensicResults(data) {
     countermeasuresList.innerHTML = '';
     li.defense_protocol.forEach(action => {
       const item = document.createElement('div');
-      item.className = "p-3.5 rounded-xl bg-[#030612] border border-[#1E293B] flex items-start space-x-2.5 text-xs font-mono text-slate-200";
+      item.className = "p-3.5 rounded-2xl bg-[#F7EDE4] border border-[#E5D5C6] flex items-start space-x-2.5 text-xs font-mono text-[#1A100E]";
       item.innerHTML = `<span>${action}</span>`;
       countermeasuresList.appendChild(item);
     });
@@ -846,7 +846,7 @@ function renderForensicResults(data) {
   const exportBtn = document.getElementById('exportReportBtn');
   if (exportBtn) {
     exportBtn.disabled = false;
-    exportBtn.className = "px-5 py-2.5 rounded-xl btn-classy-beige font-mono text-xs flex items-center space-x-2 transition-all cursor-pointer shadow-lg";
+    exportBtn.className = "px-5 py-2.5 rounded-xl btn-coral font-mono text-xs flex items-center space-x-2 transition-all cursor-pointer shadow-md";
   }
 
   // Smooth scroll down to results
@@ -864,58 +864,58 @@ function exportIncidentDossier() {
   const content = document.getElementById('modalReportContent');
 
   content.innerHTML = `
-    <div class="p-4 bg-[#100D0A] rounded-xl border border-[#382F26] space-y-2 text-xs">
+    <div class="p-4 bg-[#F7EDE4] rounded-2xl border border-[#E5D5C6] space-y-2 text-xs">
       <div class="flex justify-between">
-        <span class="text-[#A89885] font-bold">TIMESTAMP:</span>
-        <span class="text-[#F5EBE1] font-extrabold">${new Date().toUTCString()}</span>
+        <span class="text-[#593D37] font-bold">TIMESTAMP:</span>
+        <span class="text-[#1A100E] font-extrabold">${new Date().toUTCString()}</span>
       </div>
       <div class="flex justify-between">
-        <span class="text-[#A89885] font-bold">CALLER IDENTIFIER:</span>
-        <span class="text-[#DFB78C] font-mono font-extrabold">${d.caller_pre_alert ? d.caller_pre_alert.phone : 'Unknown'}</span>
+        <span class="text-[#593D37] font-bold">CALLER IDENTIFIER:</span>
+        <span class="text-[#C85A42] font-mono font-extrabold">${d.caller_pre_alert ? d.caller_pre_alert.phone : 'Unknown'}</span>
       </div>
       <div class="flex justify-between">
-        <span class="text-[#A89885] font-bold">AUDIO EVIDENCE SHA-256:</span>
-        <span class="text-[#DFB78C] font-mono font-bold">${d.acoustic.file_info.sha256_hash}</span>
+        <span class="text-[#593D37] font-bold">AUDIO EVIDENCE SHA-256:</span>
+        <span class="text-[#593D37] font-mono font-bold">${d.acoustic.file_info.sha256_hash}</span>
       </div>
       <div class="flex justify-between">
-        <span class="text-[#A89885] font-bold">IBM CPACF HARDWARE SEAL:</span>
-        <span class="text-[#DFB78C] font-mono font-bold">${d.ibm_z ? d.ibm_z.cpacf.signature : 'Verified'}</span>
+        <span class="text-[#593D37] font-bold">IBM CPACF HARDWARE SEAL:</span>
+        <span class="text-[#C85A42] font-mono font-bold">${d.ibm_z ? d.ibm_z.cpacf.signature : 'Verified'}</span>
       </div>
     </div>
 
-    <div class="p-4 rounded-xl border-2 ${d.threat_matrix.color_code === 'red' ? 'bg-[#2E1216] border-[#E05353] text-[#FFA3A3]' : 'bg-[#13291E] border-[#52B788] text-[#A3E2C3]'}">
-      <div class="font-extrabold text-sm mb-1 text-[#F5EBE1]">${d.threat_matrix.badge_text}</div>
-      <p class="text-xs text-[#E8D8C8] leading-relaxed font-medium">${d.threat_matrix.primary_advice}</p>
+    <div class="p-4 rounded-2xl border-2 ${d.threat_matrix.color_code === 'red' ? 'bg-[#FDEEEA] border-[#C83E2D] text-[#C83E2D]' : 'bg-[#E8F5ED] border-[#2D7A4F] text-[#2D7A4F]'}">
+      <div class="font-extrabold text-sm mb-1">${d.threat_matrix.badge_text}</div>
+      <p class="text-xs text-[#241715] leading-relaxed font-semibold">${d.threat_matrix.primary_advice}</p>
     </div>
 
     <div class="space-y-2">
-      <h4 class="font-extrabold text-[#DFB78C] text-xs uppercase tracking-wider">Biometric &amp; IBM Telum Forensic Matrix</h4>
+      <h4 class="font-extrabold text-[#C85A42] text-xs uppercase tracking-wider">Biometric &amp; IBM Telum Forensic Matrix</h4>
       <div class="grid grid-cols-2 gap-2 text-xs">
-        <div class="p-3 bg-[#100D0A] rounded-lg border border-[#382F26]">
-          Composite Threat Index: <strong class="text-[#F5EBE1]">${d.threat_matrix.unified_threat_score}%</strong>
+        <div class="p-3 bg-[#FDF9F5] rounded-xl border border-[#E5D5C6]">
+          Composite Threat Index: <strong class="text-[#1A100E]">${d.threat_matrix.unified_threat_score}%</strong>
         </div>
-        <div class="p-3 bg-[#100D0A] rounded-lg border border-[#382F26]">
-          Acoustic Clone Probability: <strong class="text-[#F5EBE1]">${d.acoustic.deepfake_probability_percent}%</strong>
+        <div class="p-3 bg-[#FDF9F5] rounded-xl border border-[#E5D5C6]">
+          Acoustic Clone Probability: <strong class="text-[#1A100E]">${d.acoustic.deepfake_probability_percent}%</strong>
         </div>
-        <div class="p-3 bg-[#100D0A] rounded-lg border border-[#382F26]">
-          Telum NNPA Latency: <strong class="text-[#DFB78C] font-bold">0.82 ms</strong>
+        <div class="p-3 bg-[#FDF9F5] rounded-xl border border-[#E5D5C6]">
+          Telum NNPA Latency: <strong class="text-[#C85A42] font-bold">0.82 ms</strong>
         </div>
-        <div class="p-3 bg-[#100D0A] rounded-lg border border-[#382F26]">
-          Prior Community Reports: <strong class="text-[#DFB78C] font-bold">${d.caller_pre_alert ? d.caller_pre_alert.report_count : 0}</strong>
+        <div class="p-3 bg-[#FDF9F5] rounded-xl border border-[#E5D5C6]">
+          Prior Community Reports: <strong class="text-[#C85A42] font-bold">${d.caller_pre_alert ? d.caller_pre_alert.report_count : 0}</strong>
         </div>
       </div>
     </div>
 
     <div class="space-y-2">
-      <h4 class="font-extrabold text-[#DFB78C] text-xs uppercase tracking-wider">Spoken Conversational Evidence</h4>
-      <div class="p-3.5 bg-[#100D0A] rounded-lg border border-[#382F26] text-xs italic text-[#F5EBE1] font-semibold">
+      <h4 class="font-extrabold text-[#C85A42] text-xs uppercase tracking-wider">Spoken Conversational Evidence</h4>
+      <div class="p-3.5 bg-[#FDF9F5] rounded-xl border border-[#E5D5C6] text-xs italic text-[#1A100E] font-semibold">
         "${d.transcript || 'No verbal transcript provided'}"
       </div>
     </div>
 
     <div class="space-y-2">
-      <h4 class="font-extrabold text-[#52B788] text-xs uppercase tracking-wider">Law Enforcement Submission Advisory</h4>
-      <ul class="list-disc pl-5 space-y-1.5 text-[#E8D8C8] text-xs font-medium">
+      <h4 class="font-extrabold text-[#2D7A4F] text-xs uppercase tracking-wider">Law Enforcement Submission Advisory</h4>
+      <ul class="list-disc pl-5 space-y-1.5 text-[#241715] text-xs font-medium">
         <li>Submit this dossier directly to National Cybercrime Portal (cybercrime.gov.in / Dial 1930).</li>
         <li>Present audio SHA-256 and IBM CPACF signature to your bank fraud division to initiate an immediate transfer recall.</li>
         <li>Preserve raw audio file in original digital container without re-encoding to retain forensic chain of custody.</li>
@@ -970,12 +970,12 @@ function initCanvasVisualizer() {
   function renderFrame() {
     animationFrameId = requestAnimationFrame(renderFrame);
 
-    // Deep warm espresso background
-    canvasCtx.fillStyle = '#120F0C';
+    // Warm classy beige canvas background
+    canvasCtx.fillStyle = '#F7EFE7';
     canvasCtx.fillRect(0, 0, width, height);
 
-    // Subtle warm bronze grid lines
-    canvasCtx.strokeStyle = 'rgba(223, 183, 140, 0.12)';
+    // Subtle warm terracotta grid lines
+    canvasCtx.strokeStyle = 'rgba(200, 90, 66, 0.15)';
     canvasCtx.lineWidth = 1;
     canvasCtx.beginPath();
     canvasCtx.moveTo(0, height / 2);
@@ -987,10 +987,10 @@ function initCanvasVisualizer() {
       const dataArray = new Uint8Array(bufferLength);
       analyserNode.getByteTimeDomainData(dataArray);
 
-      canvasCtx.shadowBlur = 10;
-      canvasCtx.shadowColor = '#DFB78C';
-      canvasCtx.lineWidth = 2.6;
-      canvasCtx.strokeStyle = '#DFB78C'; // Classy Champagne Beige
+      canvasCtx.shadowBlur = 6;
+      canvasCtx.shadowColor = '#C85A42';
+      canvasCtx.lineWidth = 2.5;
+      canvasCtx.strokeStyle = '#C85A42'; // Warm Signature Terracotta Coral
       canvasCtx.beginPath();
 
       const sliceWidth = width / bufferLength;
@@ -1009,11 +1009,9 @@ function initCanvasVisualizer() {
       canvasCtx.stroke();
       canvasCtx.shadowBlur = 0;
     } else {
-      // Idle animated calm champagne wave
-      canvasCtx.shadowBlur = 8;
-      canvasCtx.shadowColor = '#DFB78C';
+      // Idle animated calm terracotta wave
       canvasCtx.lineWidth = 2.0;
-      canvasCtx.strokeStyle = 'rgba(223, 183, 140, 0.75)';
+      canvasCtx.strokeStyle = 'rgba(200, 90, 66, 0.65)';
       canvasCtx.beginPath();
       const t = Date.now() / 320;
       for (let x = 0; x < width; x += 4) {
@@ -1022,7 +1020,6 @@ function initCanvasVisualizer() {
         else canvasCtx.lineTo(x, y);
       }
       canvasCtx.stroke();
-      canvasCtx.shadowBlur = 0;
     }
   }
 
