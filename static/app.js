@@ -350,19 +350,19 @@ async function fetchCommunityReports() {
     reports.forEach(r => {
       const isScam = r.verified_scam;
       const item = document.createElement('div');
-      item.className = "p-3.5 rounded-xl border border-slate-800 bg-[#0D121F] hover:border-slate-700 text-xs space-y-1.5 transition-all";
+      item.className = "p-4 rounded-xl border border-[#1E293B] bg-[#060B18] hover:border-cyan-400 text-xs space-y-2 transition-all shadow-md";
       item.innerHTML = `
         <div class="flex items-center justify-between font-mono">
-          <span class="font-bold text-white text-xs">${r.phone}</span>
-          <span class="px-2 py-0.5 rounded text-[10px] font-bold ${isScam ? 'bg-red-500/20 text-red-400 border border-red-500/30' : 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'}">
-            ${isScam ? `${r.report_count} REPORTS` : 'VERIFIED SAFE'}
+          <span class="font-extrabold text-white text-xs">${r.phone}</span>
+          <span class="px-2.5 py-0.5 rounded text-[11px] font-extrabold ${isScam ? 'bg-red-950/90 text-red-300 border border-red-500/60' : 'bg-emerald-950/90 text-emerald-300 border border-emerald-500/60'}">
+            ${isScam ? `${r.report_count} FRAUD REPORTS` : 'VERIFIED SAFE'}
           </span>
         </div>
-        <div class="text-[11px] text-cyan-300 font-bold">${r.caller_name}</div>
-        <p class="text-[11px] text-slate-400 leading-tight">${r.modus_operandi}</p>
-        <div class="flex items-center justify-between text-[10px] text-slate-500 font-mono pt-1 border-t border-slate-800/80">
-          <span>Vector: ${r.scam_vector.split('(')[0]}</span>
-          <span class="truncate max-w-[130px] text-slate-400">${r.cpacf_signature}</span>
+        <div class="text-xs text-cyan-300 font-bold">${r.caller_name}</div>
+        <p class="text-xs text-slate-200 leading-relaxed font-medium">${r.modus_operandi}</p>
+        <div class="flex items-center justify-between text-xs text-slate-300 font-mono pt-1.5 border-t border-[#1E293B]">
+          <span>Vector: <strong class="text-white">${r.scam_vector.split('(')[0]}</strong></span>
+          <span class="truncate max-w-[160px] text-cyan-400 font-bold">${r.cpacf_signature}</span>
         </div>
       `;
       container.appendChild(item);
@@ -806,19 +806,19 @@ function renderForensicResults(data) {
     ac.anomalies.forEach(anomaly => {
       const isAnomaly = anomaly.status === 'ANOMALY';
       const card = document.createElement('div');
-      card.className = `p-3.5 rounded-xl border text-xs space-y-1.5 ${isAnomaly ? 'bg-red-950/25 border-red-900/50 text-red-200' : 'bg-slate-900/80 border-slate-800 text-slate-300'}`;
+      card.className = `p-4 rounded-xl border text-xs space-y-2 ${isAnomaly ? 'bg-[#18070B] border-red-500/70 text-red-200 shadow-md' : 'bg-[#060B18] border-[#1E293B] text-slate-200'}`;
       card.innerHTML = `
         <div class="flex items-center justify-between font-mono">
-          <span class="font-bold text-white text-xs">${anomaly.metric}</span>
-          <span class="px-2 py-0.5 rounded text-[10px] font-bold ${isAnomaly ? 'bg-red-500/20 text-red-400 border border-red-500/30' : 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'}">
+          <span class="font-extrabold text-white text-xs">${anomaly.metric}</span>
+          <span class="px-2.5 py-0.5 rounded text-[11px] font-extrabold ${isAnomaly ? 'bg-red-950/90 text-red-300 border border-red-500/60' : 'bg-emerald-950/90 text-emerald-300 border border-emerald-500/60'}">
             ${anomaly.status}
           </span>
         </div>
-        <div class="flex items-center justify-between text-[11px] text-slate-400 font-mono">
-          <span>Observed: <strong class="text-white">${anomaly.value}</strong></span>
-          <span>Normal Baseline: ${anomaly.normal_range}</span>
+        <div class="flex items-center justify-between text-xs text-slate-300 font-mono">
+          <span>Observed: <strong class="text-cyan-300 font-bold">${anomaly.value}</strong></span>
+          <span>Normal Baseline: <strong class="text-white">${anomaly.normal_range}</strong></span>
         </div>
-        <p class="text-[11px] text-slate-400 leading-tight pt-0.5">${anomaly.reason}</p>
+        <p class="text-xs text-slate-200 leading-relaxed font-medium pt-0.5">${anomaly.reason}</p>
       `;
       anomaliesContainer.appendChild(card);
     });
@@ -836,7 +836,7 @@ function renderForensicResults(data) {
     countermeasuresList.innerHTML = '';
     li.defense_protocol.forEach(action => {
       const item = document.createElement('div');
-      item.className = "p-3 rounded-xl bg-slate-950/70 border border-slate-800 flex items-start space-x-2 text-xs font-mono text-slate-200";
+      item.className = "p-3.5 rounded-xl bg-[#030612] border border-[#1E293B] flex items-start space-x-2.5 text-xs font-mono text-slate-200";
       item.innerHTML = `<span>${action}</span>`;
       countermeasuresList.appendChild(item);
     });
@@ -846,7 +846,7 @@ function renderForensicResults(data) {
   const exportBtn = document.getElementById('exportReportBtn');
   if (exportBtn) {
     exportBtn.disabled = false;
-    exportBtn.className = "px-4 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-mono text-xs font-bold flex items-center space-x-2 transition-all cursor-pointer shadow-lg shadow-cyan-600/30";
+    exportBtn.className = "px-5 py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-mono text-xs font-extrabold flex items-center space-x-2 transition-all cursor-pointer shadow-lg shadow-cyan-600/30";
   }
 
   // Smooth scroll down to results
@@ -864,58 +864,58 @@ function exportIncidentDossier() {
   const content = document.getElementById('modalReportContent');
 
   content.innerHTML = `
-    <div class="p-3.5 bg-slate-950 rounded-xl border border-slate-800 space-y-1.5 text-xs">
+    <div class="p-4 bg-[#030612] rounded-xl border border-[#1E293B] space-y-2 text-xs">
       <div class="flex justify-between">
-        <span class="text-slate-500">TIMESTAMP:</span>
-        <span class="text-white font-bold">${new Date().toUTCString()}</span>
+        <span class="text-slate-400 font-bold">TIMESTAMP:</span>
+        <span class="text-white font-extrabold">${new Date().toUTCString()}</span>
       </div>
       <div class="flex justify-between">
-        <span class="text-slate-500">CALLER IDENTIFIER:</span>
-        <span class="text-amber-400 font-mono font-bold">${d.caller_pre_alert ? d.caller_pre_alert.phone : 'Unknown'}</span>
+        <span class="text-slate-400 font-bold">CALLER IDENTIFIER:</span>
+        <span class="text-amber-300 font-mono font-extrabold">${d.caller_pre_alert ? d.caller_pre_alert.phone : 'Unknown'}</span>
       </div>
       <div class="flex justify-between">
-        <span class="text-slate-500">AUDIO EVIDENCE SHA-256:</span>
-        <span class="text-cyan-400 font-mono">${d.acoustic.file_info.sha256_hash}</span>
+        <span class="text-slate-400 font-bold">AUDIO EVIDENCE SHA-256:</span>
+        <span class="text-cyan-400 font-mono font-bold">${d.acoustic.file_info.sha256_hash}</span>
       </div>
       <div class="flex justify-between">
-        <span class="text-slate-500">IBM CPACF HARDWARE SEAL:</span>
-        <span class="text-blue-400 font-mono">${d.ibm_z ? d.ibm_z.cpacf.signature : 'Verified'}</span>
+        <span class="text-slate-400 font-bold">IBM CPACF HARDWARE SEAL:</span>
+        <span class="text-blue-300 font-mono font-bold">${d.ibm_z ? d.ibm_z.cpacf.signature : 'Verified'}</span>
       </div>
     </div>
 
-    <div class="p-4 rounded-xl border ${d.threat_matrix.color_code === 'red' ? 'bg-red-950/40 border-red-700/60 text-red-200' : 'bg-emerald-950/40 border-emerald-700/60 text-emerald-200'}">
-      <div class="font-bold text-sm mb-1">${d.threat_matrix.badge_text}</div>
-      <p class="text-xs text-slate-300 leading-relaxed">${d.threat_matrix.primary_advice}</p>
+    <div class="p-4 rounded-xl border-2 ${d.threat_matrix.color_code === 'red' ? 'bg-[#20070D] border-red-500 text-red-200' : 'bg-[#051A12] border-emerald-500 text-emerald-200'}">
+      <div class="font-extrabold text-sm mb-1 text-white">${d.threat_matrix.badge_text}</div>
+      <p class="text-xs text-slate-200 leading-relaxed font-medium">${d.threat_matrix.primary_advice}</p>
     </div>
 
     <div class="space-y-2">
-      <h4 class="font-bold text-cyan-400 text-xs uppercase tracking-wider">Biometric &amp; IBM Telum Forensic Matrix</h4>
+      <h4 class="font-extrabold text-cyan-400 text-xs uppercase tracking-wider">Biometric &amp; IBM Telum Forensic Matrix</h4>
       <div class="grid grid-cols-2 gap-2 text-xs">
-        <div class="p-2.5 bg-slate-950 rounded-lg border border-slate-800">
+        <div class="p-3 bg-[#030612] rounded-lg border border-[#1E293B]">
           Composite Threat Index: <strong class="text-white">${d.threat_matrix.unified_threat_score}%</strong>
         </div>
-        <div class="p-2.5 bg-slate-950 rounded-lg border border-slate-800">
+        <div class="p-3 bg-[#030612] rounded-lg border border-[#1E293B]">
           Acoustic Clone Probability: <strong class="text-white">${d.acoustic.deepfake_probability_percent}%</strong>
         </div>
-        <div class="p-2.5 bg-slate-950 rounded-lg border border-slate-800">
-          Telum NNPA Latency: <strong class="text-cyan-400">0.82 ms</strong>
+        <div class="p-3 bg-[#030612] rounded-lg border border-[#1E293B]">
+          Telum NNPA Latency: <strong class="text-cyan-400 font-bold">0.82 ms</strong>
         </div>
-        <div class="p-2.5 bg-slate-950 rounded-lg border border-slate-800">
-          Prior Community Reports: <strong class="text-amber-400">${d.caller_pre_alert ? d.caller_pre_alert.report_count : 0}</strong>
+        <div class="p-3 bg-[#030612] rounded-lg border border-[#1E293B]">
+          Prior Community Reports: <strong class="text-amber-300 font-bold">${d.caller_pre_alert ? d.caller_pre_alert.report_count : 0}</strong>
         </div>
       </div>
     </div>
 
     <div class="space-y-2">
-      <h4 class="font-bold text-amber-400 text-xs uppercase tracking-wider">Spoken Conversational Evidence</h4>
-      <div class="p-3 bg-slate-950 rounded-lg border border-slate-800 text-xs italic text-slate-300">
+      <h4 class="font-extrabold text-amber-300 text-xs uppercase tracking-wider">Spoken Conversational Evidence</h4>
+      <div class="p-3.5 bg-[#030612] rounded-lg border border-[#1E293B] text-xs italic text-white font-semibold">
         "${d.transcript || 'No verbal transcript provided'}"
       </div>
     </div>
 
     <div class="space-y-2">
-      <h4 class="font-bold text-emerald-400 text-xs uppercase tracking-wider">Law Enforcement Submission Advisory</h4>
-      <ul class="list-disc pl-5 space-y-1 text-slate-300 text-xs">
+      <h4 class="font-extrabold text-emerald-400 text-xs uppercase tracking-wider">Law Enforcement Submission Advisory</h4>
+      <ul class="list-disc pl-5 space-y-1.5 text-slate-200 text-xs font-medium">
         <li>Submit this dossier directly to National Cybercrime Portal (cybercrime.gov.in / Dial 1930).</li>
         <li>Present audio SHA-256 and IBM CPACF signature to your bank fraud division to initiate an immediate transfer recall.</li>
         <li>Preserve raw audio file in original digital container without re-encoding to retain forensic chain of custody.</li>
@@ -970,11 +970,12 @@ function initCanvasVisualizer() {
   function renderFrame() {
     animationFrameId = requestAnimationFrame(renderFrame);
 
-    canvasCtx.fillStyle = '#0B101D';
+    // Deep pitch black background
+    canvasCtx.fillStyle = '#02050D';
     canvasCtx.fillRect(0, 0, width, height);
 
-    // Subtle fine grid lines
-    canvasCtx.strokeStyle = 'rgba(30, 41, 59, 0.4)';
+    // Subtle dark cyber grid lines
+    canvasCtx.strokeStyle = 'rgba(30, 48, 80, 0.4)';
     canvasCtx.lineWidth = 1;
     canvasCtx.beginPath();
     canvasCtx.moveTo(0, height / 2);
@@ -986,8 +987,10 @@ function initCanvasVisualizer() {
       const dataArray = new Uint8Array(bufferLength);
       analyserNode.getByteTimeDomainData(dataArray);
 
-      canvasCtx.lineWidth = 2.2;
-      canvasCtx.strokeStyle = '#38BDF8'; // Sky blue
+      canvasCtx.shadowBlur = 10;
+      canvasCtx.shadowColor = '#00F2FE';
+      canvasCtx.lineWidth = 2.6;
+      canvasCtx.strokeStyle = '#00F2FE'; // Electric Cyan
       canvasCtx.beginPath();
 
       const sliceWidth = width / bufferLength;
@@ -1004,18 +1007,22 @@ function initCanvasVisualizer() {
 
       canvasCtx.lineTo(width, height / 2);
       canvasCtx.stroke();
+      canvasCtx.shadowBlur = 0;
     } else {
-      // Idle animated calm wave
-      canvasCtx.lineWidth = 1.8;
-      canvasCtx.strokeStyle = 'rgba(56, 189, 248, 0.35)';
+      // Idle animated calm neon wave
+      canvasCtx.shadowBlur = 8;
+      canvasCtx.shadowColor = '#00F2FE';
+      canvasCtx.lineWidth = 2.0;
+      canvasCtx.strokeStyle = 'rgba(0, 242, 254, 0.7)';
       canvasCtx.beginPath();
-      const t = Date.now() / 350;
-      for (let x = 0; x < width; x += 5) {
-        const y = height / 2 + Math.sin(x * 0.04 + t) * 6;
+      const t = Date.now() / 320;
+      for (let x = 0; x < width; x += 4) {
+        const y = height / 2 + Math.sin(x * 0.045 + t) * 7;
         if (x === 0) canvasCtx.moveTo(x, y);
         else canvasCtx.lineTo(x, y);
       }
       canvasCtx.stroke();
+      canvasCtx.shadowBlur = 0;
     }
   }
 
