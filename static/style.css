@@ -1,11 +1,11 @@
-/* AegisVoice AI - Warm Terracotta & Classy Beige Palette (Exact Match to User Reference UI) */
+/* AegisVoice AI - Almond #35261E & Classy Beige Palette */
 
 :root {
-  /* Warm Dark Terracotta Background ("warm dark colour like the reference image") */
-  --bg-primary: #5A3129;          /* Rich Warm Terracotta / Clay */
-  --bg-secondary: #48241D;        /* Deeper Warm Terracotta Cocoa */
-  --bg-header: #3E1E18;           /* Deep Terracotta Header */
-  --bg-surface: #683930;          /* Warm Terracotta Surface */
+  /* Almond Background */
+  --bg-primary: #35261E;          /* Almond #35261E */
+  --bg-secondary: #2A1D17;        /* Deep Almond */
+  --bg-header: #241812;           /* Deep Almond Header */
+  --bg-surface: #423026;          /* Almond Surface */
 
   /* Classy Beige Option Cards ("options should be in beige") */
   --beige-card: #FDF8F4;          /* Luminous Classy Warm Beige */
@@ -42,9 +42,9 @@ body {
   font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   overflow-x: hidden;
   background-image: 
-    radial-gradient(circle at 15% 10%, rgba(245, 160, 140, 0.22) 0%, transparent 45%),
-    radial-gradient(circle at 85% 15%, rgba(200, 90, 66, 0.25) 0%, transparent 50%),
-    radial-gradient(circle at 50% 90%, rgba(72, 36, 29, 0.6) 0%, transparent 60%);
+    radial-gradient(circle at 15% 10%, rgba(215, 175, 150, 0.08) 0%, transparent 45%),
+    radial-gradient(circle at 85% 15%, rgba(200, 90, 66, 0.12) 0%, transparent 50%),
+    radial-gradient(circle at 50% 90%, rgba(28, 18, 14, 0.7) 0%, transparent 60%);
   background-attachment: fixed;
 }
 
@@ -52,7 +52,7 @@ body {
 .beige-panel {
   background: var(--beige-card);
   border: 1.5px solid var(--border-beige);
-  box-shadow: 0 12px 35px -8px rgba(45, 20, 15, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.7);
+  box-shadow: 0 12px 35px -8px rgba(35, 18, 12, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.7);
   border-radius: 1.5rem;
   color: var(--text-dark);
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
@@ -60,14 +60,14 @@ body {
 
 .beige-panel:hover {
   border-color: var(--coral-border);
-  box-shadow: 0 16px 40px -8px rgba(45, 20, 15, 0.42);
+  box-shadow: 0 16px 40px -8px rgba(35, 18, 12, 0.42);
 }
 
-/* Warm Hero Container (Inspired by reference screen) */
+/* Warm Hero Container (Deep Almond) */
 .hero-warm-terracotta {
-  background: linear-gradient(135deg, #4A241D 0%, #3B1B15 100%);
-  border: 1.5px solid #66362D;
-  box-shadow: 0 14px 40px -10px rgba(35, 15, 10, 0.5);
+  background: linear-gradient(135deg, #423026 0%, #2A1D17 100%);
+  border: 1.5px solid #543E32;
+  box-shadow: 0 14px 40px -10px rgba(20, 12, 8, 0.5);
 }
 
 /* Signature Coral/Terracotta Button ("Voice" & "Ask SARA" in reference image) */
@@ -138,10 +138,10 @@ mark.scam-flag {
   height: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: #48241D;
+  background: #241812;
 }
 ::-webkit-scrollbar-thumb {
-  background: #783F34;
+  background: #543E32;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
