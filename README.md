@@ -10,6 +10,14 @@
 
 ---
 
+## 🎬 Hackathon Submission Quick Links
+
+- 🎥 **Live Demo Video (Direct Web Player)**: [https://github.com/Rohini-S-286/deepfake-voice-scam-call-detector/blob/main/demo_video.mp4](https://github.com/Rohini-S-286/deepfake-voice-scam-call-detector/blob/main/demo_video.mp4)
+- 📐 **Full Architecture & System Flowcharts**: [https://github.com/Rohini-S-286/deepfake-voice-scam-call-detector/blob/main/ARCHITECTURE.md](https://github.com/Rohini-S-286/deepfake-voice-scam-call-detector/blob/main/ARCHITECTURE.md)
+- 💻 **Interactive Codebase**: [https://github.com/Rohini-S-286/deepfake-voice-scam-call-detector](https://github.com/Rohini-S-286/deepfake-voice-scam-call-detector)
+
+---
+
 ## 🌟 Key Innovations
 
 1. **Pre-Alerts BEFORE Interaction:**
